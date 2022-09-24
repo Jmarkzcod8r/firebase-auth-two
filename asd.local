@@ -1,0 +1,13 @@
+NEXT_PUBLIC_FIREBASE_API_KEY = AIzaSyDUP3H7y3ZxWUDWcZqPDIZ4j580oOpR9N4
+
+NEXT_PUBLIC_FIREBASE_authDomain= testweb-912cb.firebaseapp.com,
+
+NEXT_PUBLIC_FIREBASE_databaseURL= https://testweb-912cb-default-rtdb.asia-southeast1.firebasedatabase.app,
+
+NEXT_PUBLIC_FIREBASE_projectId= testweb-912cb,
+
+NEXT_PUBLIC_FIREBASE_storageBucket= testweb-912cb.appspot.com,
+
+NEXT_PUBLIC_FIREBASE_ messagingSenderId= 1078677207107,
+
+NEXT_PUBLIC_FIREBASE_ appId= 1:1078677207107:web:121e66b3111c9eeb4e3cf6
