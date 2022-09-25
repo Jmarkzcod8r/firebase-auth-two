@@ -22,16 +22,16 @@ export default function Login () {
     // console.log(response)
     try{
     const {user}= await signInWithPopup(firebaseAuth, provider)
-    console.log('user is a',typeof(user))
+    // console.log('user is a',typeof(user))
   
     // This method is similar to a query in a dictionary.
     const {refreshToken, providerData, email} = user;
 
-    console.log('this is token:',refreshToken)
-    console.log('data is:',providerData)
+    // console.log('this is token:',refreshToken)
+    // console.log('data is:',providerData)
 
     localStorage.setItem('email', JSON.stringify(email))
-    setEmail(localStorage.getItem('email'))
+    // setEmail(localStorage.getItem('email'))
     
     
     localStorage.setItem('user', JSON.stringify(providerData))
@@ -40,7 +40,7 @@ export default function Login () {
 
     router.push("/");
   } catch {
-    console.log('error')
+    console.log(' ')
   }
 
     

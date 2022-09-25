@@ -4,6 +4,7 @@ import {React , useEffect, useState}from 'react'
 // import { CheckToken } from "../functions global/fetchDetails";
 import {IoLogOut} from 'react-icons/io5'
 import { Getuserinfo } from "../functions global/Getuserinfo";
+import styles from '../styles/Index.module.css'
 
 
 export default function Index  (){
@@ -15,6 +16,7 @@ export default function Index  (){
   // window.location.href="/login"
   const router = useRouter();
   const [checkbrowser, setCheckbowser]= useState('')
+  const [tokenres, setTokenres]=useState('')
   // const gotologin =()=>{  router.push("/login") }
   // localStorage.getItem('accessToken')
   // console.log(token)
@@ -27,26 +29,31 @@ export default function Index  (){
   // const h = localStorage.getItem('email')
 
   // CheckToken();
-  const CheckToken = () => {
-    const router = useRouter();
-    const token = (localStorage.getItem('accessToken'));
-    const stringtoken = JSON.stringify(token)
+  const CheckToken = async () => {
+    // const router = useRouter();
+    // const tok = await{
+    const token = await JSON.parse(localStorage.getItem('accessToken'));
+    // const stringtoken = JSON.stringify(token)
 
-    const indexemail = (localStorage.getItem('accessToken'));
+    // const indexemail = (localStorage.getItem('accessToken'));
     // setEmail(indexemail);
-    console.log(stringtoken);
-    console.log(typeof(token));
+    // console.log(stringtoken);
+    // console.log(typeof(token));
+    // const checkpage = ()=>{
     if (token){
-      console.log('okay')
+      // console.log('okay')
+        setTokenres('okay')
     } else {
-      console.log(
-      'not okay, redirecting to the login page');
+      setTokenres('not okay')
+      // console.log(
+      // 'not okay, redirecting to the login page');
       router.push("/login");
-    };
+    }; };
+    // checkpage();
     // Setme();
-  };
+  // };
 
-  // CheckToken();
+
   function Checkbrowser(){
     try{
   if (typeof window !== 'undefined'){
@@ -59,10 +66,37 @@ export default function Index  (){
     console.log('error')
   }
   }
-  // Checkbrowser()
-  // Checkbrowser();
+  // CheckToken();
 
   useEffect(()=>{
+      CheckToken();
+    // 
+    // const CheckToken = () => {
+    //   // const router = useRouter();
+    //   const token = (localStorage.getItem('accessToken'));
+    //   const stringtoken = JSON.stringify(token)
+  
+    //   // const indexemail = (localStorage.getItem('accessToken'));
+    //   // setEmail(indexemail);
+    //   console.log(stringtoken);
+    //   console.log(typeof(token));
+    //   // const checkpage = ()=>{
+    //   if (token){
+    //     console.log('okay')
+    //   } else {
+    //     console.log(
+    //     'not okay, redirecting to the login page');
+    //     router.push("/login");
+    //   }; };
+
+    //   CheckToken();
+
+
+
+
+
+
+    // CheckToken();
       // Checkbrowser();
   //     function Setme(){ setEmail(localStorage.getItem('email'))};
   // Setme();
@@ -96,7 +130,10 @@ export default function Index  (){
 
 
   return (
-    <div className='z-0  w-screen h-screen flex justify-center items-center bg-white relative'>
+    <div className='z-0  w-screen h-screen block justify-center bg-white      
+            pt-5 relative'>
+      
+   
     {/* <Image 
     loader = {imageloader}
     // className='absolute top-0 left-0 w-screen h-screen object-cover'
@@ -105,16 +142,53 @@ export default function Index  (){
       className='absolute top-0 left-0 w-screen h-screen object-cover' 
       src={"https://cdn.pixabay.com/photo/2016/05/26/12/56/waterfalls-1417102_1280.jpg"} 
       alt='as'  />
-      <div className='absolute top-0 left-0 right-0 bottom-0 bg-black bg-opacity-50'></div>
+      <div className='absolute top-0 left-0 right-0 bottom-0 bg-black bg-opacity-10'></div>
+        
+<div className="p-6">
+
+<div className=" bg-green-700 h-1/4 grid border-black">
+  {/* <div className="bg-pink-600 flex"> */}
+<img src={user.photoURL} alt="photo" className="absolute mt-5 ml-10"/>
+      <div className="relative flex justify-around h-20 px-96 z-100  mt-10">
+     
+      <button className=" bg-blue-50 inline-block h-9"> Item 1</button>
+      <button className=" bg-blue-50 inline-block h-9"> Item 2</button>
+      <button className=" bg-blue-50 inline-block h-9"> Item 3</button>
+      <button className=" bg-blue-50 inline-block h-9"> Item 4</button>
+      <button className=" bg-blue-50 inline-block h-9"> Item 5</button>
+      </div>
+      <button className="self-center justify-self-end absolute bg-blue-200 
+        m-16 mt-17" onClick={signOut}>Sign Out</button>
+        {/* </div> */}
+      </div>
+      </div>
+{/* <div>asdasd</div>
+<div>asdasd</div> */}
+{/* <div className="flex">das</div> */}
+<div class={styles.bgdeco}></div>
+<div> &nbsp;</div>
+<div class={styles.bgdeco}></div>
+<div> &nbsp;</div>
+<div class={styles.bgdeco}></div>
+<div> &nbsp;</div>
+<div class={styles.bgdeco}></div>
+
+    {/* <div className='relative w-50 h-50 z-100 m-20' >
+   
+    </div>
+    
+   
+   
+   
     <div className="w-screen h-screen bg-slate-600 justify-center items-center ">
       <div className="w-1/3 h-auto p-4 bg-white shadow-md rounded-md justify-start 
           items-center relative">
       <IoLogOut fontSize={25} className="absolute top-3 right-3 cursor-pointer
                   text-gray-600 " onClick={signOut}/>
          <img src={user.photoURL} alt="photo"/>
-        </div>
+        </div> */}
        
-    <div className="relative">
+    {/* <div className="relative">
       <div>
      <h1> This is email: {user.email}</h1>
      </div>
@@ -123,16 +197,20 @@ export default function Index  (){
       </div>
       <div>
       {/* <h1> This is browser Check: {name}</h1> */}
-      </div>
+      {/* </div>
       <div>
       <h1> This is browser Check: {checkbrowser}</h1>
       </div>
-      <button onClick={Checkbrowser}>Checks Browser</button>
-      <button onClick={printuser}>Check Browser</button>
-    </div>
-    </div>
+      <div>
+      <h1> This is Token response: {tokenres}</h1>
+      </div>
+      <button onClick={Checkbrowser}>Checks Browser</button>  */}
+      {/* <button onClick={printuser}>Check Browser</button> */}
+    {/* </div> */}
+    {/* </div> */}
 
     </div>
+    // </div>
     
   )
 }

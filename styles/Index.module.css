@@ -1,0 +1,15 @@
+.bgdeco {
+    left:70px;
+    /* right:20px; */
+    width: 1200px;
+    height: 90px;
+    /* margin: 30px; */
+    position:relative;
+    /* padding: 10px; */
+    border: 1px solid yellow;
+    background-image: url(https://cdn.pixabay.com/photo/2017/01/19/23/46/church-1993645_1280.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: top center;
+  }
