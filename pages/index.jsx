@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { useRouter } from "next/router"
 import {React , useEffect, useState}from 'react'
 // import { checkuserAccessToken} from '../functions global/fetchDetails'
@@ -5,6 +6,7 @@ import {React , useEffect, useState}from 'react'
 import {IoLogOut} from 'react-icons/io5'
 import { Getuserinfo } from "../functions global/Getuserinfo";
 import styles from '../styles/Index.module.css'
+import Image from "next/image";
 
 
 export default function Index  (){
@@ -17,6 +19,7 @@ export default function Index  (){
   const router = useRouter();
   const [checkbrowser, setCheckbowser]= useState('')
   const [tokenres, setTokenres]=useState('')
+  const [photoURL, setPhotoURL]=useState('')
   // const gotologin =()=>{  router.push("/login") }
   // localStorage.getItem('accessToken')
   // console.log(token)
@@ -52,7 +55,7 @@ export default function Index  (){
     // checkpage();
     // Setme();
   // };
-
+  const myphoto = toString(user.photoURL)
 
   function Checkbrowser(){
     try{
@@ -70,6 +73,8 @@ export default function Index  (){
 
   useEffect(()=>{
       CheckToken();
+      // console.log(user.photoURL);
+      // 
     // 
     // const CheckToken = () => {
     //   // const router = useRouter();
@@ -138,39 +143,58 @@ export default function Index  (){
     loader = {imageloader}
     // className='absolute top-0 left-0 w-screen h-screen object-cover'
     scr="as" alt="sa"  width={500} height={500}/>   */}
-    <img
+    {/* <img
       className='absolute top-0 left-0 w-screen h-screen object-cover' 
       src={"https://cdn.pixabay.com/photo/2016/05/26/12/56/waterfalls-1417102_1280.jpg"} 
       alt='as'  />
-      <div className='absolute top-0 left-0 right-0 bottom-0 bg-black bg-opacity-10'></div>
+      <div className='absolute top-0 left-0 right-0 bottom-0 bg-black bg-opacity-10'></div> */}
         
 <div className="p-6">
 
 <div className=" bg-green-700 h-1/4 grid border-black">
   {/* <div className="bg-pink-600 flex"> */}
-<img src={user.photoURL} alt="photo" className="absolute mt-5 ml-10"/>
+<img src={myphoto} alt="photome" className="absolute mt-5 ml-10"/>
       <div className="relative flex justify-around h-20 px-96 z-100  mt-10">
      
-      <button className=" bg-blue-50 inline-block h-9"> Item 1</button>
-      <button className=" bg-blue-50 inline-block h-9"> Item 2</button>
-      <button className=" bg-blue-50 inline-block h-9"> Item 3</button>
-      <button className=" bg-blue-50 inline-block h-9"> Item 4</button>
-      <button className=" bg-blue-50 inline-block h-9"> Item 5</button>
+      <button className=" bg-blue-50 inline-block h-9"> Profile</button>
+      <button className=" bg-blue-50 inline-block h-9"> About</button>
+      <button className=" bg-blue-50 inline-block h-9"> Pricing</button>
+      <button className=" bg-blue-50 inline-block h-9"> Cart</button>
+      <button className=" bg-blue-50 inline-block h-9"> Payment</button>
       </div>
       <button className="self-center justify-self-end absolute bg-blue-200 
         m-16 mt-17" onClick={signOut}>Sign Out</button>
         {/* </div> */}
       </div>
       </div>
+      <div className="relative">
+      <div>
+     <h1> Email: {user.email}</h1>
+     </div>
+      <div>
+      <h1> Name: {user.displayName}</h1>
+      </div>
+      {/* <div>
+      <h1> This is browser Check: {name}</h1>
+      </div> */}
+      <div>
+      <h1> Browser: {checkbrowser}</h1>
+      </div>
+      {/* <div>
+      <h1> This is Token response: {tokenres}</h1>
+      </div> */}
+      {/* <button onClick={Checkbrowser}>Checks Browser</button> 
+      <button onClick={printuser}>Check Browser</button> */}
+    </div>
 {/* <div>asdasd</div>
 <div>asdasd</div> */}
 {/* <div className="flex">das</div> */}
 <div class={styles.bgdeco}></div>
-<div> &nbsp;</div>
+{/* <div> &nbsp;</div> */}
 <div class={styles.bgdeco}></div>
-<div> &nbsp;</div>
+{/* <div> &nbsp;</div> */}
 <div class={styles.bgdeco}></div>
-<div> &nbsp;</div>
+{/* <div> &nbsp;</div> */}
 <div class={styles.bgdeco}></div>
 
     {/* <div className='relative w-50 h-50 z-100 m-20' >
@@ -188,26 +212,8 @@ export default function Index  (){
          <img src={user.photoURL} alt="photo"/>
         </div> */}
        
-    {/* <div className="relative">
-      <div>
-     <h1> This is email: {user.email}</h1>
-     </div>
-      <div>
-      <h1> This is name: {user.displayName}</h1>
-      </div>
-      <div>
-      {/* <h1> This is browser Check: {name}</h1> */}
-      {/* </div>
-      <div>
-      <h1> This is browser Check: {checkbrowser}</h1>
-      </div>
-      <div>
-      <h1> This is Token response: {tokenres}</h1>
-      </div>
-      <button onClick={Checkbrowser}>Checks Browser</button>  */}
-      {/* <button onClick={printuser}>Check Browser</button> */}
-    {/* </div> */}
-    {/* </div> */}
+   
+    {/* {/* </div> */}
 
     </div>
     // </div>
