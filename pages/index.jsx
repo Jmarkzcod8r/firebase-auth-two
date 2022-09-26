@@ -143,11 +143,11 @@ export default function Index  (){
     loader = {imageloader}
     // className='absolute top-0 left-0 w-screen h-screen object-cover'
     scr="as" alt="sa"  width={500} height={500}/>   */}
-    {/* <img
+    <img
       className='absolute top-0 left-0 w-screen h-screen object-cover' 
       src={"https://cdn.pixabay.com/photo/2016/05/26/12/56/waterfalls-1417102_1280.jpg"} 
       alt='as'  />
-      <div className='absolute top-0 left-0 right-0 bottom-0 bg-black bg-opacity-10'></div> */}
+      <div className='absolute top-0 left-0 right-0 bottom-0 bg-black bg-opacity-10'></div>
         
 <div className="p-6">
 
@@ -169,16 +169,16 @@ export default function Index  (){
       </div>
       <div className="relative">
       <div>
-     <h1> Email: {user.email}</h1>
+     <h1> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Email: {user.email}</h1>
      </div>
       <div>
-      <h1> Name: {user.displayName}</h1>
+      <h1> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Name: {user.displayName}</h1>
       </div>
       {/* <div>
       <h1> This is browser Check: {name}</h1>
       </div> */}
       <div>
-      <h1> Browser: {checkbrowser}</h1>
+      <h1> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Browser: {checkbrowser}</h1>
       </div>
       {/* <div>
       <h1> This is Token response: {tokenres}</h1>
