@@ -22,7 +22,8 @@ export default function Login () {
     // console.log(response)
     try{
     const {user}= await signInWithPopup(firebaseAuth, provider)
-    // console.log('user is a',typeof(user))
+    console.log('user is a',typeof(user));
+    // console.log(user);
   
     // This method is similar to a query in a dictionary.
     const {refreshToken, providerData, email} = user;

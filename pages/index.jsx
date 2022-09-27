@@ -15,6 +15,7 @@ export default function Index  (){
   const [name, setName] = useState('');
   //user is initially an empty object '{}'
   const [user, setUser] = useState({})
+  
   // window.location.href="/login"
   const router = useRouter();
   const [checkbrowser, setCheckbowser]= useState('')
@@ -36,7 +37,10 @@ export default function Index  (){
     // const router = useRouter();
     // const tok = await{
     const token = await JSON.parse(localStorage.getItem('accessToken'));
-    // const stringtoken = JSON.stringify(token)
+    // const {user} = await JSON.parse(localStorage.getItem('user'));
+    const stringtoken = JSON.stringify(token);
+    // const userdata = JSON.stringify(user);
+    // setUser(userdata);
 
     // const indexemail = (localStorage.getItem('accessToken'));
     // setEmail(indexemail);
@@ -55,7 +59,7 @@ export default function Index  (){
     // checkpage();
     // Setme();
   // };
-  const myphoto = toString(user.photoURL)
+  // const myphoto = toString(user.photoURL)
 
   function Checkbrowser(){
     try{
@@ -72,6 +76,7 @@ export default function Index  (){
   // CheckToken();
 
   useEffect(()=>{
+
       CheckToken();
       // console.log(user.photoURL);
       // 
@@ -116,13 +121,16 @@ export default function Index  (){
         console.log('error')
       } };
 
-
+      Checkbrowser();
             setinfo();
-          Checkbrowser();
-          } )
+
+   const Setmephoto = ()=> setPhotoURL(user.photoURL);
+   Setmephoto();
+          }, );
   
-  const printuser =()=> {
-    console.log([user])
+  const Printuser =()=> {
+    // console.log([user])
+    console.log('hey')
   }
  
 
@@ -131,6 +139,7 @@ export default function Index  (){
   const signOut = () => {
     localStorage.clear();
     router.push("/login")
+    console.log('ok')
   }
 
 
@@ -153,10 +162,10 @@ export default function Index  (){
 
 <div className=" bg-green-700 h-1/4 grid border-black">
   {/* <div className="bg-pink-600 flex"> */}
-<img src={myphoto} alt="photome" className="absolute mt-5 ml-10"/>
+<img src={photoURL} alt="photome" className="absolute mt-5 ml-10"/>
       <div className="relative flex justify-around h-20 px-96 z-100  mt-10">
      
-      <button className=" bg-blue-50 inline-block h-9"> Profile</button>
+      <button onClick={Printuser} className=" bg-blue-50 inline-block h-9"> Profile</button>
       <button className=" bg-blue-50 inline-block h-9"> About</button>
       <button className=" bg-blue-50 inline-block h-9"> Pricing</button>
       <button className=" bg-blue-50 inline-block h-9"> Cart</button>
@@ -167,18 +176,21 @@ export default function Index  (){
         {/* </div> */}
       </div>
       </div>
-      <div className="relative">
+      <div className="relative bg-pink-300 inline-block m-4 border-4">
       <div>
-     <h1> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Email: {user.email}</h1>
+     <h1> Email: {user.email}</h1>
      </div>
       <div>
-      <h1> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Name: {user.displayName}</h1>
+      <h1> Name: {user.displayName}</h1>
       </div>
+      {/* <div>
+      <h1> Name: {user.photoURL}</h1>
+      </div> */}
       {/* <div>
       <h1> This is browser Check: {name}</h1>
       </div> */}
       <div>
-      <h1> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Browser: {checkbrowser}</h1>
+      <h1> Browser: {checkbrowser}</h1>
       </div>
       {/* <div>
       <h1> This is Token response: {tokenres}</h1>
@@ -189,13 +201,13 @@ export default function Index  (){
 {/* <div>asdasd</div>
 <div>asdasd</div> */}
 {/* <div className="flex">das</div> */}
-<div class={styles.bgdeco}></div>
-{/* <div> &nbsp;</div> */}
-<div class={styles.bgdeco}></div>
-{/* <div> &nbsp;</div> */}
-<div class={styles.bgdeco}></div>
-{/* <div> &nbsp;</div> */}
-<div class={styles.bgdeco}></div>
+{/* <div class={styles.bgdeco}></div> */}
+{/* <div> </div> */}
+{/* <div class={styles.bgdeco}></div> */}
+{/* <div> </div> */}
+{/* <div class={styles.bgdeco}></div> */}
+{/* <div> </div> */}
+{/* <div class={styles.bgdeco}></div> */}
 
     {/* <div className='relative w-50 h-50 z-100 m-20' >
    
@@ -214,7 +226,7 @@ export default function Index  (){
        
    
     {/* {/* </div> */}
-
+        {/* <div>{user.photoURL}</div> */}
     </div>
     // </div>
     
