@@ -5,19 +5,15 @@ import {React , useEffect, useState}from 'react'
 // import { CheckToken } from "../functions global/fetchDetails";
 import {IoLogOut} from 'react-icons/io5'
 import { Getuserinfo } from "../functions global/Getuserinfo";
-// import styles from '../styles/Index.module.css'
+import styles from '../styles/Usernav.module.css'
 import Image from "next/image";
 import Usernav from "./Components/Usernav";
 
 
 export default function Index  (){
-
-
   return (
-   <div>
     <Usernav/>
-   </div>
   )
 }
 
-
+  

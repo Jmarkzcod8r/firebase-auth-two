@@ -10,13 +10,16 @@ import Image from "next/image";
 import Usernav from "./Components/Usernav";
 
 
-export default function Index  (){
+export default function payment  (){
 
-
-  return (
-   <div>
-    <Usernav/>
-   </div>
+ return(
+  
+    <div>
+      <Usernav/>
+         <div className="flex bg-red-100 z-1000 relative"> Payment </div>
+    </div>
+ 
+    
   )
 }
 

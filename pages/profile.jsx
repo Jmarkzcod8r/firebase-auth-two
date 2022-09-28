@@ -9,15 +9,18 @@ import { Getuserinfo } from "../functions global/Getuserinfo";
 import Image from "next/image";
 import Usernav from "./Components/Usernav";
 
-
-export default function Index  (){
-
-
+export default function profile  (){
   return (
-   <div>
-    <Usernav/>
-   </div>
+    <div>
+      <Usernav/>
+         <div className="grid z-1000 absolute w-screen h-1/2 top-18 "> 
+                <div className="relative w-1/2 bg-white bg-opacity-70 backdrop-blur-lg 
+                           justify-self-center rounded drop-shadow-lg p-4">
+adasd
+                </div>
+          </div>
+    </div>
+ 
+
   )
 }
-
-

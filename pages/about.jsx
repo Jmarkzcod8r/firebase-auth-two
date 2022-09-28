@@ -9,15 +9,13 @@ import { Getuserinfo } from "../functions global/Getuserinfo";
 import Image from "next/image";
 import Usernav from "./Components/Usernav";
 
-
-export default function Index  (){
-
-
+export default function About  (){
   return (
-   <div>
-    <Usernav/>
-   </div>
+    <div>
+      <Usernav/>
+         <div className="flex bg-red-100 z-1000 relative"> About</div>
+    </div>
+ 
+
   )
 }
-
-
