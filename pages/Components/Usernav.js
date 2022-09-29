@@ -103,34 +103,41 @@ export default function Usernav  (){
 
   return (
     <div className='z-0  w-screen h-auto block justify-center bg-white      
-            pt-5 relative'>
+            pt-5 relative p-6'>
       
    
 
-    {/* <img
+    <img
       className='absolute top-0 left-0 w-screen h-screen object-cover' 
       src={"https://cdn.pixabay.com/photo/2016/05/26/12/56/waterfalls-1417102_1280.jpg"} 
       alt=' '  />
-      <div className='absolute top-0 left-0 right-0 bottom-0 bg-black bg-opacity-10'></div> */}
+      <div className='absolute top-0 left-0 right-0 bottom-0 bg-black bg-opacity-10'></div>
         
 <div className="p-6">
 
-<div className=" bg-green-700 h-1/4 grid border-black">
+<div className="relative flex flex-col bg-white bg-opacity-70 backdrop-blur-lg 
+                           justify-self-center rounded drop-shadow-lg p-4">
+  
 
-<img src={photoURL} alt="photome" className="absolute mt-5 ml-10"/>
-      <div className="relative flex justify-around h-20 px-96 z-100  mt-10">
+<img src={photoURL} alt="photome" className="absolute mt-5 ml-10 rounded-full"/>
+      <div className="relative max-width-full flex justify-around h-20 px-96 z-100  mt-10">
      
       <button onClick={GotoProfile} className=" bg-blue-50 inline-block h-9 p-2 rounded-full"> Profile</button>
       <button onClick={GotoAbout} className=" bg-blue-50 inline-block h-9 p-2 rounded-full"> About</button>
       <button onClick={GotoPricing} className=" bg-blue-50 inline-block h-9 p-2 rounded-full"> Pricing</button>
       <button onClick={GotoCart} className=" bg-blue-50 inline-block h-9 p-2 rounded-full"> Cart</button>
       <button onClick={GotoPayment}  className=" bg-blue-50 inline-block h-9 p-2 rounded-full"> Payment</button>
+      <div className="flex"></div>
+      
       </div>
-      <button className="self-center justify-self-end absolute bg-blue-200 
-        m-16 mt-17" onClick={signOut}>Sign Out</button>
+      <button className="self-center justify-self-end  absolute bg-blue-200 
+        m-16 mt-17 right-0" onClick={signOut}>Sign Out</button>
         
       </div>
-      </div>
+
+
+
+      {/* </div>
       <div className="absolute bg-pink-300 inline-block m-4 border-4">
       <div>
      <h1> Email: {user.email}</h1>
@@ -144,7 +151,7 @@ export default function Usernav  (){
      
       <div>
       <h1> Browser: {checkbrowser}</h1>
-      </div>
+      </div> */}
   
     </div>
          {/* <div className="flex bg-red-100 z-1000 relative"> Payment </div> */}
