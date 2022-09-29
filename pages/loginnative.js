@@ -4,10 +4,7 @@ import { FcGoogle} from 'react-icons/fc'
 import {getAuth , GoogleAuthProvider, signInWithPopup , } from 'firebase/auth'
 import { apptry } from '../firebase/firebase-config'
 import { useRouter } from 'next/router'
-import {AiOutlineMail} from 'react-icons/ai'
-import { IoLogoFacebook } from 'react-icons/io5'
 import { AiFillFacebook } from 'react-icons/ai'
-
 
 export default function Login () {
 
@@ -47,11 +44,9 @@ export default function Login () {
   } catch {
     console.log(' ')
   }
-  };
 
-  const Gotonative = () => {
-    router.push("/loginnative")
-  }
+    
+  };
 
   const imageloader=()=>{
     return (
@@ -80,38 +75,24 @@ export default function Login () {
         alt='as'  />
         <div className='absolute top-0 left-0 right-0 bottom-0 bg-black bg-opacity-50'></div>
       
-      <div className='z-10 flex justify-center intems-center border border-gray-300 rounded-full
-        w-60  m-2  p-2 bg-white bg-opacity-60 cursor-pointer hover:shadow-md hover:bg-opacity-100     '
-      onClick={signIn}
-      >
-        <FcGoogle fontSize={30}/>
-        <p className='test-lg font-semibold ml-4'>Sign in with Google</p>
-      </div>
+      <div className='relative w-1/4 h-1/2 flex flex-col  justify-center items-center
+      bg-black bg-opacity-30 backdrop-blur-lg 
+                           justify-self-center rounded drop-shadow-lg p-4 ' > 
+                             <h1 className='text-amber-400'> Login Form</h1>
+      <input type="email" placeholder="type your email" className='rounded h-7 my-2 w-4/5'/>
 
-      <div className='z-10 flex justify-center intems-center border border-gray-300 rounded-full
-        w-60 m-2    p-2 bg-white bg-opacity-60 cursor-pointer hover:shadow-md hover:bg-opacity-100     '
-      onClick={signIn}
+        <input type="password" placeholder="type your password" className='rounded h-7 my-2 w-4/5'>
+        </input>
+        <div className='z-10 flex justify-center intems-center border border-gray-300 rounded-full
+         m-2    p-2 bg-white bg-opacity-60 cursor-pointer hover:shadow-md hover:bg-opacity-100     '
+    //   onClick={Gotonative}
       >
-        <IoLogoFacebook fontSize={30} className='bg-blue-400 rounded-full'/>
-        <p className='test-lg font-semibold ml-4'>Sign in with Facebook</p>
+        {/* <AiOutlineMail fontSize={30}/> */}
+        <p className='test-lg font-semibold ml-4'>Submit</p>
       </div>
-
-      <div className='z-10 flex justify-center intems-center border border-gray-300 rounded-full
-         m-2  w-60  p-2 bg-white bg-opacity-60 cursor-pointer hover:shadow-md hover:bg-opacity-100     '
-      onClick={signIn}
-      >
-        <AiFillFacebook fontSize={30} className='bg-blue-900'/>
-        <p className='test-lg font-semibold ml-4'>Sign in with Yahoo</p>
+      
       </div>
-
-      <div className='z-10 flex justify-center intems-center border border-gray-300 rounded-full
-         m-2 w-60   p-2 bg-white bg-opacity-60 cursor-pointer hover:shadow-md hover:bg-opacity-100     '
-      onClick={Gotonative}
-      >
-        <AiOutlineMail fontSize={30} className='justify-self-start'/>
-        <p className='test-lg font-semibold ml-4'>Sign in with Email</p>
-      </div>
-    
+     
     </div>
   )
 }
