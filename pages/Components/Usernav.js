@@ -50,6 +50,10 @@ export default function Usernav  (){
   }
   }
 
+  const GotoHome = () => {
+    router.push("/")
+  }
+
   const GotoProfile =()=>{
     router.push("/profile");
   }
@@ -66,6 +70,7 @@ export default function Usernav  (){
     router.push("/payment");
   }
   
+
 
   useEffect(()=>{
 
@@ -120,13 +125,13 @@ export default function Usernav  (){
   
 
 <img src={photoURL} alt="photome" className="absolute mt-5 ml-10 rounded-full"/>
-      <div className="relative max-width-full flex justify-around h-20 px-96 z-100  mt-10">
+      <div className="relative max-width-full flex justify-around h-20 px-96 z-100 mt-10">
      
-      <button onClick={GotoProfile} className=" bg-blue-50 inline-block h-9 p-2 rounded-full"> Profile</button>
-      <button onClick={GotoAbout} className=" bg-blue-50 inline-block h-9 p-2 rounded-full"> About</button>
-      <button onClick={GotoPricing} className=" bg-blue-50 inline-block h-9 p-2 rounded-full"> Pricing</button>
-      <button onClick={GotoCart} className=" bg-blue-50 inline-block h-9 p-2 rounded-full"> Cart</button>
-      <button onClick={GotoPayment}  className=" bg-blue-50 inline-block h-9 p-2 rounded-full"> Payment</button>
+      <button onClick={GotoHome} className=" bg-blue-50 inline-block h-9 p-2 rounded-full mx-7"> Home</button>
+      <button onClick={GotoProfile} className=" bg-blue-50 inline-block h-9 p-2 rounded-full mx-7"> Profile </button>
+      <button onClick={GotoAbout} className=" bg-blue-50 inline-block h-9 p-2 rounded-full mx-7"> About</button>
+      {/* <button onClick={GotoCart} className=" bg-blue-50 inline-block h-9 p-2 rounded-full mx-7"> Cart</button>
+      <button onClick={GotoPayment}  className=" bg-blue-50 inline-block h-9 p-2 rounded-full mx-7"> Payment</button> */}
       <div className="flex"></div>
       
       </div>
