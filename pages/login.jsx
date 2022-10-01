@@ -88,7 +88,7 @@ export default function Login () {
         <p className='test-lg font-semibold ml-4'>Sign in with Google</p>
       </div>
 
-      <div className='z-10 flex justify-center intems-center border border-gray-300 rounded-full
+      {/* <div className='z-10 flex justify-center intems-center border border-gray-300 rounded-full
         w-60 m-2    p-2 bg-white bg-opacity-60 cursor-pointer hover:shadow-md hover:bg-opacity-100     '
       onClick={signIn}
       >
@@ -110,7 +110,7 @@ export default function Login () {
       >
         <AiOutlineMail fontSize={30} className='justify-self-start'/>
         <p className='test-lg font-semibold ml-4'>Sign in with Email</p>
-      </div>
+      </div> */}
     
     </div>
   )
