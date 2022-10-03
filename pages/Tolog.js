@@ -2,7 +2,7 @@
 import { setLogLevel } from "firebase/app";
 import { useState } from "react";
 
-export default function Tolog({el,setLog, Setmylog}){
+export default function Tolog({el, Setmylog}){
     // const [dummy, setDummy] = useState('')
 
     // function SetEl=SetEl
@@ -10,7 +10,7 @@ export default function Tolog({el,setLog, Setmylog}){
     // console.log('this is', el.name);
     // setDummy('okay')
     // }
-    function Setty (){
+    function Setty (el){
         // setLog('oksad');
         Setmylog({el})
     }
@@ -19,7 +19,7 @@ export default function Tolog({el,setLog, Setmylog}){
     return (
         <div>
         <button  onClick={Setty} className='w-full h-10 bg-violet-800 p-2 rounded mt-2 hover:scale-105' >
-            {(el.name) }
+            {/* {(el.name) } */}ok
              {/* {dummy} */}
             </button>
 
