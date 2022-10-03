@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 /* eslint-disable @next/next/no-img-element */
 import { useRouter } from "next/router"
 import {React , useEffect, useState}from 'react'
@@ -12,7 +13,7 @@ import Swal from "sweetalert2";
 import {db} from '../firebase/firebase-config'
 import {doc , setDoc} from "firebase/firestore"
 import { getAuth , onAuthStateChanged} from "firebase/auth"
-import Tolog from "./Tolog";
+// import Tolog from "./Tolog";
 
 export default function Index  (){
 
@@ -246,10 +247,11 @@ function Test (){
               let templist=[{'name':"JM","log":'this is my first log which is nice'},
                             {'name':'Kat',"log":'this is my second log which is niceeree'}];
               
-              function Setmylog({el}){
-                console.log('I was clicked');
-                setLog(el.log)
-              }
+              // function Setmylog({el}){
+              //   console.log('I was clicked');
+              //   setLog({el.log})
+              // }
+              console.log('type of:',typeof(templist));
 
         
     function Inchange(e){
@@ -285,6 +287,14 @@ function Test (){
      
     }
 
+    // function Settinglog({el}){
+    //  return  setLog(el.log)
+    // }
+    function Settinglog (){
+     
+    
+  }
+
   return (
    <div className="" >
     {/* <div className="absolute"> */}
@@ -317,10 +327,20 @@ function Test (){
                       {  templist.map((el)=> (
                         // eslint-disable-next-line react/jsx-key
                        
-                          
+                          // eslint-disable-next-line react/jsx-key
+                          // <h1> {el.name} and {el.log}</h1>
                         
                           // eslint-disable-next-line react/jsx-key
-                          <Tolog el={el} Setmylog={Setmylog} /*  SetEl={SetEl} */ />
+                          // <Tolog elname={el.name} el={el}  ellog={el.log}  Settinglog={Settinglog} /* Setmylog={Setmylog} */ />
+                          /*  SetEl={SetEl} */
+                          //  />
+                          <div>
+                          <button  onClick={function Con(){
+                            setLog(el.log)
+                          }} className='w-full h-10 bg-violet-800 p-2 rounded mt-2 hover:scale-105' >
+                              {/* {el.name} {elname} */}
+                               {/* {dummy} */} {el.log}
+                              </button> </div>
                         
                      
                       ))
