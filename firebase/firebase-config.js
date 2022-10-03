@@ -1,7 +1,9 @@
 // import React from "react";
 
 import * as firebase from "firebase/app";
-import { initializeApp } from 'firebase/app';
+// import { initializeApp } from 'firebase/app';
+import { getFirestore, collection, getDocs} from "firebase/firestore"
+// import firebase from "firebase";
 // import * as firebase from "firebase";
 
 // const firebaseConfig = {
@@ -48,4 +50,6 @@ const firebaseCon = {
 //   export default !firebase.apps.length ? firebase.initializeApp(config) : firebase.app();
 
   export const apptry = firebase.initializeApp({ ...firebaseCon });
+  // const db = getFirestore(app);
+ export const db = getFirestore(apptry);
   

@@ -9,20 +9,26 @@ import { Getuserinfo } from "../functions global/Getuserinfo";
 import Image from "next/image";
 import Usernav from "./Components/Usernav";
 import Swal from "sweetalert2";
-
+import {db} from '../firebase/firebase-config'
+import {doc , setDoc} from "firebase/firestore"
+import { getAuth , onAuthStateChanged} from "firebase/auth"
+import Tolog from "./Tolog";
 
 export default function Index  (){
 
   //------------ Declaring Varibles ----------------
-  const [id,setId]=useState(0)
+  const [uid, setUid] = useState('asfdf')
+  const [id,setId]=useState('') // ---> This is liek a label number
   // arrlen is the length of the array of data we will be using.
   // I have a good feeling this would be useful in future projects
   const [arrlen, setArrlen] = useState(0) //---> I think this can be done 
                     // thru a query though I still need to look it up.
-  const [title,setTitle]=useState('asd')
+  const [title,setTitle]=useState('')
   const [currentdate, setCurrentdate]=useState('')
   // This is the log we will be showing to the main container in the middle.
-  const [log, setLog]=useState('')
+  const [log, setLog]=useState('templog')
+
+
   const [titleplaceholder, setTitleplaceholder]=useState('')
   const [trys, setTrys]=useState('adas')
   const [date,setDate]=useState('')
@@ -33,18 +39,22 @@ export default function Index  (){
                         // what I need for whiteseed.live. need to dig unto this deeper.
     if (title !== "") {
     // await addDoc(collection(db, ---> seems to be a template type
-      await addDoc(collection(db, "todos"), { //---> This pushes our inputs into the 
+      await addDoc(collection(db, "thisdata"), { //---> This pushes our inputs into the 
                                               // database as mentioned.
         id, title, currentdate, log, titleplaceholder
 
-
-      })  }   };
+                                              })  }   };
 
    const Print =()=> {
     console.log('okasd');
    }   
 
+
+
+
+
   const Sweetshow =()=> {
+    // setLog('')
     // const [sweet2title, setSweet2title]=useState('')
     var temp='';
     const swaldata = Swal.fire({
@@ -161,93 +171,200 @@ export default function Index  (){
       document.getElementById('tarea2').style.display='none' }
     };
     // AbraK()
+    
 
 
 
-    useEffect(()=> {
+    // useEffect(()=> {
 
-    function Todate(){
-              try{
-                  var today = new Date();
-                  let tday = today.getDay();
-                  function tzday (){
-                    return (tday===0)? 'Sunday'
-                    : (tday===1)? 'Monday'
-                    : (tday===2)? 'Tuesday'
-                    : (tday===3)? 'Wednesday'
-                    : (tday===4)? 'Thursday'                  
-                    : Saturday
-                  };
-                  const thisday = tzday();
-                  console.log(thisday);
+    // function Todate(){
+    //           try{
+    //               var today = new Date();
+    //               let tday = today.getDay();
+    //               function tzday (){
+    //                 return (tday===0)? 'Sunday'
+    //                 : (tday===1)? 'Monday'
+    //                 : (tday===2)? 'Tuesday'
+    //                 : (tday===3)? 'Wednesday'
+    //                 : (tday===4)? 'Thursday'                  
+    //                 : Saturday
+    //               };
+    //               const thisday = tzday();
+    //               console.log(thisday);
 
-              var dd = String(today.getDate()).padStart(2, '0');
-              var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-              var yyyy = today.getFullYear();
+    //           var dd = String(today.getDate()).padStart(2, '0');
+    //           var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    //           var yyyy = today.getFullYear();
 
-              today = mm + '/' + dd + '/' + yyyy;
-              var todayplus = today +  ` (` + thisday + ')'
+    //           today = mm + '/' + dd + '/' + yyyy;
+    //           var todayplus = today +  ` (` + thisday + ')'
               
-                setDate(todayplus);
-                } catch {
-                    console.log('error');
-                  } }   ;
-                  Todate()
+    //             setDate(todayplus);
+    //             } catch {
+    //                 console.log('error');
+    //               } }   ;
+    //               Todate()
+    //                              ,[]}) 
+                                 //---> useEffect sclosing tag
+// function getUID(){
+
+// }
+
+useEffect(()=> {
+
+   async function Dbadd(){
+    const auth = getAuth();
+    onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        const uid = user.uid;
+        console.log('this is user', uid);
+        await setDoc(doc(db, "Firebase-test users", "num4"), {
+            displayName: user.displayName,
+            email: user.email,
+            photoURL: user.photoURL,
+            emailVerified: user.emailVerified
+        });
+      } else {
+      console.log('error');
+      }
+            });
+                console.log('sendingss');
+              };
+    Dbadd()
+                                            },[])
+
+function Test (){
+  // console.log('ok');
+  //  setUid('nice one');
+   setLog('')
+ }
                 
-                }) //---> useEffect sclosing tag
+            function SetEl(arg){
+                setLog(arg)
+            }
 
+              let templist=[{'name':"JM","log":'this is my first log which is nice'},
+                            {'name':'Kat',"log":'this is my second log which is niceeree'}];
+              
+              function Setmylog({el}){
+                console.log('I was clicked');
+                setLog(el.log)
+              }
 
+        
+    function Inchange(e){
+      e.preventDefault();
+      // console.log(typeof(e));
+      // console.log(e);
+      setLog(e.target.Value)
+    }
+    console.log(' this is log',log);
+
+    if (typeof window !== 'undefined'){
+    var textareas = document.getElementsByTagName('textarea');
+    var count = textareas.length;
+    for(var i=0;i<count;i++){
+        textareas[i].onkeydown = function(e){
+            if(e.key==='Tab' ){
+                e.preventDefault();
+                var s = this.selectionStart;
+                this.value = this.value.substring(0,this.selectionStart) + "\t" + this.value.substring(this.selectionEnd);
+                this.selectionEnd = s+1; 
+            }
+        }
+    } }
+
+    function ClearNav (){
+      
+        var x = document.getElementById("Unav");
+        if (x.style.display === "none") {
+          x.style.display = "block";
+        } else {
+          x.style.display = "none";
+        }
+     
+    }
 
   return (
-   <div>
-    
-    <Usernav/>
-    <div className="flex  z-1000 absolute w-screen h-96 top-18 "> 
-                <div className=" w-1/4 relative h-auto bg-pink-700 flex flex-col  content-center items-center   ">
-                  <button onClick={Sweetshow} className="h-14  min-w-[70%] bg-blue-700 rounded-lg hover:scale-105"> Add ENtry
+   <div className="" >
+    {/* <div className="absolute"> */}
+       <img
+      className='top-0 left-0 w-screen h-screen object-cover fixed' 
+      src={"https://cdn.pixabay.com/photo/2016/05/26/12/56/waterfalls-1417102_1280.jpg"} 
+      alt=' '  />
+      {/* </div> */}
+      {/* <div className='absolute top-0 left-0 right-0 bottom-0 bg-black bg-opacity-10'>
 
+        
+      </div> */}
+      
+        {/* <div className="">adas</div> */}
+    {/* <div className="relative"> */}
+    <div id="Unav"><Usernav/> </div>
+    <div Style="height:600px" className="flex flex-row z-1000 relative w-full  top-0  pt-6"> 
+                <div className=" w-[31.25%] relative h-auto flex flex-col  content-center items-center p-2   ">
+                 <h1>{log}asd</h1>
+                  <button onClick={Sweetshow} className="h-14  min-w-[70%] bg-blue-700 rounded-lg hover:scale-105"> Add ENtry
+                      {/* {templist.id} */}
                   </button>
                   <button onClick={func} className="h-14  min-w-[70%] bg-blue-700 rounded-lg hover:scale-105"> 
                       Sweetshow2
                     </button>
+                    <button onClick={Test} >Test button</button>
+                    <button onClick={ClearNav} >Toggle Navbar</button>
                   <div className=' bg-green-700 mt-5 w-[90%] block h-[75%] px-2 overflow-auto'> 
-                      <button onClick={AbraK} className='w-full h-10 bg-violet-800 p-2 rounded mt-2 hover:scale-105'>{date}  </button>
-                      <button className='w-full h-10 bg-violet-800 p-2 rounded mt-2 hover:scale-105'></button>
-                      <button className='w-full h-10 bg-violet-800 p-2 rounded mt-2 hover:scale-105'></button>
-                      <button className='w-full h-10 bg-violet-800 p-2 rounded mt-2 hover:scale-105'></button>
-                      <button className='w-full h-10 bg-violet-800 p-2 rounded mt-2 hover:scale-105'></button>
-                      <button className='w-full h-10 bg-violet-800 p-2 rounded mt-2 hover:scale-105'></button>
-                      <button className='w-full h-10 bg-violet-800 p-2 rounded mt-2 hover:scale-105'></button>
-                      <button className='w-full h-10 bg-violet-800 p-2 rounded mt-2 hover:scale-105'></button>
-                      <button className='w-full h-10 bg-violet-800 p-2 rounded mt-2 hover:scale-105'></button>
+                    
+                      {  templist.map((el)=> (
+                        // eslint-disable-next-line react/jsx-key
+                       
+                          
+                        
+                          // eslint-disable-next-line react/jsx-key
+                          <Tolog el={el} Setmylog={Setmylog} /*  SetEl={SetEl} */ />
+                        
                      
-                     
-                  
+                      ))
+                      }
+                      
+                      
+                      {/* <button onClick={AbraK} className='w-full h-10 bg-violet-800 p-2 rounded mt-2 hover:scale-105'>{date}  </button>
+                      <button onClick={Dbadd} className='w-full h-10 bg-violet-800 p-2 rounded mt-2 hover:scale-105'>Add to database</button>
+                      <button className='w-full h-10 bg-violet-800 p-2 rounded mt-2 hover:scale-105'>Test Button 1</button>
+                      <button className='w-full h-10 bg-violet-800 p-2 rounded mt-2 hover:scale-105'>Test Button 2</button>
+                      <button className='w-full h-10 bg-violet-800 p-2 rounded mt-2 hover:scale-105'>Test Button 3</button>
+                      <button className='w-full h-10 bg-violet-800 p-2 rounded mt-2 hover:scale-105'></button>
+                      <button className='w-full h-10 bg-violet-800 p-2 rounded mt-2 hover:scale-105'></button>
+                      <button className='w-full h-10 bg-violet-800 p-2 rounded mt-2 hover:scale-105'></button>
+                      <button className='w-full h-10 bg-violet-800 p-2 rounded mt-2 hover:scale-105'></button> */}
+
                    </div>
                 </div>
 
-                <form onSubmit={handleSubmit} className='flex w-1/2'>
-                <div>
-                {/* <textarea id="tarea1"  placeholder='enter log here' className="w-[230%] h-[100%] relative flex bg-white bg-opacity-80 backdrop-blur-lg rounded-xl drop-shadow-lg p-4 justify-center"/>  */}
-                <textarea id="tarea2" placeholder='enter log here' className="w-[230%] h-[100%] relative flex bg-white bg-opacity-80 backdrop-blur-lg rounded-xl drop-shadow-lg p-4 justify-center"/> 
-
-             
+                {/* <form onSubmit={handleSubmit} className='flex w-1/2'> */}
+                {/* <div> */}
+                  {/* Placeholder is only useful when value="" */}
+                <textarea id="tarea2" type="text" placeholder='Body' value={log} defaultValue={log} onChange={Inchange}  
+                  className="w-[37.5%] relative flex bg-white bg-opacity-80 backdrop-blur-lg rounded-xl drop-shadow-lg p-4 justify-center"/>
+                 
+                 {/* {log}  */}
+                  {/* </div>  */}
                 
+                          {/* {log}sdasdas */}
+                {/* </div> */}
+              {/* </form> */}
+                           
+                <div className='w-[31.25%] flex flex-col '> {/* This is uid: {uid} */}
+                <textarea id="tarea2" type="text" placeholder='Description' value={log} defaultValue={log} onChange={Inchange} 
+                           className="w-full h-1/2 relative flex bg-white bg-opacity-80 backdrop-blur-lg rounded-xl drop-shadow-lg p-4 justify-center"/>
+                  <textarea id="tarea2" type="text" placeholder='Comments' value={log} defaultValue={log} onChange={Inchange} 
+                           className="w-full h-1/2 relative flex bg-white bg-opacity-80 backdrop-blur-lg rounded-xl drop-shadow-lg p-4 justify-center"/>
+                   <textarea id="tarea2" type="text" placeholder='Extras' value={log} defaultValue={log} onChange={Inchange} 
+                           className="w-full h-1/2 relative flex bg-white bg-opacity-80 backdrop-blur-lg rounded-xl drop-shadow-lg p-4 justify-center"/>
+
                 </div>
-              </form>
-                            {/* <input
-          type="text"
-          placeholder="Enter title..."
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        /> */}
-
-                
-
-
-                <div className='w-1/4 flex bg-red-900'></div>
+                      </div>
           </div>
-   </div>
+  //  </div>
   )
 }
 

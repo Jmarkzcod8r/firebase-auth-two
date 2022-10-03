@@ -25,7 +25,7 @@ export default function Usernav  (){
    
     const token = await JSON.parse(localStorage.getItem('accessToken'));
   
-    const stringtoken = JSON.stringify(token);
+    // const stringtoken = JSON.stringify(token);
   
     if (token){
     
@@ -87,9 +87,10 @@ export default function Usernav  (){
       Checkbrowser();
             setinfo();
 
-   const Setmephoto = ()=> setPhotoURL(user.photoURL);
-   Setmephoto();
-          }, );
+   const Setmephoto = ()=> {setPhotoURL(user.photoURL) };
+   Setmephoto()
+          // eslint-disable-next-line react-hooks/exhaustive-deps
+          },[user.photoURL] );
   
   const Printuser =()=> {
   
@@ -107,36 +108,31 @@ export default function Usernav  (){
 
 
   return (
-    <div className='z-0  w-screen h-auto block justify-center bg-white      
-            pt-5 relative p-6'>
+    <div className='z-0    flex justify-center
+            p-2 relative  '>
       
    
 
-    <img
-      className='absolute top-0 left-0 w-screen h-screen object-cover' 
-      src={"https://cdn.pixabay.com/photo/2016/05/26/12/56/waterfalls-1417102_1280.jpg"} 
-      alt=' '  />
-      <div className='absolute top-0 left-0 right-0 bottom-0 bg-black bg-opacity-10'></div>
-        
+ 
 <div className="p-6">
 
-<div className="relative flex flex-col bg-white bg-opacity-70 backdrop-blur-lg 
-                           justify-self-center rounded drop-shadow-lg p-4">
+      <div className="relative flex flex-col bg-white bg-opacity-70 backdrop-blur-lg 
+                        h-36   justify-self-center rounded drop-shadow-lg p-4 ">
   
 
 <img src={photoURL} alt="photome" className="absolute mt-5 ml-10 rounded-full"/>
-      <div className="relative max-width-full flex justify-around h-20 px-96 z-100 mt-10">
+      <div className="relative w-[100%] flex justify-around bg-opacity-70  px-96 z-100 h-full pt-10   bg-red-400">
      
       <button onClick={GotoHome} className=" bg-blue-50 inline-block h-9 p-2 rounded-full mx-7"> Home</button>
       <button onClick={GotoProfile} className=" bg-blue-50 inline-block h-9 p-2 rounded-full mx-7"> Profile </button>
       <button onClick={GotoAbout} className=" bg-blue-50 inline-block h-9 p-2 rounded-full mx-7"> About</button>
       {/* <button onClick={GotoCart} className=" bg-blue-50 inline-block h-9 p-2 rounded-full mx-7"> Cart</button>
       <button onClick={GotoPayment}  className=" bg-blue-50 inline-block h-9 p-2 rounded-full mx-7"> Payment</button> */}
-      <div className="flex"></div>
+      {/* <div className="flex"></div> */}
       
       </div>
       <button className="self-center justify-self-end  absolute bg-blue-200 
-        m-16 mt-17 right-0" onClick={signOut}>Sign Out</button>
+        m-16 mt-10 right-0 p-2 rounded-full" onClick={signOut}>Sign Out</button>
         
       </div>
 
