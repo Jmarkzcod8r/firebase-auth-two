@@ -8,12 +8,13 @@ import { Getuserinfo } from "../functions global/Getuserinfo";
 // import styles from '../styles/Index.module.css'
 import Image from "next/image";
 import Usernav from "./Components/Usernav";
+import Add from './Icons/Add.svg'
 
 export default function profile  (){
   return (
     <div>
       <Usernav/>
-       
+       <Image src={Add} alt="Add" width={40} height={40}/>
     </div>
  
 

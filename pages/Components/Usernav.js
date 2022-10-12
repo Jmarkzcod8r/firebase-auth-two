@@ -8,6 +8,13 @@ import { Getuserinfo } from "../../functions global/Getuserinfo"
 import Image from "next/image";
 
 
+export const ForphotoURL =async ()=>{
+  const [userInfo] = await Getuserinfo();
+  setUser(userInfo);
+  setPhotoURL(user.photoURL)
+  // return userInfo.photoURL
+}
+
 export default function Usernav  (){
 
   const [email, setEmail] = useState('');
@@ -108,20 +115,15 @@ export default function Usernav  (){
 
 
   return (
-    <div className='z-0    flex justify-center
-            p-2 relative  '>
-      
-   
+    <div className='z-0 flex justify-center p-1 relative h-auto '>
+    <div className="p-6">
 
- 
-<div className="p-6">
-
-      <div className="relative flex flex-col bg-white bg-opacity-70 backdrop-blur-lg 
-                        h-36   justify-self-center rounded drop-shadow-lg p-4 ">
+      <div className="relative /* flex flex-col */ bg-white bg-opacity-70 backdrop-blur-lg 
+                        h-36   justify-self-center rounded drop-shadow-lg p-4 hidden">
   
 
 <img src={photoURL} alt="photome" className="absolute mt-5 ml-10 rounded-full"/>
-      <div className="relative w-[100%] flex justify-around bg-opacity-70  px-96 z-100 h-full pt-10   bg-red-400">
+      <div className="relative w-[100%] flex justify-around bg-opacity-70  px-96 z-100 h-full pt-10  ">
      
       <button onClick={GotoHome} className=" bg-blue-50 inline-block h-9 p-2 rounded-full mx-7"> Home</button>
       <button onClick={GotoProfile} className=" bg-blue-50 inline-block h-9 p-2 rounded-full mx-7"> Profile </button>

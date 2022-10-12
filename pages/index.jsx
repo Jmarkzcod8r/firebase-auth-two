@@ -1,5 +1,7 @@
 /* eslint-disable react/jsx-key */
 /* eslint-disable @next/next/no-img-element */
+// import Image from "next/image";
+import axios from "axios";
 import { useRouter } from "next/router"
 import {React , useEffect, useState}from 'react'
 // import { checkuserAccessToken} from '../functions global/fetchDetails'
@@ -12,7 +14,22 @@ import Usernav from "./Components/Usernav";
 import Swal from "sweetalert2";
 import {db} from '../firebase/firebase-config'
 import {doc , setDoc} from "firebase/firestore"
-import { getAuth , onAuthStateChanged} from "firebase/auth"
+import { getAuth , onAuthStateChanged, signOut} from "firebase/auth"
+
+import { PrintConsole } from "./testbuttons/testbuttons";
+import { Typeof } from "./testbuttons/testbuttons";
+import Add from './Icons/Add.svg';
+import Save from './Icons/Save.png';
+import Clr from './Icons/Clear.png';
+import Del from './Icons/Delete.png'
+import Out from './Icons/Out.png'
+import { ForphotoURL } from "./Components/Usernav";
+
+// const express = require ('express') 
+// const app = express()
+// app.use(express.json())
+
+
 // import Tolog from "./Tolog";
 
 export default function Index  (){
@@ -24,15 +41,34 @@ export default function Index  (){
   // I have a good feeling this would be useful in future projects
   const [arrlen, setArrlen] = useState(0) //---> I think this can be done 
                     // thru a query though I still need to look it up.
+  const [photoURL, setPhotoURL]=useState('')
   const [title,setTitle]=useState('')
   const [currentdate, setCurrentdate]=useState('')
   // This is the log we will be showing to the main container in the middle.
-  const [log, setLog]=useState('templog')
-
+  const [user, setUser] = useState('')
+  const [log, setLog]=useState('')
+  const [highlight, setHighlight] = useState('')
+  const [desc, setDesc]=useState('')
+  const [comments, setComments]=useState('')
 
   const [titleplaceholder, setTitleplaceholder]=useState('')
   const [trys, setTrys]=useState('adas')
   const [date,setDate]=useState('')
+  const [name, setName]= useState ('Baby Ethel')
+  const [email, setEmail]=useState('ema@gmail.com')
+  const [createdAt, setCreatedAt]=useState('')
+  const [_id, set_id]=useState('temp id')
+
+  const [data, setData] = useState('tdata')
+
+  const [obj, setObj]= useState('')
+
+  const strdata = JSON.stringify(data)
+  const [mainlist, setMainlist] = useState([])
+  const [day, setDay] = useState("today")
+  const [dat, setDat] = useState ('indat')
+
+  const router = useRouter();
 
   const handleSubmit = async (e) => { // This still needs editing and also set 
                               // up of useStates
@@ -46,17 +82,16 @@ export default function Index  (){
 
                                               })  }   };
 
-   const Print =()=> {
-    console.log('okasd');
-   }   
+  //  const Print =()=> {
+  //   console.log('okasd');
+  //  }   
 
 
 
 
 
   const Sweetshow =()=> {
-    // setLog('')
-    // const [sweet2title, setSweet2title]=useState('')
+  
     var temp='';
     const swaldata = Swal.fire({
       title: 'Login Form',
@@ -73,71 +108,15 @@ export default function Index  (){
         return { login: login, password: password }
       }
     }).then((result) => {
-      // Swal.fire(`
-      //   Login: ${result.value.login}
-      //   Password: ${result.value.password}
-      // `.trim())
-      // const Setr = ()=> {
-      //   setTitle( result.value.login)
-      // };
-      // Setr();
-      
+
       console.log(temp);
     },['']);
-    // console.log('this is swaldata', swaldata);
-    // console.log(result.value.login);
-    // const print = async ()=> {
-    //   const dataw = await fetch (Login)
-    // }
-
-
-    
+ 
 
     console.log('this is temp', temp);
     
-    // , function(){
-    //   console.log('hi');
-    // }
   }
 
-  // if (sweettitle){
-  //   try{
-  //     console.log(sweettitle);
-  //   }catch(err){
-  //     console.log(err);
-  //   }
-  // }
- 
-      
-      
-      
-      
-      //         confirmButtonText: 'Sign in',
-      // // focusConfirm: false, ---> What is this for?
-      // preConfirm: () => {
-      //   const login = Swal.getPopup().querySelector('#login').value
-      //   const password = Swal.getPopup().querySelector('#password').value
-      //   if (!login || !password) {
-      //     Swal.showValidationMessage(`Please enter login and password`)
-      //   }
-      //   return { login: login, password: password }
-      // }
-   
-    // .then(
-    //   Setdata()
-    // )
-    // function setmetitle(arg){
-    //   setmetitle(arg);
-    // }
-
-    // let temlist=[];
-    // function thislist(arg){
-    //   temlist.push(arg)
-    //   console.log('this is temlist', temlist);
-    //   setTitle(temlist[0])
-    // }
-    
-    // let templist=['adsaasdasdssahhhh'];
 
     function func (){
     const Sweetshow2 =async()=> {
@@ -152,66 +131,58 @@ export default function Index  (){
 
       if (text) {
         console.log('this is text',text);
-        // thislist(text)
-        // textz = text
-        // console.log(textz);
-        // console.log(templist);
+  
         
       };   
       return text 
     };
     Sweetshow2()
-    // let thistext = Sweetshow2();
-    // console.log(typeof(thistext));
-    // // setTitle(thistext)
-    // console.log('Sweetshow2', Sweetshow2);
-
+  
   }
     function AbraK (){
       if (typeof window !== 'undefined'){
       document.getElementById('tarea2').style.display='none' }
     };
-    // AbraK()
-    
+  //  let thislist=[''];
+
+   const api = axios.create({
+    baseURL: "http://localhost:3000/api",
+  });
+
+// let glist=[];
 
 
 
-    // useEffect(()=> {
+async function getData() {
+  // http://localhost:3000/api
+const data = await api.get("/clients");
+console.log(typeof(data));
+  console.log('apidata',[data.data.clients[1]]);
+  // setMainlist([data.data.clients])
+  let clientslist = data.data.clients;
+  console.log(typeof(clientslist));
+  console.log('clientslist:',clientslist);
+  setMainlist(data.data.clients.reverse())
+  
+  // const object0 = data.data
+  // console.log('object0',object0.name);
+  // setObj(object0)
+  // setData(apidata)
+  // setLog(data.data)
+}
 
-    // function Todate(){
-    //           try{
-    //               var today = new Date();
-    //               let tday = today.getDay();
-    //               function tzday (){
-    //                 return (tday===0)? 'Sunday'
-    //                 : (tday===1)? 'Monday'
-    //                 : (tday===2)? 'Tuesday'
-    //                 : (tday===3)? 'Wednesday'
-    //                 : (tday===4)? 'Thursday'                  
-    //                 : Saturday
-    //               };
-    //               const thisday = tzday();
-    //               console.log(thisday);
-
-    //           var dd = String(today.getDate()).padStart(2, '0');
-    //           var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-    //           var yyyy = today.getFullYear();
-
-    //           today = mm + '/' + dd + '/' + yyyy;
-    //           var todayplus = today +  ` (` + thisday + ')'
-              
-    //             setDate(todayplus);
-    //             } catch {
-    //                 console.log('error');
-    //               } }   ;
-    //               Todate()
-    //                              ,[]}) 
-                                 //---> useEffect sclosing tag
-// function getUID(){
-
-// }
 
 useEffect(()=> {
+
+  
+  const ForphotoURL =async ()=>{
+    const [userInfo] = await Getuserinfo();
+    // console.log(userInfo);
+    // setUser(userInfo);
+    setPhotoURL(userInfo.photoURL)
+    // return userInfo.photoURL
+  };
+  ForphotoURL();
 
    async function Dbadd(){
     const auth = getAuth();
@@ -231,21 +202,39 @@ useEffect(()=> {
             });
                 console.log('sendingss');
               };
-    Dbadd()
-                                            },[])
+    Dbadd();
+    Datenow();
+    getData()
+    
+    // setPhotoURL(ForphotoURL())
 
-function Test (){
+
+                                            },[])
+  const signOut = () => {
+    localStorage.clear();
+    router.push("/login")
+    // console.log('ok')
+  }
+
+
+function Clear(){
   // console.log('ok');
   //  setUid('nice one');
-   setLog('')
+  setComments('');
+  setDesc('');
+   setLog('');
+   setHighlight('');
  }
                 
             function SetEl(arg){
                 setLog(arg)
             }
 
-              let templist=[{'name':"JM","log":'this is my first log which is nice'},
-                            {'name':'Kat',"log":'this is my second log which is niceeree'}];
+              let templist=
+              [{'name':"JM","log":'this is my first log which is nice', 'desc':'okay this is cool', 'comments':'What?'},
+                            {'name':'Kat',"log":'this is my second log which is niceeree','desc':'describe me','comments':'morph is chad'},
+                            {'name':'Ma',"log":'There is a lot I need to do','desc':'something times sotmthing', 'comments':`Let's go brandon`},
+                          ];
               
               // function Setmylog({el}){
               //   console.log('I was clicked');
@@ -253,13 +242,112 @@ function Test (){
               // }
               console.log('type of:',typeof(templist));
 
+              const Savedb = async (e) => {
+                e.preventDefault();
+                Datenow();
+                  // var field = 'nice'
+                  // setName('Baby Mica')
+              //  const data =  await api.post("/clients", {name:'nassssssmeme'}, {
+                try {
+                  // Inchangelog();
+                  // setLog(log)
+                  // setName('Melody')
+                  // const object = {log:'this is log', desc:'this is desc'}
+                await axios.post("http://localhost:3000/api/clients", {log, desc, comments, date, name, highlight}, {
+                //  await api.post("/clients", {log:'log'}, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    // 'Authorization': 'JWT fefege...'
+                } }) ;
+                getData()
+                         } catch (error) {
+                  console.error(error.response.data);
+                };
+                // location.reload()
+                // console.log(data);
+                                }
+
+      const Expresssavedb=()=> {
+        app.get('/', async (req, res) => {
+          const food = new Client({foodName:"Kiwi", daysSinceIAte: 7, coor:"i don't know" })
+          try{
+              await food.save();
+          } catch(err){
+              console.log(err);
+          } } ) }
+
+      function Datenow(){
+        // var now = new Date();
+        // console.log(now);
+        // console.log(typeof(now));
+        var today = new Date();
         
-    function Inchange(e){
+        
+        function thisday(){
+          var typeday = today.getDay();
+          if (typeday === 0) { return 'Mon'  };
+          if (typeday === 1) { return 'Tue'  };
+          if (typeday === 2) { return 'Wed'  };
+          if (typeday === 3) { return 'Thu'  };
+          if (typeday === 4) { return 'Fri'  };
+          if (typeday === 5) { return 'Sat'  };
+          if (typeday === 6) { return 'Sun'  };
+        }
+        var tday = thisday()
+        
+        function thisMonth(){
+          var typedy = today.getMonth();
+          // console.log(typeday);
+          var typeday = typedy+1
+          if (typeday === 1) { return 'Jan'  };
+          if (typeday === 2) { return 'Feb'  };
+          if (typeday === 3) { return 'Mar'  };
+          if (typeday === 4) { return 'Apr'  };
+          if (typeday === 5) { return 'May'  };
+          if (typeday === 6) { return 'Jun'  };
+          if (typeday === 7) { return 'Jul'  };
+          if (typeday === 8) { return 'Aug'  };
+          if (typeday === 9) { return 'Sep'  };
+          if (typeday === 10) { return 'Oct'  };
+          if (typeday === 11) { return 'Nov'  };
+          if (typeday === 12) { return 'Dec'  };
+        
+        }
+        
+        var Mnth = thisMonth()
+       
+         const date = today.getFullYear() + ' - ' + Mnth + ' - ' + today.getDate() + ' ( ' + tday + ' )';
+        setDate(date)
+      
+      }
+
+
+      function Print(){            
+        console.log(name, _id); }
+
+    function Inchangelog(e){
       e.preventDefault();
       // console.log(typeof(e));
       // console.log(e);
-      setLog(e.target.Value)
+      setLog(e.target.value)
     }
+
+    function Inchangedesc(e){
+      e.preventDefault();
+      setDesc(e.target.value)
+    }
+
+    function Inchangecomm(e){
+      e.preventDefault();
+      setComments(e.target.value)
+    }
+
+    function Inchangehighlight(e){
+      e.preventDefault();
+      setHighlight(e.target.value)
+    }
+
+
     console.log(' this is log',log);
 
     if (typeof window !== 'undefined'){
@@ -287,99 +375,141 @@ function Test (){
      
     }
 
-    // function Settinglog({el}){
-    //  return  setLog(el.log)
-    // }
-    function Settinglog (){
-     
-    
-  }
+    function Conlog (){
+      console.log(mainlist);
+      // console.log(' log:'+ log + ' desc: ' + desc );
+    }
+
+    const handleUpdateClient = async (e) => {
+      e.preventDefault();
+      console.log('pressed');
+      // if (isValidFormData()) return;
+  
+      try {
+        // setIsLoading(true);
+        await api.put(`clients/${_id}`, { log, desc, comments })
+          .then(response=>{
+          console.log(response);
+          // list[0].log="111111"w
+        })
+        // setName("");
+        // setEmail("");
+        // setId(null);
+        // setIsFormOpen(!isFormOpen);
+  
+        // toast({
+        //   title: "Atualizado com sucesso!",
+        //   status: "success",
+        //   duration: 9000,
+        //   isClosable: true,
+        // });
+        // setIsLoading(false);
+      } catch (error) {
+        console.log(error);
+        // setIsLoading(false);
+      };
+      getData()
+
+    };
+
+    const Delete = async(e)=>{
+      e.preventDefault();
+      try {
+        await api.delete(`/clients/${_id}`)
+      } catch (err) {
+        console.log('err:',err);
+      };
+      Clear();
+      getData()
+
+      
+    }
+
 
   return (
    <div className="" >
-    {/* <div className="absolute"> */}
+   
        <img
       className='top-0 left-0 w-screen h-screen object-cover fixed' 
+      // scr={Add}
       src={"https://cdn.pixabay.com/photo/2016/05/26/12/56/waterfalls-1417102_1280.jpg"} 
       alt=' '  />
-      {/* </div> */}
-      {/* <div className='absolute top-0 left-0 right-0 bottom-0 bg-black bg-opacity-10'>
-
-        
-      </div> */}
-      
-        {/* <div className="">adas</div> */}
-    {/* <div className="relative"> */}
+   
     <div id="Unav"><Usernav/> </div>
-    <div Style="height:600px" className="flex flex-row z-1000 relative w-full  top-0  pt-6"> 
-                <div className=" w-[31.25%] relative h-auto flex flex-col  content-center items-center p-2   ">
-                 <h1>{log}asd</h1>
-                  <button onClick={Sweetshow} className="h-14  min-w-[70%] bg-blue-700 rounded-lg hover:scale-105"> Add ENtry
-                      {/* {templist.id} */}
+    <div  className="flex flex-row z-1000 relative w-full h-200 top-0  pt-6"> 
+                <div className=" w-[31.25%] relative flex flex-col  content-center items-center p-2  ml-4 mr-7 
+                       bg-white bg-opacity-80 backdrop-blur-lg rounded-xl drop-shadow-lg">
+                <div className="relative  grid w-[100%] grid-cols-5 justify-self-auto items-end p-1 mr-0 pb-4">
+                  <div className="col-span-2  top-0 relative mb-16 ml-3">
+                    <button onClick={signOut} ><Image src={Out} alt="Clear" width={40} height={40} className="hover:scale-110"/> </button>
+                    </div>
+                <img src={photoURL} alt="photome" className=" relative justify-self-center mt-5 rounded-full "/>
+                </div>
+                 {/* <h1> this is _id: {_id} </h1> */}
+                  {/* <button onClick={Sweetshow} className="h-14  min-w-[70%] bg-blue-700 rounded-lg hover:scale-105"> Add ENtry
+     
                   </button>
                   <button onClick={func} className="h-14  min-w-[70%] bg-blue-700 rounded-lg hover:scale-105"> 
                       Sweetshow2
-                    </button>
-                    <button onClick={Test} >Test button</button>
-                    <button onClick={ClearNav} >Toggle Navbar</button>
-                  <div className=' bg-green-700 mt-5 w-[90%] block h-[75%] px-2 overflow-auto'> 
+                    </button> */}
+                    {/* <Image scr={Add} layout="fill" /> */}
+                   {/* (date) */}
+                   {/* {date} {name} {email} */}
+                     {/* <button onClick={Savedb} className="h-12  min-w-[70%] bg-blue-700 rounded-lg hover:scale-105 m-1" >Add Entry</button> */}
+                     <div  className="flex flex-row bg-blue-200 px-6 py-2 rounded-full">
+                     <button onClick={Delete} className="mr-2"><Image src={Del} alt="Clear" width={40} height={40} className="hover:scale-110"/></button>
+                     <button onClick={Clear} className="mx-2"><Image src={Clr} alt="Clear" width={40} height={40} className="hover:scale-110"/></button>
+                      <button onClick={handleUpdateClient} className="mx-2"><Image src={Save} alt="Add" width={40} height={40} className="hover:scale-110"/></button>
+                      <button onClick={Savedb} className="ml-2"><Image src={Add} alt="Add" width={40} height={40} className="hover:scale-110"/></button>
+
+                      </div>
+                    {/* <button onClick={handleUpdateClient} className="h-12  min-w-[70%] bg-blue-700 rounded-lg hover:scale-105 m-1" >Update</button> */}
+                    {/* <button onClick={ClearNav} className="h-12  min-w-[70%] bg-blue-700 rounded-lg hover:scale-105 m-1">Toggle Navbar</button> */}
+                    {/* <button onClick={Datenow} className="h-12  min-w-[70%] bg-blue-700 rounded-lg hover:scale-105 m-1" >Current Date</button>  */}
+                    {/* <button onClick={Delete} className="h-12  min-w-[70%] bg-blue-700 rounded-lg hover:scale-105 m-1" >Delete</button> */}
                     
-                      {  templist.map((el)=> (
-                        // eslint-disable-next-line react/jsx-key
-                       
-                          // eslint-disable-next-line react/jsx-key
-                          // <h1> {el.name} and {el.log}</h1>
-                        
-                          // eslint-disable-next-line react/jsx-key
-                          // <Tolog elname={el.name} el={el}  ellog={el.log}  Settinglog={Settinglog} /* Setmylog={Setmylog} */ />
-                          /*  SetEl={SetEl} */
-                          //  />
-                          <div>
-                          <button  onClick={function Con(){
-                            setLog(el.log)
-                          }} className='w-full h-10 bg-violet-800 p-2 rounded mt-2 hover:scale-105' >
-                              {/* {el.name} {elname} */}
-                               {/* {dummy} */} {el.log}
-                              </button> </div>
+                    
+                  <div className=' bg-green-300 mt-5 w-[95%] block h-72 px-4 overflow-auto rounded-xl'> 
+                    
+                      {  mainlist.map((el, key)=> (
+                     
+                          <div  id={"mapdiv"+el} className="flex flex-row">
+                          
+                          <button key={'button'+el} onClick={function Con(){
+                              // var x = document.getElementById("mapdiv"+el);
+// This states that if 'el.desc' exists or is true, method 'setDesc(e.desc)' executes or desc = ''    
+                            el._id? set_id(el._id):set_id('null')
+                            el.log  ? setLog(el.log):setLog('');
+                            el.desc ? setDesc(el.desc):setDesc('') ;
+                            el.comments ? setComments (el.comments): setComments('')
+                          }} className='w-full min-h-10 bg-violet-600 p-2 rounded mt-2 hover:scale-105' >
+                             {/* {key}  */} {el.date}                             
+                             </button></div>
                         
                      
                       ))
                       }
                       
-                      
-                      {/* <button onClick={AbraK} className='w-full h-10 bg-violet-800 p-2 rounded mt-2 hover:scale-105'>{date}  </button>
-                      <button onClick={Dbadd} className='w-full h-10 bg-violet-800 p-2 rounded mt-2 hover:scale-105'>Add to database</button>
-                      <button className='w-full h-10 bg-violet-800 p-2 rounded mt-2 hover:scale-105'>Test Button 1</button>
-                      <button className='w-full h-10 bg-violet-800 p-2 rounded mt-2 hover:scale-105'>Test Button 2</button>
-                      <button className='w-full h-10 bg-violet-800 p-2 rounded mt-2 hover:scale-105'>Test Button 3</button>
-                      <button className='w-full h-10 bg-violet-800 p-2 rounded mt-2 hover:scale-105'></button>
-                      <button className='w-full h-10 bg-violet-800 p-2 rounded mt-2 hover:scale-105'></button>
-                      <button className='w-full h-10 bg-violet-800 p-2 rounded mt-2 hover:scale-105'></button>
-                      <button className='w-full h-10 bg-violet-800 p-2 rounded mt-2 hover:scale-105'></button> */}
-
                    </div>
                 </div>
-
-                {/* <form onSubmit={handleSubmit} className='flex w-1/2'> */}
-                {/* <div> */}
-                  {/* Placeholder is only useful when value="" */}
-                <textarea id="tarea2" type="text" placeholder='Body' value={log} defaultValue={log} onChange={Inchange}  
-                  className="w-[37.5%] relative flex bg-white bg-opacity-80 backdrop-blur-lg rounded-xl drop-shadow-lg p-4 justify-center"/>
-                 
-                 {/* {log}  */}
-                  {/* </div>  */}
-                
-                          {/* {log}sdasdas */}
+                {/* <div className="h-auto w-auto bg-green-500"> */}
+                <textarea id="tarea2" type="text" placeholder='Log' value={log} /* defaultValue={log} */ onChange={Inchangelog}  
+                  className="w-[37.5%] relative flex bg-white bg-opacity-80 backdrop-blur-lg rounded-xl drop-shadow-lg p-4 justify-center
+                              mr-9"/>
                 {/* </div> */}
-              {/* </form> */}
-                           
-                <div className='w-[31.25%] flex flex-col '> {/* This is uid: {uid} */}
-                <textarea id="tarea2" type="text" placeholder='Description' value={log} defaultValue={log} onChange={Inchange} 
+                <div className='w-[31.25%] flex flex-col  pr-9'> {/* This is uid: {uid} */}
+               
+
+{/* <textarea id="tarea2" type="text" placeholder='Highlights' value={desc} defaultValue={desc} onChange={Inchangedesc} 
+                           className="w-full h-1/2 relative flex bg-white mb-4 bg-opacity-80 backdrop-blur-lg rounded-xl drop-shadow-lg p-4 justify-center"/> */}
+                   <textarea id="tarea2" type="text" placeholder='Highlight' value={highlight} /* defaultValue={desc} */ onChange={Inchangehighlight} 
+                           className="w-full h-1/2 relative flex bg-white mb-4 bg-opacity-80 backdrop-blur-lg rounded-xl drop-shadow-lg p-4 justify-center"/>
+                <textarea id="tarea2" type="text" placeholder='Description' value={desc} /* defaultValue={desc} */ onChange={Inchangedesc} 
+                           className="w-full h-1/2 relative flex bg-white mb-4 bg-opacity-80 backdrop-blur-lg rounded-xl drop-shadow-lg p-4 justify-center"/>
+                  <textarea id="tarea2" type="text" placeholder='Comments' value={comments} /* defaultValue={comments} */ onChange={Inchangecomm} 
                            className="w-full h-1/2 relative flex bg-white bg-opacity-80 backdrop-blur-lg rounded-xl drop-shadow-lg p-4 justify-center"/>
-                  <textarea id="tarea2" type="text" placeholder='Comments' value={log} defaultValue={log} onChange={Inchange} 
-                           className="w-full h-1/2 relative flex bg-white bg-opacity-80 backdrop-blur-lg rounded-xl drop-shadow-lg p-4 justify-center"/>
-                   <textarea id="tarea2" type="text" placeholder='Extras' value={log} defaultValue={log} onChange={Inchange} 
-                           className="w-full h-1/2 relative flex bg-white bg-opacity-80 backdrop-blur-lg rounded-xl drop-shadow-lg p-4 justify-center"/>
+                   {/* <textarea id="tarea2" type="text" placeholder='Extras' value={log} defaultValue={log} onChange={Inchange} 
+                           className="w-full h-1/2 relative flex bg-white bg-opacity-80 backdrop-blur-lg rounded-xl drop-shadow-lg p-4 justify-center"/> */}
 
                 </div>
                       </div>
