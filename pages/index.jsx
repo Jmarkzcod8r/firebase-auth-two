@@ -16,8 +16,8 @@ import {db} from '../firebase/firebase-config'
 import {doc , setDoc} from "firebase/firestore"
 import { getAuth , onAuthStateChanged, signOut} from "firebase/auth"
 
-import { PrintConsole } from "./testbuttons/testbuttons";
-import { Typeof } from "./testbuttons/testbuttons";
+// import { PrintConsole } from "./testbuttons/testbuttons";
+// import { Typeof } from "./testbuttons/testbuttons";
 import Add from './Icons/Add.svg';
 import Save from './Icons/Save.png';
 import Clr from './Icons/Clear.png';
