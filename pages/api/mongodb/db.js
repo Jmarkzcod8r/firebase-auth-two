@@ -9,7 +9,7 @@ async function dbConnection() {
   }
   // Setting up our database package.. 
   // The folder 'services' most likely set up as a foundation for this app for the database.
-  const db = await mongoose.connect(process.env.MONGO_URI_Firedata,  {
+  const db = await mongoose.connect(process.env.MONGO_URI,  {
     // const db = await mongoose.connect("mongodb+srv://newuser:Wisdoms3@crud.eg4wqwm.mongodb.net/Firedata", {
     
     useNewUrlParser: true, //--> This is use to prevent bugs due to version upgrade.
