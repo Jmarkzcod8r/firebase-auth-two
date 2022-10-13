@@ -9,7 +9,7 @@ use('Firedata');
 // The drop() command destroys all data from a collection.
 // Make sure you run it against the correct database and collection.
 
-db.logdatas.drop();
+// db.logdatas.drop();
 
 // db.logdatas.updateOne( {_id: ObjectId("6344559b6f731992f1c50a35")},
 //     {
@@ -26,12 +26,12 @@ db.logdatas.drop();
 // db.createCollection('logdata')
 
 // Insert a few documents into the sales collection.
-// db.logdatas.insertOne([
-// //   { 'item': 'abc', 'price': 10, 'quantity': 2, 'date': new Date('2014-03-01T08:00:00Z') },
-// //   { 'item': 'jkl', 'price': 20, 'quantity': 1, 'date': new Date('2014-03-01T09:00:00Z') },
-//    { 'name': 'nam', 'price': 20, 'quantity': 1, 'date': new Date('2014-03-01T09:00:00Z') , 'emai':'ema@sd.as', 'day':'tuesday'},
-// //  {'name':'testname'}
-// ]);
+db.logdatas.insertOne([
+//   { 'item': 'abc', 'price': 10, 'quantity': 2, 'date': new Date('2014-03-01T08:00:00Z') },
+//   { 'item': 'jkl', 'price': 20, 'quantity': 1, 'date': new Date('2014-03-01T09:00:00Z') },
+   { 'name': 'nam', 'price': 20, 'quantity': 1, 'date': new Date('2014-03-01T09:00:00Z') , 'emai':'ema@sd.as', 'day':'tuesday'},
+//  {'name':'testname'}
+]);
 
 // // Run a find command to view items sold on April 4th, 2014.
 // db.sales.find({ date: { $gte: new Date('2014-04-04'), $lt: new Date('2014-04-05') } });
