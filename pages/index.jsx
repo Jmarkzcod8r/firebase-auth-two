@@ -147,7 +147,8 @@ export default function Index  (){
     };
   //  let thislist=[''];
 
-  var thisbase = "http://localhost:3000/api"
+  var thisbase = 'https://firebase-auth-two-d9sm.vercel.app/'
+  // var thisbase = "http://localhost:3000/api"
    const api = axios.create({
     baseURL: thisbase,
   });
