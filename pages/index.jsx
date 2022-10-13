@@ -70,6 +70,8 @@ export default function Index  (){
 
   const router = useRouter();
 
+  const thisbaseURL = "localhost:3000/api"
+
   const handleSubmit = async (e) => { // This still needs editing and also set 
                               // up of useStates
     e.preventDefault(); //---> this prevents the load from reloading. I think this is 
@@ -145,8 +147,9 @@ export default function Index  (){
     };
   //  let thislist=[''];
 
+  var thisbase = "http://localhost:3000/api"
    const api = axios.create({
-    baseURL: "http://localhost:3000/api",
+    baseURL: thisbase,
   });
 
 // let glist=[];
@@ -253,7 +256,7 @@ function Clear(){
                   // setLog(log)
                   // setName('Melody')
                   // const object = {log:'this is log', desc:'this is desc'}
-                await axios.post("http://localhost:3000/api/clients", {log, desc, comments, date, name, highlight}, {
+                await axios.post(thisbase+"/clients", {log, desc, comments, date, name, highlight}, {
                 //  await api.post("/clients", {log:'log'}, {
                 headers: {
                     'Content-Type': 'application/json',
@@ -482,6 +485,7 @@ function Clear(){
                             el.log  ? setLog(el.log):setLog('');
                             el.desc ? setDesc(el.desc):setDesc('') ;
                             el.comments ? setComments (el.comments): setComments('')
+                            el.highlight? setHighlight (el.highlight) : setComments('')
                           }} className='w-full min-h-10 bg-violet-600 p-2 rounded mt-2 hover:scale-105' >
                              {/* {key}  */} {el.date}                             
                              </button></div>
