@@ -229,11 +229,7 @@ function Clear(){
    setLog('');
    setHighlight('');
  }
-                
-            function SetEl(arg){
-                setLog(arg)
-            }
-
+ 
               let templist=
               [{'name':"JM","log":'this is my first log which is nice', 'desc':'okay this is cool', 'comments':'What?'},
                             {'name':'Kat',"log":'this is my second log which is niceeree','desc':'describe me','comments':'morph is chad'},
