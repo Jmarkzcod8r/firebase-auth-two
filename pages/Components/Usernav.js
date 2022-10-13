@@ -40,7 +40,7 @@ export default function Usernav  (){
     } else {
       setTokenres('not okay')
     
-      // router.push("/login");
+      router.push("/login");
     }; };
   
 

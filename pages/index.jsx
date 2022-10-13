@@ -395,7 +395,7 @@ function Clear(){
   
       try {
         // setIsLoading(true);
-        await api.put(`clients/${_id}`, { log, desc, comments })
+        await api.put(`clients/${_id}`, { log, desc, comments, name, date, highlight })
           .then(response=>{
           console.log(response);
           // list[0].log="111111"w
@@ -491,7 +491,7 @@ function Clear(){
                             el.log  ? setLog(el.log):setLog('');
                             el.desc ? setDesc(el.desc):setDesc('') ;
                             el.comments ? setComments (el.comments): setComments('')
-                            el.highlight? setHighlight (el.highlight) : setComments('')
+                            el.highlight? setHighlight (el.highlight) : setHighlight('')
                           }} className='w-full min-h-10 bg-violet-600 p-2 rounded mt-2 hover:scale-105' >
                              {/* {key}  */} {el.date}                             
                              </button></div>

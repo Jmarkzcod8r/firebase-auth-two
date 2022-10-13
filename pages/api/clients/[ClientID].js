@@ -6,7 +6,7 @@ dbConnect();
 export default async function handler(req, res) {
 
   const { method } = req;
-  const { log, desc, comments, name, date } = req.body;
+  const { log, desc, comments, name, date, highlight } = req.body;
   const { ClientID } = req.query;
   // I think I need to learn  more about these switch-cases.
   switch (method) {
@@ -14,7 +14,7 @@ export default async function handler(req, res) {
       try {
         
         // if (!name && !email) return "inavalid data";
-        await Client.updateOne({ _id: ClientID }, { log, desc, comments, name, date});
+        await Client.updateOne({ _id: ClientID }, { log, desc, comments, name, date, highlight});
         res.status(200).json({ success: true , desc: 'nice'});
       } catch (error) {
         console.log(error);
