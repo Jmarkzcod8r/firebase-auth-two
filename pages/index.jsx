@@ -24,7 +24,7 @@ import Clr from './Icons/Clear.png';
 import Del from './Icons/Delete.png'
 import Out from './Icons/Out.png'
 import { ForphotoURL } from "./Components/Usernav";
-import {thisbase} from "./BaseURL/thisbase";
+import {thisbase} from "../functions global/thisbase";
 // const express = require ('express') 
 // const app = express()
 // app.use(express.json())
