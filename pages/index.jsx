@@ -24,7 +24,7 @@ import Clr from './Icons/Clear.png';
 import Del from './Icons/Delete.png'
 import Out from './Icons/Out.png'
 import { ForphotoURL } from "./Components/Usernav";
-
+import {thisbase} from "./BaseURL/thisbase";
 // const express = require ('express') 
 // const app = express()
 // app.use(express.json())
@@ -67,10 +67,11 @@ export default function Index  (){
   const [mainlist, setMainlist] = useState([])
   const [day, setDay] = useState("today")
   const [dat, setDat] = useState ('indat')
+  // const [testenv,setTestenv] = useState('testenv temp')
 
   const router = useRouter();
 
-  const thisbaseURL = "localhost:3000/api"
+  // const thisbaseURL = "localhost:3000/api"
 
   const handleSubmit = async (e) => { // This still needs editing and also set 
                               // up of useStates
@@ -146,16 +147,18 @@ export default function Index  (){
       document.getElementById('tarea2').style.display='none' }
     };
   //  let thislist=[''];
-
-  var thisbase = 'https://firebase-auth-two-d9sm.vercel.app/api'
-  // var thisbase = "http://localhost:3000/api"
+    
+  // var thisbase = 'https://firebase-auth-two-d9sm.vercel.app/api'
+  // var thisbasez = "http://localhost:3000/api"
+  var thisbasez = thisbase()
    const api = axios.create({
-    baseURL: thisbase,
+    baseURL: thisbasez,
   });
-
+//  console.log(thisbase());
+  // setTestenv(JSON.stringify(process.env.AXIOS_BASE));
 // let glist=[];
-
-
+// console.log('hu');
+// console.log(JSON.stringify(process.env.AXIOS_BASE));
 
 async function getData() {
   // http://localhost:3000/api
@@ -178,7 +181,12 @@ console.log(typeof(data));
 
 useEffect(()=> {
 
-  
+  // const envtest = JSON.stringify(process.env.AXIOS_BASE);
+  // // setTestenv(envtest);
+  // console.log('asdas');
+  // console.log(envtest);
+  console.log('this is thisbase:',thisbase());
+
   const ForphotoURL =async ()=>{
     const [userInfo] = await Getuserinfo();
     // console.log(userInfo);
@@ -253,7 +261,7 @@ function Clear(){
                   // setLog(log)
                   // setName('Melody')
                   // const object = {log:'this is log', desc:'this is desc'}
-                await axios.post(thisbase+"/clients", {log, desc, comments, date, name, highlight}, {
+                await axios.post(thisbasez+"/clients", {log, desc, comments, date, name, highlight}, {
                 //  await api.post("/clients", {log:'log'}, {
                 headers: {
                     'Content-Type': 'application/json',
@@ -437,12 +445,13 @@ function Clear(){
    
     <div id="Unav"><Usernav/> </div>
     <div  className="flex flex-row z-1000 relative w-full h-200 top-0  pt-6"> 
+    
                 <div className=" w-[31.25%] relative flex flex-col  content-center items-center p-2  ml-4 mr-7 
                        bg-white bg-opacity-80 backdrop-blur-lg rounded-xl drop-shadow-lg">
                 <div className="relative  grid w-[100%] grid-cols-5 justify-self-auto items-end p-1 mr-0 pb-4">
                   <div className="col-span-2  top-0 relative mb-16 ml-3">
                     <button onClick={signOut} ><Image src={Out} alt="Clear" width={40} height={40} className="hover:scale-110"/> </button>
-                    </div>
+                    </div> {/* {testenv} */}
                 <img src={photoURL} alt="photome" className=" relative justify-self-center mt-5 rounded-full "/>
                 </div>
                  {/* <h1> this is _id: {_id} </h1> */}
@@ -471,11 +480,11 @@ function Clear(){
                     
                   <div className=' bg-green-300 mt-5 w-[95%] block h-72 px-4 overflow-auto rounded-xl'> 
                     
-                      {  mainlist.map((el, key)=> (
+                      {  mainlist.map((el, index)=> (
                      
-                          <div  id={"mapdiv"+el} className="flex flex-row">
+                          <div  key={index*2} className="flex flex-row">
                           
-                          <button key={'button'+el} onClick={function Con(){
+                          <button key={index*3} onClick={function Con(){
                               // var x = document.getElementById("mapdiv"+el);
 // This states that if 'el.desc' exists or is true, method 'setDesc(e.desc)' executes or desc = ''    
                             el._id? set_id(el._id):set_id('null')
