@@ -150,10 +150,22 @@ export default function Index  (){
     
   // var thisbase = 'https://firebase-auth-two-d9sm.vercel.app/api'
   // var thisbasez = "http://localhost:3000/api"
+  // const api = ''
+  // try{
+  //   var thisbasez = thisbase()
+  //   const api = axios.create({
+  //     baseURL: thisbasez,
+  //   });
+
+  // } catch {
+  //   console.log('');
+  // }
   var thisbasez = thisbase()
-   const api = axios.create({
-    baseURL: thisbasez,
-  });
+  const api = axios.create({
+      baseURL: thisbasez,
+    });
+  
+   
 //  console.log(thisbase());
   // setTestenv(JSON.stringify(process.env.AXIOS_BASE));
 // let glist=[];
@@ -163,6 +175,7 @@ export default function Index  (){
 async function getData() {
   // http://localhost:3000/api
 const data = await api.get("/clients");
+
 console.log(typeof(data));
   console.log('apidata',[data.data.clients[1]]);
   // setMainlist([data.data.clients])
@@ -252,6 +265,7 @@ function Clear(){
 
               const Savedb = async (e) => {
                 e.preventDefault();
+            
                 Datenow();
                   // var field = 'nice'
                   // setName('Baby Mica')
@@ -271,6 +285,7 @@ function Clear(){
                          } catch (error) {
                   console.error(error.response.data);
                 };
+                alert('New Entry Created')
                 // location.reload()
                 // console.log(data);
                                 }
@@ -478,7 +493,7 @@ function Clear(){
                     {/* <button onClick={Delete} className="h-12  min-w-[70%] bg-blue-700 rounded-lg hover:scale-105 m-1" >Delete</button> */}
                     
                     
-                  <div className=' bg-green-300 mt-5 w-[95%] block h-72 px-4 overflow-auto rounded-xl'> 
+                  <div className=' mt-5 w-[95%] block h-72 px-4 overflow-auto rounded-xl'> 
                     
                       {  mainlist.map((el, index)=> (
                      
@@ -492,7 +507,7 @@ function Clear(){
                             el.desc ? setDesc(el.desc):setDesc('') ;
                             el.comments ? setComments (el.comments): setComments('')
                             el.highlight? setHighlight (el.highlight) : setHighlight('')
-                          }} className='w-full min-h-10 bg-violet-600 p-2 rounded mt-2 hover:scale-105' >
+                          }} className='w-full min-h-10 bg-violet-600 opacity-[95%] p-2 rounded mt-2 hover:scale-105' >
                              {/* {key}  */} {el.date}                             
                              </button></div>
                         
