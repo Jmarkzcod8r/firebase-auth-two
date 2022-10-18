@@ -202,7 +202,7 @@ useEffect(()=> {
 
   const ForphotoURL =async ()=>{
     const [userInfo] = await Getuserinfo();
-    // console.log(userInfo);
+    console.log(userInfo);
     // setUser(userInfo);
     setPhotoURL(userInfo.photoURL)
     // return userInfo.photoURL
@@ -431,7 +431,9 @@ function Clear(){
         console.log(error);
         // setIsLoading(false);
       };
-      getData()
+      getData();
+      alert('Entry Updated')
+
 
     };
 

@@ -5,7 +5,9 @@ export function Getuserinfo(){
     // it is there, then we get it or else we clear the localstorage.
     localStorage.getItem("user") !== "undefined" ? 
             JSON.parse(localStorage.getItem("user")):
-            localStorage.clear();
+
+        localStorage.clear();
+            
 // after defining the accessToken as a method sortof, we call it.
 return userInfo;
 

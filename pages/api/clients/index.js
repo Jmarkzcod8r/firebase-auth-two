@@ -3,7 +3,8 @@ import dbConnect from "../mongodb/db";
 import Client from "../mongodb/Client";
 // import axios from "axios";
 import { MongoClient} from "mongodb"
-
+import { Getuserinfo } from "../../../functions global/Getuserinfo";
+import { useEffect } from "react";
 // const express = require ('express') 
 // const app = express()
 // app.use(express.json())
@@ -60,6 +61,15 @@ export default async function handler(req, res) {
 //       console.log(err);
 //   }
 // })
+if (typeof window !== 'undefined') {
+  const user = Getuserinfo();
+  res.json(user.email)
+}
+// useEffect (()=> {
+//   const user = Getuserinfo();
+  // res.json('ji')
+// })
+
 
 
 
@@ -75,6 +85,7 @@ export default async function handler(req, res) {
         res.status(200) //---> The '.status' in 'res.status' ig ignorable.
         // as res in integrated with data received. res & data go in twined.
                       .json({clients });
+        // res.json(')
       } catch (error) {
         console.log(error);
         res.status(500).json({ success: false, error });
