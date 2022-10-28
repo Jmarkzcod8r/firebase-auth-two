@@ -2,7 +2,8 @@
 // Use Ctrl+Space inside a snippet or a string literal to trigger completions.
 
 const database = 'Firedata';
-const collection = 'NEW_COLLECTION_NAME';
+// const collection = 'NEW_COLLECTION_NAME';
+const collection = 'credemails';
 
 // The current database to use.
 use(database);

@@ -65,7 +65,7 @@ export default function Test(){
                 <span className="bg-blue-200 h-10 w-10 inline-block">czd</span>
             </div>
             <div className="w-screen h-60 grid bg-orange-400">
-Name: {name}, Email: {email}, sex: {sex}, country: {country}, color:{color}, status: {status}
+
 </div>
 <div className="w-screen h-60 grid bg-pink-400">
 

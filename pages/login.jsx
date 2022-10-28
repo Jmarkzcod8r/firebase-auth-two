@@ -122,13 +122,11 @@ export default function Login () {
     // }
   return (
     <div className='w-screen h-screen flex flex-col justify-center items-center bg-white relative'>
-      {/* <Image 
-      loader = {imageloader}
-      // className='absolute top-0 left-0 w-screen h-screen object-cover'
-      scr="as" alt="sa"  width={500} height={500}/>   */}
+     
       <img
         className='absolute top-0 left-0 w-screen h-screen object-cover' 
         src={"https://cdn.pixabay.com/photo/2018/05/12/19/20/freiberg-3394376_1280.jpg"} 
+        // width="300" height="300"
         alt='  '  />
         <div className='absolute top-0 left-0 right-0 bottom-0 bg-black bg-opacity-50'></div>
       
@@ -140,29 +138,6 @@ export default function Login () {
         <p className='test-lg font-semibold ml-4'>Sign in with Google</p>
       </div>
 
-      {/* <div className='z-10 flex justify-center intems-center border border-gray-300 rounded-full
-        w-60 m-2    p-2 bg-white bg-opacity-60 cursor-pointer hover:shadow-md hover:bg-opacity-100     '
-      onClick={signIn}
-      >
-        <IoLogoFacebook fontSize={30} className='bg-blue-400 rounded-full'/>
-        <p className='test-lg font-semibold ml-4'>Sign in with Facebook</p>
-      </div>
-
-      <div className='z-10 flex justify-center intems-center border border-gray-300 rounded-full
-         m-2  w-60  p-2 bg-white bg-opacity-60 cursor-pointer hover:shadow-md hover:bg-opacity-100     '
-      onClick={signIn}
-      >
-        <AiFillFacebook fontSize={30} className='bg-blue-900'/>
-        <p className='test-lg font-semibold ml-4'>Sign in with Yahoo</p>
-      </div>
-
-      <div className='z-10 flex justify-center intems-center border border-gray-300 rounded-full
-         m-2 w-60   p-2 bg-white bg-opacity-60 cursor-pointer hover:shadow-md hover:bg-opacity-100     '
-      onClick={Gotonative}
-      >
-        <AiOutlineMail fontSize={30} className='justify-self-start'/>
-        <p className='test-lg font-semibold ml-4'>Sign in with Email</p>
-      </div> */}
     
     </div>
   )

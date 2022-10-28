@@ -15,7 +15,7 @@ export default function payment  (){
  return(
   
     <div>
-      <Usernav/>
+      {/* <Usernav/> */}
          {/* <div className="flex bg-red-100 z-1000 relative"> Payment </div> */}
          <div className="grid z-1000 absolute w-screen h-1/2 top-18 "> 
                 <div className="relative w-1/2 bg-white bg-opacity-70 backdrop-blur-lg 
