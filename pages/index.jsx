@@ -141,15 +141,25 @@ const Savedb = async (e) => {e.preventDefault();  Datenow();
 function Datenow(){var today = new Date();
         
 function thisday(){
-    var typeday = today.getDay();
-    if (typeday === 0) { return 'Mon'  };
-    if (typeday === 1) { return 'Tue'  };
-    if (typeday === 2) { return 'Wed'  };
-    if (typeday === 3) { return 'Thu'  };
-    if (typeday === 4) { return 'Fri'  };
-    if (typeday === 5) { return 'Sat'  };
-    if (typeday === 6) { return 'Sun'  };
-        }
+    // var typeday = today.getDay();
+    // if (typeday === 0) { return 'Mon'  };
+    // if (typeday === 1) { return 'Tue'  };
+    // if (typeday === 2) { return 'Wed'  };
+    // if (typeday === 3) { return 'Thu'  };
+    // if (typeday === 4) { return 'Fri'  };
+    // if (typeday === 5) { return 'Sat'  };
+    // if (typeday === 6) { return 'Sun'  };
+    //     }
+
+        var typeday = today.getDay();
+        if (typeday === 1) { return 'Mon'  };
+        if (typeday === 2) { return 'Tue'  };
+        if (typeday === 3) { return 'Wed'  };
+        if (typeday === 4) { return 'Thu'  };
+        if (typeday === 5) { return 'Fri'  };
+        if (typeday === 6) { return 'Sat'  };
+        if (typeday === 0) { return 'Sun'  };
+            }
     var tday = thisday()
         
 function thisMonth(){
