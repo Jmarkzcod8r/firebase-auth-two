@@ -124,7 +124,8 @@ useEffect(()=> {
                                             },[]) //------------> End of Use Effect
   const signOut = () => {
     localStorage.clear();
-    router.push("/login")
+    router.push("/login");
+    console.log('here at login');
   }
 
 function Clear(){setComments('');setDesc('');setLog('');setHighlight('');}
