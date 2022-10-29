@@ -170,7 +170,8 @@ function thisMonth(){
         
         }
   var Mnth = thisMonth()
-  const date = today.getFullYear() + ' / ' + Mnth + ' / ' + today.getDate() + ' ( ' + tday + ' )';
+  // const date = today.getFullYear() + ' / ' + Mnth + ' / ' + today.getDate() + ' ( ' + tday + ' )';
+  const date = today.getDate() + '-' + Mnth + '-' + today.getFullYear() + ' ( ' + tday + ' )';
       setDate(date)}
 
     function Inchangelog(e){
