@@ -36,7 +36,7 @@ export default function Login () {
 
     try{
     const {user}= await signInWithPopup(firebaseAuth, provider)
-    console.log('user is a',typeof(user));
+    // console.log('user is a',typeof(user));
     // console.log(user);
   
     // This method is similar to a query in a dictionary.
@@ -44,14 +44,16 @@ export default function Login () {
 
     async function Go(){
     if (user) {
-      const uid = user.uid;
-      console.log('this is user', uid);
-      await setDoc(doc(db, "Firebase-test userz", uid), {
-          displayName: user.displayName,
-          email: user.email,
-          photoURL: user.photoURL,
-          emailVerified: user.emailVerified
-      });
+      // const uid = user.uid;
+      console.log('user okay');
+      // console.log('this is user', uid);
+      // await setDoc(doc(db, "Firebase-test userz", uid), {
+      //     displayName: user.displayName,
+      //     email: user.email,
+      //     photoURL: user.photoURL,
+      //     emailVerified: user.emailVerified
+      // }
+      // );
    
     } }
     Go().then(router.push('/')) 
