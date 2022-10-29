@@ -76,34 +76,22 @@ let emaillist=[]
 
 useEffect(()=> {
 
- 
-  console.log('this is thisbase:',thisbase());
-
   const ForphotoURL =async ()=>{
     const [userInfo] = await Getuserinfo()
-    // console.log('this is userInfo:',userInfo);
-  
     setPhotoURL(userInfo.photoURL)  
-    // setCredemail(userInfo.)
-
-
   };
   
   ForphotoURL();
-  console.log('what');
    async function Dbadd(){
     const auth = getAuth();
     onAuthStateChanged(auth, async (user) => {
       if (user) {
-        console.log('user email:',user.email);
         const data = await api.get(`/clients`+`/`+user.email)
-
         setMainlist(data.data.clients.reverse())
         setCredemail(user.email)
         emaillist.push(user.email);
       
         const uid = user.uid;
-        console.log('this is user', uid);
         await setDoc(doc(db, "Firebase-test users", "num4"), {
             displayName: user.displayName,
             email: user.email,
@@ -114,7 +102,7 @@ useEffect(()=> {
       console.log('error');
       }
             });
-                console.log('sendingss');
+                // console.log('sendingss');
 
               };
     Dbadd()
@@ -205,9 +193,6 @@ function thisMonth(){
       setHighlight(e.target.value)
     }
 
-
-    console.log(' this is log',log);
-
     if (typeof window !== 'undefined'){
     var textareas = document.getElementsByTagName('textarea');
     var count = textareas.length;
@@ -235,8 +220,7 @@ function thisMonth(){
 
     const handleUpdateClient = async (e) => {
       e.preventDefault();
-      console.log('pressed');
-
+      
       try {
 
         await api.put(`clients/${_id}`, { log, desc, comments, name, date, highlight })
