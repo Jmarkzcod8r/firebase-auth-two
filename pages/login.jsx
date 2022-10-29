@@ -113,14 +113,14 @@ export default function Login () {
 
   useEffect(()=>{
     // console.log('ads');
-    let i=0;
-    while (True){
-      location.reload();
-      i = i +1
-      if (i===1){
-        break
-      }
-    }
+    // let i=0;
+    // while (True){
+    //   location.reload();
+    //   i = i +1
+    //   if (i===1){
+    //     break
+    //   }
+    // }
       
     setEmail(localStorage.getItem('email'))
   }, [email])
