@@ -113,9 +113,8 @@ export default function Login () {
 
   useEffect(()=>{
     // console.log('ads');
-    function reload(){location.reload()};
-    reload();
-     setEmail(localStorage.getItem('email'))
+    location.reload();
+    setEmail(localStorage.getItem('email'))
   }, [email])
 
     // function Changelocalstorageemail(){
