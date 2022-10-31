@@ -209,15 +209,19 @@ function thisMonth(){
     } }
 
     function NewPage(){
-      let i;
-      for (i= 0; i<2 ; i++){
-        Clear()
-        if (i===1){
-          Savedb();
-          break 
-        }  
+      Clear();
+      Savedb();
+
+
+      // let i;
+      // for (i= 0; i<2 ; i++){
+      //   Clear()
+      //   if (i===1){
+      //     Savedb();
+      //     break 
+      //   }  
        
-      }
+      // }
       
     }
 
