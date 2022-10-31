@@ -212,7 +212,7 @@ function thisMonth(){
       try {
         
 
-        await axios.post(thisbasez+"/clients", {log:'ok'}, {
+        await axios.post(thisbasez+"/clients", {log:'', desc:'', comments:'', date:'', name:'', highlight:'', credemail:''}, {
           headers: {'Content-Type': 'application/json',  } }) ;
               } 
       catch (error) {console.error(error.response.data);};
