@@ -23,12 +23,12 @@ import mongoose from "mongoose";
 
 const ClientSchema = new mongoose.Schema({
   // _id: mongoose.Schema.Types.ObjectId, //---> This is considerable 
-  log: String,
-  desc: String,
-  comments:String,
-  name: String,
-  date: String,
-  highlight: String,
+  log: { type: String, default: '' },
+  desc: { type: String, default: '' },
+  comments:{ type: String, default: '' },
+  name: { type: String, default: '' },
+  date: { type: String, default: '' },
+  highlight: { type: String, default: '' },
  
 });
 

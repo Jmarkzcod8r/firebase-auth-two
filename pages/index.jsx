@@ -208,9 +208,16 @@ function thisMonth(){
         }
     } }
 
-    function NewPage(){
-      Clear();
-      setTimeout(Savedb() , 1000);
+   async function NewPage(){
+      try {
+        await axios.post(thisbasez+"/clients", {}, {
+          headers: {'Content-Type': 'application/json',  } }) ;
+              } 
+      catch (error) {console.error(error.response.data);};
+          getData();  alert('New Entry Created');
+      
+      // Clear();
+      // setTimeout(Savedb() , 1000);
 
 
       // let i;
