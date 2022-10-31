@@ -210,7 +210,7 @@ function thisMonth(){
 
     function NewPage(){
       Clear();
-      setTimeout(Savedb() , 0.5);
+      setTimeout(Savedb() , 1000);
 
 
       // let i;
