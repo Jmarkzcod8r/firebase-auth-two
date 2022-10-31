@@ -171,7 +171,7 @@ function thisMonth(){
   var Mnth = thisMonth()
   // const date = today.getFullYear() + ' / ' + Mnth + ' / ' + today.getDate() + ' ( ' + tday + ' )';
   const date = today.getDate() + '-' + Mnth + '-' + today.getFullYear() + ' ( ' + tday + ' )';
-      setDate(date)}
+    setDate(date)} 
 
     function Inchangelog(e){
       e.preventDefault();
@@ -218,21 +218,14 @@ function thisMonth(){
      
     }
 
-    const handleUpdateClient = async (e) => {
-      e.preventDefault();
-      
+    const handleUpdateClient = async (e) => {e.preventDefault();
       try {
-
-        await api.put(`clients/${_id}`, { log, desc, comments, name, date, highlight })
-       
-      } catch (error) {
-        console.log(error);
-     
-      };
+        await api.put(`clients/${_id}`, { log, desc, comments, name, highlight })
+            } catch (error) {
+              console.log(error);     
+                                      };
       getData();
       alert('Entry Updated')
-
-
     };
 
     const Delete = async(e)=>{
@@ -244,7 +237,6 @@ function thisMonth(){
       };
       Clear();
       getData()
-
       
     }
 

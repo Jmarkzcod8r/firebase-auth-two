@@ -27,6 +27,30 @@
 #     return {comword}+{comword}+{word}
 
 # print(stutter("incredible"))
-import math
-while True:
-    print(math.factorial(int(input('number:'))))
+# import math
+# while True:
+#     print(math.factorial(int(input('number:'))))
+
+# class Solution(object):
+#     def earliestFullBloom(self, plantTime, growTime):
+#         self.planttime = plantTime
+#         self.growTime = growTime
+        
+#     def sum_planttime(plantTime):
+#         sum = 0
+#         for x in plantTime:
+#             sum = sum + 1
+#         print('sum:',sum)
+#         return sum
+# x = Solution()
+# print(x.sum_planttime(3))
+
+class Sample():
+    def properties(self,length, base):
+        self.length = length
+        self.base = 'red'
+
+x = Sample()
+print(x.properties(3,4).base)
+
+
