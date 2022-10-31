@@ -220,12 +220,14 @@ function thisMonth(){
 
     const handleUpdateClient = async (e) => {e.preventDefault();
       try {
-        await api.put(`clients/${_id}`, { log, desc, comments, name, highlight })
+        await api.put(`clients/${_id}`, { log, desc, comments, name, highlight }).then (
+          alert('Entry Updated')
+        )
             } catch (error) {
               console.log(error);     
                                       };
       getData();
-      alert('Entry Updated')
+      
     };
 
     const Delete = async(e)=>{
