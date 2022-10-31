@@ -209,8 +209,16 @@ function thisMonth(){
     } }
 
     function NewPage(){
-      Clear().then(
-      Savedb() )
+      let i;
+      for (i= 0; i<2 ; i++){
+        Clear()
+        if (i===1){
+          Savedb();
+          break 
+        }  
+       
+      }
+      
     }
 
     function ClearNav (){
@@ -273,11 +281,11 @@ function thisMonth(){
              
                      <div  className="flex flex-row bg-blue-200 px-6 py-2 rounded-full">
                      <button onClick={Delete} className="mr-2"><Image src={Del} alt="Clear" width={40} height={40} className="hover:scale-110"/></button>
-                     <button /* onClick={''} */ className="mx-2"><Image src={Info} alt="Clear" width={40} height={40} className="hover:scale-110"/></button>
+                     {/* <button onClick={''} className="mx-2"><Image src={Info} alt="Clear" width={40} height={40} className="hover:scale-110"/></button> */}
                      <button onClick={Clear} className="mx-2"><Image src={Clr} alt="Clear" width={40} height={40} className="hover:scale-110"/></button>
                       <button onClick={handleUpdateClient} className="mx-2"><Image src={Save} alt="Add" width={40} height={40} className="hover:scale-110"/></button>
                       <button onClick={Savedb} className="mx-2"><Image src={Add} alt="Add" width={40} height={40} className="hover:scale-110"/></button>
-                      {/* <button onClick={NewPage} className="ml-2"><Image src={Blank} alt="Clear" width={40} height={40} className="hover:scale-110"/></button> */}
+                      <button onClick={NewPage} className="ml-2"><Image src={Blank} alt="Clear" width={40} height={40} className="hover:scale-110"/></button>
 
                       </div> 
                      <div className=" p-2"> {/* {credemail} */} </div>
