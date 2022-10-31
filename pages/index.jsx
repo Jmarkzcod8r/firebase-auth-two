@@ -210,7 +210,9 @@ function thisMonth(){
 
    async function NewPage(){
       try {
-        await axios.post(thisbasez+"/clients", {}, {
+        
+
+        await axios.post(thisbasez+"/clients", {log:'ok'}, {
           headers: {'Content-Type': 'application/json',  } }) ;
               } 
       catch (error) {console.error(error.response.data);};
