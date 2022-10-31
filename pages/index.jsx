@@ -209,8 +209,8 @@ function thisMonth(){
     } }
 
     function NewPage(){
-      Clear();
-      Savedb();
+      Clear().then(
+      Savedb() )
     }
 
     function ClearNav (){
@@ -277,7 +277,7 @@ function thisMonth(){
                      <button onClick={Clear} className="mx-2"><Image src={Clr} alt="Clear" width={40} height={40} className="hover:scale-110"/></button>
                       <button onClick={handleUpdateClient} className="mx-2"><Image src={Save} alt="Add" width={40} height={40} className="hover:scale-110"/></button>
                       <button onClick={Savedb} className="mx-2"><Image src={Add} alt="Add" width={40} height={40} className="hover:scale-110"/></button>
-                      <button onClick={NewPage} className="ml-2"><Image src={Blank} alt="Clear" width={40} height={40} className="hover:scale-110"/></button>
+                      {/* <button onClick={NewPage} className="ml-2"><Image src={Blank} alt="Clear" width={40} height={40} className="hover:scale-110"/></button> */}
 
                       </div> 
                      <div className=" p-2"> {/* {credemail} */} </div>
