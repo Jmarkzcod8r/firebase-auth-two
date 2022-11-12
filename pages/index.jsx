@@ -335,7 +335,7 @@ function thisMonth(){
 
 
 
-      <button className=" float-none p-2 mr-8 bg-blue-300 bg-opacity-40 rounded-full mt-2 mb-0 hover:scale-110 hover:bg-blue-400 drop-shadow-lg flex absolute m-2 bg-blue-300" onClick={Swalfeed}>
+      <button className=" right-0 p-2 mr-8 bg-blue-300 bg-opacity-40 rounded-full mt-2 mb-0 hover:scale-110 hover:bg-blue-400 drop-shadow-lg flex absolute m-2 bg-blue-300" onClick={Swalfeed}>
    <p>&nbsp; Send
     Feedback &nbsp;</p>
     <Image src={Feedback} alt="Clear" width={40} height={40} className="hover:scale-110"/>
