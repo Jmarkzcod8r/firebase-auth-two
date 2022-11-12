@@ -35,6 +35,7 @@ export default function Index  (){
   const [_id, set_id]=useState('temp id')
   const [mainlist, setMainlist] = useState([])
   const [credemail,setCredemail] = useState('')
+  const [feedback,setFeedback] = useState ('temp feedback')
 
   const router = useRouter();
 
@@ -55,7 +56,7 @@ export default function Index  (){
         }
         return { login: login, password: password }
       }
-    }).then((result) => {console.log(temp);
+    }).then((result) => {setFeedback(result);
       },['']);
 
   }
@@ -216,7 +217,7 @@ function thisMonth(){
           headers: {'Content-Type': 'application/json',  } }) ;
               } 
       catch (error) {console.error(error.response.data);};
-          getData();  alert('New Entry Created');
+          getData();  alert('Blank Entry Created');
       
       // Clear();
       // setTimeout(Savedb() , 1000);
@@ -269,6 +270,60 @@ function thisMonth(){
       
     }
 
+    const Testfunction = async(e,resv) => {
+      e.preventDefault();
+      try {      
+        await axios.post(thisbasez+"/clients/feedback", {feedback:{resv}, date, credemail}, {
+          headers: {'Content-Type': 'application/json',  } }) ;
+              } 
+      catch (error) {console.error(error.response.data);};
+          getData();  alert('Blank Entry Created');
+
+    }
+
+    const Swalfeed =()=>{
+      Swal.fire({
+        title: "An input!",
+        text: "Write something interesting:",
+        input: 'textarea',
+        showCancelButton: true        
+    }).then(async (result) => {
+        if (result.value) {
+          console.log('this is result:',result);
+          try {      
+            await axios.post(thisbasez+"/clients/feedback", {feedback:(result.value), date, credemail}, {
+              headers: {'Content-Type': 'application/json',  } }) ;
+                  } 
+          catch (error) {console.error(error.response.data);};
+              getData();  
+              // alert('Blank Entry Created');
+        Swal.fire({
+          title:'Success',
+          text:'Your feedback have been accounted for. Thank You.',
+        })
+          // const Testfunction = async(e) => {
+          //   e.preventDefault();
+          //   try {      
+          //     await axios.post(thisbasez+"/clients/feedback", {feedback:{result.value}, date, credemail}, {
+          //       headers: {'Content-Type': 'application/json',  } }) ;
+          //           } 
+          //   catch (error) {console.error(error.response.data);};
+          //       getData();  alert('Blank Entry Created');
+
+
+
+
+
+
+
+          // const Testfunction = async(e,result.value);
+          // Testfunction()
+          // setFeedback(result.value)
+          //   console.log("Result: " + result.value);
+        }
+    });
+    }
+
 
   return (
    <div className="" >
@@ -287,17 +342,17 @@ function thisMonth(){
                 <div className="relative  grid w-[100%] grid-cols-5 justify-self-auto items-end p-1 mr-0 pb-4">
                   <div className="col-span-2  top-0 relative mb-16 ml-3">
                     <button onClick={signOut} ><Image src={Out} alt="Clear" width={40} height={40} className="hover:scale-110"/> </button>
-                    </div> 
+                    </div> {/* {feedback} */}
                 <img src={photoURL} alt="photome" className=" relative justify-self-center mt-5 rounded-full "/>
                 </div>
                 
              
                      <div  className="flex flex-row bg-blue-200 px-6 py-2 rounded-full">
                      <button onClick={Delete} className="mr-2"><Image src={Del} alt="Clear" width={40} height={40} className="hover:scale-110"/></button>
-                     {/* <button onClick={''} className="mx-2"><Image src={Info} alt="Clear" width={40} height={40} className="hover:scale-110"/></button> */}
+                     <button onClick={Swalfeed} className="mx-2"><Image src={Info} alt="Clear" width={40} height={40} className="hover:scale-110"/></button>
                      <button onClick={Clear} className="mx-2"><Image src={Clr} alt="Clear" width={40} height={40} className="hover:scale-110"/></button>
                       <button onClick={handleUpdateClient} className="mx-2"><Image src={Save} alt="Add" width={40} height={40} className="hover:scale-110"/></button>
-                      <button onClick={Savedb} className="mx-2"><Image src={Add} alt="Add" width={40} height={40} className="hover:scale-110"/></button>
+                      {/* <button onClick={Savedb} className="mx-2"><Image src={Add} alt="Add" width={40} height={40} className="hover:scale-110"/></button> */}
                       <button onClick={NewPage} className="ml-2"><Image src={Blank} alt="Clear" width={40} height={40} className="hover:scale-110"/></button>
 
                       </div> 
