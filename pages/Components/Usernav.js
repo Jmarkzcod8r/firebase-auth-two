@@ -6,6 +6,8 @@ import {IoLogOut} from 'react-icons/io5'
 import { Getuserinfo } from "../../functions global/Getuserinfo"
 // import styles from '../styles/Usernav.module.css'
 import Image from "next/image";
+import Feedback  from '../Icons/feedback.png';
+import Swal from "sweetalert2";
 
 
 export const ForphotoURL =async ()=>{
@@ -113,13 +115,58 @@ export default function Usernav  (){
     console.log('ok')
   }
 
+  const Swalfeed =()=>{
+    Swal.fire({
+      title: "Feedbox!",
+      text: "Suggesstion, Comments and Recommendations are very much appreciated",
+      input: 'textarea',
+      showCancelButton: true        
+  }).then(async (result) => {
+      if (result.value) {
+        console.log('this is result:',result);
+        try {      
+          const data = await axios.post(thisbasez+"/clients/feedback", {feedback:(result.value), date, credemail}, {
+            headers: {'Content-Type': 'application/json',  } }) ;
+            console.log('data:',data.data.status);
+            Swal.fire({
+              title:'Status:',
+              text:data.data.status,
+            })
+
+                } 
+          
+        catch (error) {console.error};
+            // getData();  
+            // alert('Blank Entry Created');
+      
+        // const Testfunction = async(e) => {
+        //   e.preventDefault();
+        //   try {      
+        //     await axios.post(thisbasez+"/clients/feedback", {feedback:{result.value}, date, credemail}, {
+        //       headers: {'Content-Type': 'application/json',  } }) ;
+        //           } 
+        //   catch (error) {console.error(error.response.data);};
+        //       getData();  alert('Blank Entry Created');
+        // const Testfunction = async(e,result.value);
+        // Testfunction()
+        // setFeedback(result.value)
+        //   console.log("Result: " + result.value);
+      }
+  });
+  }
 
   return (
-    <div className='z-0 flex justify-center p-1 relative h-auto '>
-    <div className="p-6">
+    <div className='z-0 flex justify-end p-1 relative h-auto '>
+    {/* <div className="p-2 mr-8 bg-blue-300 bg-opacity-40 rounded-full mt-2 mb-0 hover:scale-110 hover:bg-blue-400"> */}
+    {/* <button className=" drop-shadow-lg flex" onClick={Swalfeed}>
+   
+      <p>&nbsp; Send
+       Feedback &nbsp;</p>
+       <Image src={Feedback} alt="Clear" width={40} height={40} className="hover:scale-110"/>
+       </button> */}
 
-      <div className="relative /* flex flex-col */ bg-white bg-opacity-70 backdrop-blur-lg 
-                        h-36   justify-self-center rounded drop-shadow-lg p-4 hidden">
+      <div className="relative  bg-white bg-opacity-70 backdrop-blur-lg 
+                        h-36   justify-self-center rounded drop-shadow-lg p-3 hidden">
   
 
 <img src={photoURL} alt="photome" className="absolute mt-5 ml-10 rounded-full"/>
@@ -136,7 +183,7 @@ export default function Usernav  (){
       <button className="self-center justify-self-end  absolute bg-blue-200 
         m-16 mt-10 right-0 p-2 rounded-full" onClick={signOut}>Sign Out</button>
         
-      </div>
+      {/* </div> */}
 
 
 

@@ -141,7 +141,7 @@ export default async function handler(req, res) {
         // calling res gives a response to the screen.
         // await Client.save()
         if (feedback){
-          var status = 'Your feedback have been accounted for. Thank You.';
+          var status = 'Your feedback have been accounted for. Thank You!';
         } else {
           var status = 'Uh-Oh. Something seems to be wrong. Try again later.'
         }

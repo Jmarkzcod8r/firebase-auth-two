@@ -16,6 +16,7 @@ import Del from './Icons/Delete.png'
 import Out from './Icons/Out.png'
 import Info from './Icons/info.png'
 import Blank from './Icons/Blank.png'
+import Feedback from './Icons/feedback.png'
 import { ForphotoURL } from "./Components/Usernav";
 import {thisbase} from "../functions global/thisbase";
 
@@ -283,24 +284,28 @@ function thisMonth(){
 
     const Swalfeed =()=>{
       Swal.fire({
-        title: "An input!",
-        text: "Write something interesting:",
+        title: "Feedbox!",
+        text: "Suggesstion, Comments and Recommendations are very much appreciated",
         input: 'textarea',
-        showCancelButton: true        
+        showCancelButton: true             
     }).then(async (result) => {
         if (result.value) {
           console.log('this is result:',result);
           try {      
-            await axios.post(thisbasez+"/clients/feedback", {feedback:(result.value), date, credemail}, {
+            const data = await axios.post(thisbasez+"/clients/feedback", {feedback:(result.value), date, credemail}, {
               headers: {'Content-Type': 'application/json',  } }) ;
+              console.log('data:',data.data.status);
+              Swal.fire({
+                title:'Status:',
+                text:data.data.status,
+              })
+
                   } 
+            
           catch (error) {console.error(error.response.data);};
               getData();  
               // alert('Blank Entry Created');
-        Swal.fire({
-          title:'Success',
-          text:'Your feedback have been accounted for. Thank You.',
-        })
+        
           // const Testfunction = async(e) => {
           //   e.preventDefault();
           //   try {      
@@ -326,16 +331,25 @@ function thisMonth(){
 
 
   return (
-   <div className="" >
-   
+   <div className="block" >
+
+
+
+      <button className=" float-none p-2 mr-8 bg-blue-300 bg-opacity-40 rounded-full mt-2 mb-0 hover:scale-110 hover:bg-blue-400 drop-shadow-lg flex absolute m-2 bg-blue-300" onClick={Swalfeed}>
+   <p>&nbsp; Send
+    Feedback &nbsp;</p>
+    <Image src={Feedback} alt="Clear" width={40} height={40} className="hover:scale-110"/>
+    </button>
        <img
-      className='top-0 left-0 w-screen h-screen object-cover fixed' 
+      className='top-0 left-0 w-screen h-screen object-cover fixed -z-10' 
      
       src={"https://cdn.pixabay.com/photo/2016/05/26/12/56/waterfalls-1417102_1280.jpg"} 
       alt=' '  />
    
-    <div id="Unav"><Usernav/> </div>
-    <div  className="flex flex-row z-1000 relative w-full h-200 top-0  pt-6"> 
+    <div id="Unav" className="h-20"><Usernav/>
+    
+     </div>
+    <div  className=" flex flex-row z-1000 relative w-full h-200 top-0  pt-3"> 
     
                 <div className=" w-[31.25%] relative flex flex-col  content-center items-center p-2  ml-4 mr-7 
                        bg-white bg-opacity-80 backdrop-blur-lg rounded-xl drop-shadow-lg">
@@ -349,10 +363,10 @@ function thisMonth(){
              
                      <div  className="flex flex-row bg-blue-200 px-6 py-2 rounded-full">
                      <button onClick={Delete} className="mr-2"><Image src={Del} alt="Clear" width={40} height={40} className="hover:scale-110"/></button>
-                     <button onClick={Swalfeed} className="mx-2"><Image src={Info} alt="Clear" width={40} height={40} className="hover:scale-110"/></button>
+                     {/* <button onClick={Swalfeed} className="mx-2"><Image src={Info} alt="Clear" width={40} height={40} className="hover:scale-110"/></button> */}
                      <button onClick={Clear} className="mx-2"><Image src={Clr} alt="Clear" width={40} height={40} className="hover:scale-110"/></button>
                       <button onClick={handleUpdateClient} className="mx-2"><Image src={Save} alt="Add" width={40} height={40} className="hover:scale-110"/></button>
-                      {/* <button onClick={Savedb} className="mx-2"><Image src={Add} alt="Add" width={40} height={40} className="hover:scale-110"/></button> */}
+                      <button onClick={Savedb} className="mx-2"><Image src={Add} alt="Add" width={40} height={40} className="hover:scale-110"/></button>
                       <button onClick={NewPage} className="ml-2"><Image src={Blank} alt="Clear" width={40} height={40} className="hover:scale-110"/></button>
 
                       </div> 
