@@ -184,7 +184,7 @@ function thisMonth(){
       // console.log(e.target.value);
      
         // console.log(x);
-      setCountwords(e.target.value.trim().split(' ').length)
+      setCountwords(e.target.value.replace(/^\s+|\s+$|\s+(?=\s)/g, "").split(' ').length)
 
     }
 
