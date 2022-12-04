@@ -37,6 +37,7 @@ export default function Index  (){
   const [mainlist, setMainlist] = useState([])
   const [credemail,setCredemail] = useState('')
   const [feedback,setFeedback] = useState ('temp feedback')
+  const [countwords, setCountwords] = useState(0)
 
   const router = useRouter();
 
@@ -178,7 +179,9 @@ function thisMonth(){
 
     function Inchangelog(e){
       e.preventDefault();
-      setLog(e.target.value)
+      setLog(e.target.value);
+      setCountwords(e.target.value.split(' ').length)
+
     }
 
     function Inchangedesc(e){
@@ -304,30 +307,32 @@ function thisMonth(){
             
           catch (error) {console.error(error.response.data);};
               getData();  
-              // alert('Blank Entry Created');
-        
-          // const Testfunction = async(e) => {
-          //   e.preventDefault();
-          //   try {      
-          //     await axios.post(thisbasez+"/clients/feedback", {feedback:{result.value}, date, credemail}, {
-          //       headers: {'Content-Type': 'application/json',  } }) ;
-          //           } 
-          //   catch (error) {console.error(error.response.data);};
-          //       getData();  alert('Blank Entry Created');
-
-
-
-
-
-
-
-          // const Testfunction = async(e,result.value);
-          // Testfunction()
-          // setFeedback(result.value)
-          //   console.log("Result: " + result.value);
+          
         }
     });
     }
+
+    function countWord() {
+      // Get the input text value
+      var words = document
+      .getElementById("tarea2").value;
+      
+      // Initialize the word counter
+      var count = 0;
+      
+      // space character
+      var split = words.split(' ');
+      
+      // Loop through the words and
+      // increase the counter when
+      // each split word is not empty
+      for (var i = 0; i < split.length; i++) {
+      if (split[i] != "") {
+      count += 1;
+      }
+      }
+      
+      document.getElementById("show")}
 
 
   return (
@@ -348,6 +353,9 @@ function thisMonth(){
    
     <div id="Unav" className="h-20"><Usernav/>
     
+     </div>
+     <div className="absolute top-16 flex left-[55%] w-full">Word Count:
+     <span id="show">{countwords}</span>
      </div>
     <div  className=" flex flex-row z-1000 relative w-full h-200 top-0  pt-3"> 
     
@@ -392,7 +400,7 @@ function thisMonth(){
                    </div>
                 </div>
                
-                <textarea id="tarea2" type="text" placeholder='Entry' value={log} /* defaultValue={log} */ onChange={Inchangelog}  
+                <textarea id="tarea2" type="text" placeholder='Entry' value={log} oninput={countWord} onChange={Inchangelog}  
                   className="w-[37.5%] relative flex bg-white bg-opacity-80 backdrop-blur-lg rounded-xl drop-shadow-lg p-4 justify-center  mr-9"/>
                 <div className='w-[31.25%] flex flex-col  pr-9'> 
                    <textarea id="tarea2" type="text" placeholder='Highlight' value={highlight} /* defaultValue={desc} */ onChange={Inchangehighlight} 
