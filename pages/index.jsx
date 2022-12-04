@@ -19,6 +19,7 @@ import Blank from './Icons/Blank.png'
 import Feedback from './Icons/feedback.png'
 import { ForphotoURL } from "./Components/Usernav";
 import {thisbase} from "../functions global/thisbase";
+import { list } from "postcss";
 
 export default function Index  (){
 
@@ -180,7 +181,10 @@ function thisMonth(){
     function Inchangelog(e){
       e.preventDefault();
       setLog(e.target.value);
-      setCountwords(e.target.value.split(' ').length)
+      // console.log(e.target.value);
+     
+        // console.log(x);
+      setCountwords(e.target.value.trim().split(' ').length)
 
     }
 
