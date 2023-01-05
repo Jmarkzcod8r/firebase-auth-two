@@ -363,7 +363,7 @@ function thisMonth(){
      <span id="show">{countwords}</span>
      </div>
      
-    <div  className=" flex flex-row z-1000 relative w-full h-screen top-0  pt-3 "> 
+    <div  className=" flex flex-row z-1000 relative w-full max-h-screen top-0  pt-3 "> 
     
                 <div className=" w-[31.25%] relative flex flex-col  content-center items-center p-2  ml-4 mr-7 
                        bg-white bg-opacity-80 backdrop-blur-lg rounded-xl drop-shadow-lg">
