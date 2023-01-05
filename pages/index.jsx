@@ -411,11 +411,11 @@ function thisMonth(){
                 <textarea id="tarea2" type="text" placeholder='Entry' value={log} oninput={countWord} onChange={Inchangelog}  
                   className="w-[37.5%] relative flex bg-white bg-opacity-80 backdrop-blur-lg rounded-xl drop-shadow-lg p-4 justify-center  mr-9"/>
                 <div className='w-[31.25%] flex flex-col  pr-9'> 
-                   <textarea id="tarea2" type="text" placeholder='Highlight' value={highlight} /* defaultValue={desc} */ onChange={Inchangehighlight} 
+                   <textarea id="tarea2" type="text" placeholder='Notes' value={highlight} /* defaultValue={desc} */ onChange={Inchangehighlight} 
                            className="w-full h-1/2 relative flex bg-white mb-4 bg-opacity-80 backdrop-blur-lg rounded-xl drop-shadow-lg p-4 justify-center"/>
-                <textarea id="tarea2" type="text" placeholder='Description' value={desc} /* defaultValue={desc} */ onChange={Inchangedesc} 
+                <textarea id="tarea2" type="text" placeholder='Insights' value={desc} /* defaultValue={desc} */ onChange={Inchangedesc} 
                            className="w-full h-1/2 relative flex bg-white mb-4 bg-opacity-80 backdrop-blur-lg rounded-xl drop-shadow-lg p-4 justify-center"/>
-                  <textarea id="tarea2" type="text" placeholder='Comment' value={comments} /* defaultValue={comments} */ onChange={Inchangecomm} 
+                  <textarea id="tarea2" type="text" placeholder='Description' value={comments} /* defaultValue={comments} */ onChange={Inchangecomm} 
                            className="w-full h-1/2 relative flex bg-white bg-opacity-80 backdrop-blur-lg rounded-xl drop-shadow-lg p-4 justify-center"/>
 
                 </div>
