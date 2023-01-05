@@ -347,10 +347,11 @@ function thisMonth(){
       <button className=" right-0 p-2 mr-8 bg-blue-300 bg-opacity-40 rounded-full mt-2 mb-0 hover:scale-110 hover:bg-blue-400 drop-shadow-lg flex absolute m-2 bg-blue-300" onClick={Swalfeed}>
    <p>&nbsp; Send
     Feedback &nbsp;</p>
-    <Image src={Feedback} alt="Clear" width={40} height={40} className="hover:scale-110"/>
+    <Image src={Feedback} alt="Clear" width={40} height={40} className="hover:scale-110 z-1000"/>
     </button>
+
        <img
-      className='top-0 left-0 w-screen h-screen object-cover fixed' 
+      className='top-0 left-0 w-screen h-screen object-cover fixed -z-10' 
      
       src={"https://cdn.pixabay.com/photo/2016/05/26/12/56/waterfalls-1417102_1280.jpg"} 
       alt=' '  />
@@ -361,6 +362,7 @@ function thisMonth(){
 
      <div className="absolute top-16 flex left-[55%] bg-blue-4000 ">Word Count:
      <span id="show">{countwords}</span>
+     {/* <Image src={Feedback} alt="Clear" width={40} height={40} className="hover:scale-110 z-1000"/> */}
      </div>
      
     <div  className=" flex flex-row z-1000 relative w-full top-0  pt-3 h-screen" > 
