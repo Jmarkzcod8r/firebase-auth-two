@@ -415,7 +415,7 @@ function thisMonth(){
                            className="w-full h-1/2 relative flex bg-white mb-4 bg-opacity-80 backdrop-blur-lg rounded-xl drop-shadow-lg p-4 justify-center"/>
                 <textarea id="tarea2" type="text" placeholder='Insights' value={desc} /* defaultValue={desc} */ onChange={Inchangedesc} 
                            className="w-full h-1/2 relative flex bg-white mb-4 bg-opacity-80 backdrop-blur-lg rounded-xl drop-shadow-lg p-4 justify-center"/>
-                  <textarea id="tarea2" type="text" placeholder='Description' value={comments} /* defaultValue={comments} */ onChange={Inchangecomm} 
+                  <textarea id="tarea2" type="text" placeholder='Comments' value={comments} /* defaultValue={comments} */ onChange={Inchangecomm} 
                            className="w-full h-1/2 relative flex bg-white bg-opacity-80 backdrop-blur-lg rounded-xl drop-shadow-lg p-4 justify-center"/>
 
                 </div>
