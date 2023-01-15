@@ -25,6 +25,10 @@ a {
   }
 }
 
+.my-button.selected {
+  background-color: rgb(63, 170, 202);
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

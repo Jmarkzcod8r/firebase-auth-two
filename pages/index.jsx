@@ -40,6 +40,9 @@ export default function Index  (){
   const [feedback,setFeedback] = useState ('temp feedback')
   const [countwords, setCountwords] = useState(0)
 
+  const [selectedButton, setSelectedButton] = useState(false);
+  const buttons = ['Button 1', 'Button 2', 'Button 3'];
+
   const router = useRouter();
 
   const Sweetshow =()=> {
@@ -338,6 +341,10 @@ function thisMonth(){
       
       document.getElementById("show")}
 
+    // const handleClick = () => {
+    //   setSelected(!selected);
+    // };
+
 
   return (
    <div className="block" >
@@ -372,7 +379,7 @@ function thisMonth(){
                 <div className="relative  grid w-[100%] grid-cols-5 justify-self-auto items-end p-1 mr-0 pb-4">
                   <div className="col-span-2  top-0 relative mb-16 ml-3">
                     <button onClick={signOut} ><Image src={Out} alt="Clear" width={40} height={40} className="hover:scale-110"/> </button>
-                    </div> {/* {feedback} */}
+                    </div> ji {selectedButton}
                 <img src={photoURL} alt="photome" className=" relative justify-self-center mt-5 rounded-full "/>
                 </div>
                 
@@ -400,7 +407,8 @@ function thisMonth(){
                             el.desc ? setDesc(el.desc):setDesc('') ;
                             el.comments ? setComments (el.comments): setComments('')
                             el.highlight? setHighlight (el.highlight) : setHighlight('')
-                          }} className='w-full min-h-10 bg-violet-300 opacity-[95%] p-2 rounded mt-2 hover:scale-105' >
+                            setSelectedButton(index*3)
+                          }} className={`last:w-full min-h-10 bg-violet-300 opacity-[95%] p-2 rounded mt-2 hover:scale-105 my-button ${index*3===selectedButton ? 'selected': ''}`}   >
                           {el.date}                             
                              </button></div>
                       ))                  }
