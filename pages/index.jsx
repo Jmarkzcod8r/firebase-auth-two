@@ -402,12 +402,13 @@ function thisMonth(){
                           <div  key={index*2} className="flex flex-row">
                           
                           <button key={index*3} onClick={function Con(){ 
-                            el._id? set_id(el._id):set_id('null')
+                            Savedb;
+                            el._id? set_id(el._id):set_id('null');
                             el.log  ? setLog(el.log):setLog('');
                             el.desc ? setDesc(el.desc):setDesc('') ;
-                            el.comments ? setComments (el.comments): setComments('')
-                            el.highlight? setHighlight (el.highlight) : setHighlight('')
-                            setSelectedButton(index*3)
+                            el.comments ? setComments (el.comments): setComments('');
+                            el.highlight? setHighlight (el.highlight) : setHighlight('');
+                            setSelectedButton(index*3); 
                           }} className={`last:w-full min-h-10 bg-violet-300 opacity-[95%] p-2 rounded mt-2 hover:scale-105 my-button ${index*3===selectedButton ? 'selected': ''}`}   >
                           {el.date}                             
                              </button></div>
