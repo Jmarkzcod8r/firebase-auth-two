@@ -10,11 +10,14 @@ import {db} from '../firebase/firebase-config'
 import {doc , setDoc} from "firebase/firestore"
 import { getAuth , onAuthStateChanged, signOut} from "firebase/auth"
 import Add from './Icons/Add.svg';
+import Copy from './Icons/Copy.png';
 import Save from './Icons/Save.png';
+import shredder from './Icons/shredder.png';
 import Clr from './Icons/Clear.png';
 import Del from './Icons/Delete.png'
 import Hide from './Icons/hidden.png'
 import Out from './Icons/Out.png'
+import Archive from './Icons/Archive.png'
 import Info from './Icons/info.png'
 import Blank from './Icons/Blank.png'
 import Feedback from './Icons/feedback.png'
@@ -30,6 +33,7 @@ export default function Index  (){
   const [title,setTitle]=useState('')
   // This is the log we will be showing to the main container in the middle.
 
+  const [name, setName]=useState('')
   const [log, setLog]=useState('')
   const [highlight, setHighlight] = useState('')
   const [desc, setDesc]=useState('')
@@ -44,7 +48,7 @@ export default function Index  (){
   const [selectedButton, setSelectedButton] = useState(false);
   const buttons = ['Button 1', 'Button 2', 'Button 3'];
 
-  const [archive, setArchive] = useState('false');
+  const [archive, setArchive] = useState(false);
   const [showList, setShowList] = useState(true);
 
   const router = useRouter();
@@ -132,6 +136,7 @@ function Clear(){setComments('');setDesc('');setLog('');setHighlight('');}
 
 const Savedb = async (e) => {e.preventDefault();  Datenow();
   try {
+    setName('@archive')
     await axios.post(thisbasez+"/clients", {log, desc, comments, date, name, highlight, credemail}, {
       headers: {'Content-Type': 'application/json',  } }) ;
           } 
@@ -352,6 +357,69 @@ function thisMonth(){
       setShowList(!showList);
     };
 
+    const toggleArchive = () => {
+      setArchive(!archive); }
+
+    // const Savedbarchive = async (e) => {e.preventDefault();  Datenow();
+    //   try {
+    //     // setName('@archive');
+    //     await axios.post(thisbasez+"/clients", {log, desc, comments, date, name:'@archive', highlight, credemail}, {
+    //       headers: {'Content-Type': 'application/json',  } }) ;
+    //           } 
+    //   catch (error) {console.error(error.response.data);};
+    //       getData();  alert('New Entry Created') }
+    
+    // const Shred = async (e) => {e.preventDefault();  Datenow();
+    //   try {
+    //     // setName('')
+    //     await axios.post(thisbasez+"/clients", {log, desc, comments, date, name, highlight, credemail}, {
+    //       headers: {'Content-Type': 'application/json',  } }) ;
+    //           } 
+    //   catch (error) {console.error(error.response.data);};
+    //       getData();  alert('New Entry Created') }
+
+    const AddtoArchive = async (e) => {e.preventDefault();
+      try {
+        await api.put(`clients/${_id}`, { log, desc, comments, name:'@archive', highlight }).then (
+          alert('Added to Archive')
+        )
+            } catch (error) {
+              console.log(error);     
+                                      };
+      getData();
+      
+    };
+
+    const RemovedFromArchive = async (e) => {e.preventDefault();
+      try {
+        await api.put(`clients/${_id}`, { log, desc, comments, name:'', highlight }).then (
+          alert('Removed From Archive')
+        )
+            } catch (error) {
+              console.log(error);     
+                                      };
+      getData();
+      
+    };
+        
+
+
+
+
+    const buttonStyles = {
+      boxShadow: "none",
+      ":active": {
+        boxShadow: "0 0 10px #fff",
+      },
+      ":focus": {
+        boxShadow: "0 0 10px #fff",
+      },
+      ":hover": {
+        backgroundColor: "blue",
+        color: "white",
+      }
+    };
+
   return (
    <div className="block" >
 
@@ -391,23 +459,26 @@ function thisMonth(){
                 
              
                      <div  className="flex flex-row bg-blue-200 px-6 py-2 rounded-full">
-                     <button onClick={Delete} className="mr-2"><Image src={Del} alt="Clear" width={40} height={40} className="hover:scale-110"/></button>
+                     <button onClick={Delete} title="Delete" className="mr-2"><Image src={Del} alt="Clear" width={40} height={40} className="hover:scale-110"/></button>
                      {/* <button onClick={Swalfeed} className="mx-2"><Image src={Info} alt="Clear" width={40} height={40} className="hover:scale-110"/></button> */}
-                     <button onClick={Clear} className="mx-2"><Image src={Clr} alt="Clear" width={40} height={40} className="hover:scale-110"/></button>
-                      <button onClick={handleUpdateClient} className="mx-2"><Image src={Save} alt="Add" width={40} height={40} className="hover:scale-110"/></button>
-                      <button onClick={Savedb} className="mx-2"><Image src={Add} alt="Add" width={40} height={40} className="hover:scale-110"/></button>
-                      <button onClick={NewPage} className="ml-2"><Image src={Blank} alt="Clear" width={40} height={40} className="hover:scale-110"/></button>
-                      
+                     <button onClick={Clear} title="Clear" className="mx-2"><Image src={Clr} alt="Clear" width={40} height={40} className="hover:scale-110"/></button>
+                      <button onClick={handleUpdateClient} title="Update" className="mx-2"><Image src={Save} alt="Add" width={40} height={40} className="hover:scale-110"/></button>
+                      <button onClick={Savedb} title="Duplicate" className="mx-2"><Image src={Copy} alt="Add" width={40} height={40} className="hover:scale-110"/></button>
+                      <button onClick={NewPage} title="New"className="ml-2"><Image src={Blank} alt="Clear" width={40} height={40} className="hover:scale-110"/></button>
+                       
                       </div> 
 
-                     <div className=" p-2">{/* {credemail} */} 
-                     <button onClick={toggleList} className="mr-2"><Image src={Hide} alt="Clear" width={40} height={40} className="hover:scale-110"/></button>
+                     <div className=" p-2">{name}{/* {credemail} */} 
+                     <button onClick={toggleList} title="Hide/Show" className="mr-2"><Image src={Hide} alt="Clear" width={40} height={40} className="hover:scale-110"/></button>
+                     <button onClick={toggleArchive}  title="Archive" className="mr-2"><Image src={Archive} alt="Clear" width={40} height={40} className="hover:scale-110 ; focus: " style={buttonStyles}/></button>
+                     <button onClick={AddtoArchive} title="Add to Archive" className="mr-2"><Image src={Add} alt="Clear" width={40} height={40} className="hover:scale-110"/></button>
+                     <button onClick={RemovedFromArchive} title="Remove from Archive" className="mr-2"><Image src={shredder} alt="Clear" width={40} height={40} className="hover:scale-110"/></button>
                      </div>
                   
                   <div className=' mt-5 w-[95%] block h-72 px-4 overflow-auto rounded-xl'> 
                         {showList && (
                         mainlist
-                              // .filter((el, index) => el.name === '@archive')
+                              .filter((el, index) => !archive || el.name === '@archive')
                               .map((el, index)=> (
                      
                           <div  key={index*2} className="flex flex-row">
