@@ -420,11 +420,11 @@ function thisMonth(){
                 <textarea id="tarea2" type="text" placeholder='Entry' value={log} oninput={countWord} onChange={Inchangelog}  
                   className="w-[37.5%] relative flex bg-white bg-opacity-80 backdrop-blur-lg rounded-xl drop-shadow-lg p-4 justify-center  mr-9"/>
                 <div className='w-[31.25%] flex flex-col  pr-9'> 
-                   <textarea id="tarea2" type="text" placeholder='Notes' value={highlight} /* defaultValue={desc} */ onChange={Inchangehighlight} 
+                   <textarea id="tarea2" type="text" placeholder='What Do You Want To Write Or Talk About?' value={highlight} /* defaultValue={desc} */ onChange={Inchangehighlight} 
                            className="w-full h-1/2 relative flex bg-white mb-4 bg-opacity-80 backdrop-blur-lg rounded-xl drop-shadow-lg p-4 justify-center"/>
-                <textarea id="tarea2" type="text" placeholder='Insights' value={desc} /* defaultValue={desc} */ onChange={Inchangedesc} 
+                <textarea id="tarea2" type="text" placeholder='What Insights Do You Want To Take Note Of?' value={desc} /* defaultValue={desc} */ onChange={Inchangedesc} 
                            className="w-full h-1/2 relative flex bg-white mb-4 bg-opacity-80 backdrop-blur-lg rounded-xl drop-shadow-lg p-4 justify-center"/>
-                  <textarea id="tarea2" type="text" placeholder='Comments' value={comments} /* defaultValue={comments} */ onChange={Inchangecomm} 
+                  <textarea id="tarea2" type="text" placeholder='Is There Something You Want To Be Thankful For Today?' value={comments} /* defaultValue={comments} */ onChange={Inchangecomm} 
                            className="w-full h-1/2 relative flex bg-white bg-opacity-80 backdrop-blur-lg rounded-xl drop-shadow-lg p-4 justify-center"/>
 
                 </div>
