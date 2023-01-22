@@ -13,6 +13,7 @@ import Add from './Icons/Add.svg';
 import Save from './Icons/Save.png';
 import Clr from './Icons/Clear.png';
 import Del from './Icons/Delete.png'
+import Hide from './Icons/hidden.png'
 import Out from './Icons/Out.png'
 import Info from './Icons/info.png'
 import Blank from './Icons/Blank.png'
@@ -42,6 +43,9 @@ export default function Index  (){
 
   const [selectedButton, setSelectedButton] = useState(false);
   const buttons = ['Button 1', 'Button 2', 'Button 3'];
+
+  const [archive, setArchive] = useState('false');
+  const [showList, setShowList] = useState(true);
 
   const router = useRouter();
 
@@ -344,7 +348,9 @@ function thisMonth(){
     // const handleClick = () => {
     //   setSelected(!selected);
     // };
-
+    const toggleList = () => {
+      setShowList(!showList);
+    };
 
   return (
    <div className="block" >
@@ -391,13 +397,18 @@ function thisMonth(){
                       <button onClick={handleUpdateClient} className="mx-2"><Image src={Save} alt="Add" width={40} height={40} className="hover:scale-110"/></button>
                       <button onClick={Savedb} className="mx-2"><Image src={Add} alt="Add" width={40} height={40} className="hover:scale-110"/></button>
                       <button onClick={NewPage} className="ml-2"><Image src={Blank} alt="Clear" width={40} height={40} className="hover:scale-110"/></button>
-
+                      
                       </div> 
-                     <div className=" p-2"> {/* {credemail} */} </div>
+
+                     <div className=" p-2">{/* {credemail} */} 
+                     <button onClick={toggleList} className="mr-2"><Image src={Hide} alt="Clear" width={40} height={40} className="hover:scale-110"/></button>
+                     </div>
                   
                   <div className=' mt-5 w-[95%] block h-72 px-4 overflow-auto rounded-xl'> 
-                    
-                      {  mainlist.map((el, index)=> (
+                        {showList && (
+                        mainlist
+                              // .filter((el, index) => el.name === '@archive')
+                              .map((el, index)=> (
                      
                           <div  key={index*2} className="flex flex-row">
                           
@@ -412,7 +423,7 @@ function thisMonth(){
                           }} className={`last:w-full min-h-10 bg-violet-300 opacity-[95%] p-2 rounded mt-2 hover:scale-105 my-button ${index*3===selectedButton ? 'selected': ''}`}   >
                           {el.date}                             
                              </button></div>
-                      ))                  }
+                      ))                  )}
                       
                    </div>
                 </div>
