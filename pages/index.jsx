@@ -453,7 +453,7 @@ function thisMonth(){
                 <div className="relative  grid w-[100%] grid-cols-5 justify-self-auto items-end p-1 mr-0 pb-4">
                   <div className="col-span-2  top-0 relative mb-16 ml-3">
                     <button onClick={signOut} ><Image src={Out} alt="Clear" width={40} height={40} className="hover:scale-110"/> </button>
-                    </div>
+                    </div>{archive}
                 <img src={photoURL} alt="photome" className=" relative justify-self-center mt-5 rounded-full "/>
                 </div>
                 
@@ -462,7 +462,7 @@ function thisMonth(){
                      <button onClick={Delete} title="Delete" className="mr-2"><Image src={Del} alt="Clear" width={40} height={40} className="hover:scale-110"/></button>
                      {/* <button onClick={Swalfeed} className="mx-2"><Image src={Info} alt="Clear" width={40} height={40} className="hover:scale-110"/></button> */}
                      <button onClick={Clear} title="Clear" className="mx-2"><Image src={Clr} alt="Clear" width={40} height={40} className="hover:scale-110"/></button>
-                      <button onClick={handleUpdateClient} title="Update" className="mx-2"><Image src={Save} alt="Add" width={40} height={40} className="hover:scale-110"/></button>
+                      <button onClick={handleUpdateClient} disabled={archive} title={archive?"Button Disbaled When Archive is True ":"Update"} className="mx-2"><Image src={Save} alt="Add" width={40} height={40} className="hover:scale-110"/></button>
                       <button onClick={Savedb} title="Duplicate" className="mx-2"><Image src={Copy} alt="Add" width={40} height={40} className="hover:scale-110"/></button>
                       <button onClick={NewPage} title="New"className="ml-2"><Image src={Blank} alt="Clear" width={40} height={40} className="hover:scale-110"/></button>
                        
