@@ -446,10 +446,10 @@ function thisMonth(){
      {/* <Image src={Feedback} alt="Clear" width={40} height={40} className="hover:scale-110 z-1000"/> */}
      </div>
      
-    <div  className=" flex flex-row z-1000 relative w-full top-0  pt-3 h-screen" > 
+    <div  className=" sm:block md:flex md:flex-row z-1000 relative w-full top-0  pt-3 lg:h-screen h-[100em] md:h-screen " > 
     
-                <div className=" w-[31.25%] relative flex flex-col  content-center items-center p-2  ml-4 mr-7 
-                       bg-white bg-opacity-80 backdrop-blur-lg rounded-xl drop-shadow-lg">
+                <div className="w-[100%] lg:w-[31.25%] relative flex flex-col  content-center items-center lg:p-2  lg:ml-4 mr-7 
+                       bg-white bg-opacity-80 backdrop-blur-lg rounded-xl drop-shadow-lg space-y-2" class="space-y-2">
                 <div className="relative  grid w-[100%] grid-cols-5 justify-self-auto items-end p-1 mr-0 pb-4">
                   <div className="col-span-2  top-0 relative mb-16 ml-3">
                     <button onClick={signOut} ><Image src={Out} alt="Clear" width={40} height={40} className="hover:scale-110"/> </button>
@@ -500,14 +500,14 @@ function thisMonth(){
                 </div>
                
                 <textarea id="tarea2" type="text" placeholder='Entry' value={log} oninput={countWord} onChange={Inchangelog}  
-                  className="w-[37.5%] relative flex bg-white bg-opacity-80 backdrop-blur-lg rounded-xl drop-shadow-lg p-4 justify-center  mr-9"/>
-                <div className='w-[31.25%] flex flex-col  pr-9'> 
+                  className="w-[100%] lg:w-[37.5%] h-[20em] md:h-full lg:h-full relative flex bg-white bg-opacity-80 backdrop-blur-lg rounded-xl drop-shadow-lg p-4 justify-center  mr-9"/>
+                <div className='w-[100%] lg:w-[31.25%] sm:block md:flex md:flex-col lg:pr-9 h-10 md:h-screen'> 
                    <textarea id="tarea2" type="text" placeholder='What Do You Want To Write Or Talk About?' value={highlight} /* defaultValue={desc} */ onChange={Inchangehighlight} 
-                           className="w-full h-1/2 relative flex bg-white mb-4 bg-opacity-80 backdrop-blur-lg rounded-xl drop-shadow-lg p-4 justify-center"/>
+                           className="w-full h-[200%] sm:h-1/2 relative flex bg-white mb-4 bg-opacity-80 backdrop-blur-lg rounded-xl drop-shadow-lg p-4 justify-center"/>
                 <textarea id="tarea2" type="text" placeholder='What Insights Do You Want To Take Note Of?' value={desc} /* defaultValue={desc} */ onChange={Inchangedesc} 
-                           className="w-full h-1/2 relative flex bg-white mb-4 bg-opacity-80 backdrop-blur-lg rounded-xl drop-shadow-lg p-4 justify-center"/>
+                           className="w-full h-[200%] sm:h-1/2 relative flex bg-white mb-4 bg-opacity-80 backdrop-blur-lg rounded-xl drop-shadow-lg p-4 justify-center"/>
                   <textarea id="tarea2" type="text" placeholder='Is There Something You Want To Be Thankful For Today?' value={comments} /* defaultValue={comments} */ onChange={Inchangecomm} 
-                           className="w-full h-1/2 relative flex bg-white bg-opacity-80 backdrop-blur-lg rounded-xl drop-shadow-lg p-4 justify-center"/>
+                           className="w-full h-[200%] sm:h-1/2 relative flex bg-white bg-opacity-80 backdrop-blur-lg rounded-xl drop-shadow-lg p-4 justify-center"/>
 
                 </div>
                       </div>
