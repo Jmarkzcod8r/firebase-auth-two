@@ -496,9 +496,9 @@ function thisMonth(){
                      <button onClick={toggleList} title="Hide/Show" className="mr-2"><Image src={Hide} alt="Clear" width={40} height={40} className="hover:scale-110"/></button>
 
                      <button onClick={toggleArchive}  title="Show Archive Files" className={`${archive ? "shine" : ""} mr-2`}><Image src={Archive} alt="Clear" width={40} height={40} className="hover:scale-110 ; focus: " style={buttonStyles}/></button>
-                     <button onClick={AddtoArchive} title="Add to Archive" /* className={`${archive ? "shine" : ""} mr-2`} */><Image src={Add} alt="Clear" width={40} height={40} className="hover:scale-110"/></button>
-                     <button onClick={RemovedFromArchive} title="Remove from Archive"  /* className={`${archive ? "shine" : ""} mr-2`} */><Image src={shredder} alt="Clear" width={40} height={40} className="hover:scale-110"/></button>
-                     <button onClick={Rename} title="Rename" /* className={archive? "shine mr-2":'mr-2'} */><Image src={changes} alt="Clear" width={40} height={40} blurHeight={40} className="hover:scale-110"/></button>
+                     <button onClick={AddtoArchive} title="Add to Archive" className={`${archive ? "shine" : ""} mr-2`}><Image src={Add} alt="Clear" width={40} height={40} className="hover:scale-110"/></button>
+                     <button onClick={RemovedFromArchive} title="Remove from Archive"  className={`${archive ? "shine" : ""} mr-2`}><Image src={shredder} alt="Clear" width={40} height={40} className="hover:scale-110"/></button>
+                     <button onClick={Rename} title="Rename" className ={archive? "shine mr-2":'mr-2'}><Image src={changes} alt="Clear" width={40} height={40} blurHeight={40} className="hover:scale-110"/></button>
                      </div>
                   
                   <div className=' mt-5 w-[95%] block h-[200px] md:h-auto px-4 overflow-auto rounded-xl'> 
