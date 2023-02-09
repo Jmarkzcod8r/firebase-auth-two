@@ -6,6 +6,15 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
+button{
+  background-color: none;
+  /* opacity:0.6 */
+}
+
+Image{
+  background-color: none;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -34,6 +43,22 @@ a {
     /* add more styles here */
   }       
 }    
+
+.shine {
+  box-shadow: 0 0 10px #37970a;
+  animation: shine 1s ease-out;
+}
+
+@keyframes shine {
+  from {
+    box-shadow: 0 0 5px #fff;
+  }
+  to {
+    box-shadow: 0 0 20px #fff;
+  }
+}
+
+
 
 @tailwind base;
 @tailwind components;

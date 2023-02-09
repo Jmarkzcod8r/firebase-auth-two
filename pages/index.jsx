@@ -21,6 +21,7 @@ import Archive from './Icons/Archive.png'
 import Info from './Icons/info.png'
 import Blank from './Icons/Blank.png'
 import Feedback from './Icons/feedback.png'
+import changes from './Icons/changes.png'
 import { ForphotoURL } from "./Components/Usernav";
 import {thisbase} from "../functions global/thisbase";
 import { list } from "postcss";
@@ -53,27 +54,27 @@ export default function Index  (){
 
   const router = useRouter();
 
-  const Sweetshow =()=> {
+  // const Sweetshow =()=> {
   
-    var temp='';
-    const swaldata = Swal.fire({
-      title: 'Login Form',
-      html: `<input type="text" id="login" class="swal2-input" placeholder="Username">
-      <input type="password" id="password" class="swal2-input" placeholder="Password">`,
-      confirmButtonText: 'Sign in',
-      focusConfirm: false,
-      preConfirm: () => {
-        const login = Swal.getPopup().querySelector('#login').value
-        const password = Swal.getPopup().querySelector('#password').value
-        if (!login || !password) {
-          Swal.showValidationMessage(`Please enter login and password`)
-        }
-        return { login: login, password: password }
-      }
-    }).then((result) => {setFeedback(result);
-      },['']);
+  //   var temp='';
+  //   const swaldata = Swal.fire({
+  //     title: 'Login Form',
+  //     html: `<input type="text" id="login" class="swal2-input" placeholder="Username">
+  //     <input type="password" id="password" class="swal2-input" placeholder="Password">`,
+  //     confirmButtonText: 'Sign in',
+  //     focusConfirm: false,
+  //     preConfirm: () => {
+  //       const login = Swal.getPopup().querySelector('#login').value
+  //       const password = Swal.getPopup().querySelector('#password').value
+  //       if (!login || !password) {
+  //         Swal.showValidationMessage(`Please enter login and password`)
+  //       }
+  //       return { login: login, password: password }
+  //     }
+  //   }).then((result) => {setFeedback(result);
+  //     },['']);
 
-  }
+  // }
 
   var thisbasez = thisbase()
   const api = axios.create({
@@ -255,16 +256,16 @@ function thisMonth(){
       
     }
 
-    function ClearNav (){
+    // function ClearNav (){
       
-        var x = document.getElementById("Unav");
-        if (x.style.display === "none") {
-          x.style.display = "block";
-        } else {
-          x.style.display = "none";
-        }
+    //     var x = document.getElementById("Unav");
+    //     if (x.style.display === "none") {
+    //       x.style.display = "block";
+    //     } else {
+    //       x.style.display = "none";
+    //     }
      
-    }
+    // }
 
     const handleUpdateClient = async (e) => {e.preventDefault();
       try {
@@ -420,6 +421,29 @@ function thisMonth(){
       }
     };
 
+    const Rename=()=>{
+      Swal.fire({
+        title: "Rename!",
+        text: "Suggesstion, Comments and Recommendations are very much appreciated",
+        input: 'textarea',
+        showCancelButton: true             
+    }).then(async (result) => {
+        if (result.value) {
+          console.log('this is result:',result);
+          try {
+            // setName((result.value))
+            await api.put(`clients/${_id}`, { log, desc, comments, name: (result.value) + ' @archive', highlight }).then (
+              alert('Renamed and Saved to Archive!')
+            )
+                } catch (error) {
+                  console.log(error);     
+                                          };
+        getData();
+          
+        }
+    });
+    }
+
   return (
    <div className="block" >
 
@@ -445,7 +469,7 @@ function thisMonth(){
      <span id="show">{countwords}</span>
      {/* <Image src={Feedback} alt="Clear" width={40} height={40} className="hover:scale-110 z-1000"/> */}
      </div>
-     
+     {name}we
     <div  className=" sm:block md:flex md:flex-row z-1000 relative w-full top-0  pt-3 lg:h-screen h-auto md:h-screen " > 
     
                 <div className="w-[100%] lg:w-[31.25%] relative flex flex-col  content-center items-center lg:p-2  lg:ml-4 mr-7 
@@ -468,23 +492,27 @@ function thisMonth(){
                        
                       </div> 
 
-                     <div className=" p-2">{name}{/* {credemail} */} 
+                     <div className=" p-2">{/* {name} */}{/* {credemail} */} 
                      <button onClick={toggleList} title="Hide/Show" className="mr-2"><Image src={Hide} alt="Clear" width={40} height={40} className="hover:scale-110"/></button>
-                     <button onClick={toggleArchive}  title="Archive" className="mr-2"><Image src={Archive} alt="Clear" width={40} height={40} className="hover:scale-110 ; focus: " style={buttonStyles}/></button>
-                     <button onClick={AddtoArchive} title="Add to Archive" className="mr-2"><Image src={Add} alt="Clear" width={40} height={40} className="hover:scale-110"/></button>
-                     <button onClick={RemovedFromArchive} title="Remove from Archive" className="mr-2"><Image src={shredder} alt="Clear" width={40} height={40} className="hover:scale-110"/></button>
+
+                     <button onClick={toggleArchive}  title="Show Archive Files" className={`${archive ? "shine" : ""} mr-2`}><Image src={Archive} alt="Clear" width={40} height={40} className="hover:scale-110 ; focus: " style={buttonStyles}/></button>
+                     <button onClick={AddtoArchive} title="Add to Archive" /* className={`${archive ? "shine" : ""} mr-2`} */><Image src={Add} alt="Clear" width={40} height={40} className="hover:scale-110"/></button>
+                     <button onClick={RemovedFromArchive} title="Remove from Archive"  /* className={`${archive ? "shine" : ""} mr-2`} */><Image src={shredder} alt="Clear" width={40} height={40} className="hover:scale-110"/></button>
+                     <button onClick={Rename} title="Rename" /* className={archive? "shine mr-2":'mr-2'} */><Image src={changes} alt="Clear" width={40} height={40} blurHeight={40} className="hover:scale-110"/></button>
                      </div>
                   
                   <div className=' mt-5 w-[95%] block h-[200px] md:h-auto px-4 overflow-auto rounded-xl'> 
                         {showList && (
                         mainlist
-                              .filter((el, index) => !archive || el.name === '@archive')
+                              // .filter((el, index) => !archive || el.name === '@archive')
+                              .filter((el, index) => !archive || el.name.includes('@archive'))
                               .map((el, index)=> (
                      
                           <div  key={index*2} className="flex flex-row">
                           
                           <button key={index*3} onClick={function Con(){ 
                             Savedb();
+                            el.name? setName(el.name):setName('')
                             el._id? set_id(el._id):set_id('null');
                             el.log  ? setLog(el.log):setLog('');
                             el.desc ? setDesc(el.desc):setDesc('') ;
@@ -492,7 +520,7 @@ function thisMonth(){
                             el.highlight? setHighlight (el.highlight) : setHighlight('');
                             setSelectedButton(index*3); 
                           }} className={`last:w-full min-h-10 bg-violet-300 opacity-[95%] p-2 rounded mt-2 hover:scale-105 my-button ${index*3===selectedButton ? 'selected': ''}`}   >
-                          {el.date}                             
+                          {el.name.replace('@archive','')? el.name.replace('@archive',''):el.date}                             
                              </button></div>
                       ))                  )}
                       
