@@ -381,7 +381,7 @@ function thisMonth(){
 
     const AddtoArchive = async (e) => {e.preventDefault();
       try {
-        await api.put(`clients/${_id}`, { log, desc, comments, name:'@archive', highlight }).then (
+        await api.put(`clients/${_id}`, { log, desc, comments, name:`${archive?name:'@archive'}` , highlight }).then (
           alert('Added to Archive')
         )
             } catch (error) {
