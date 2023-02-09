@@ -469,7 +469,7 @@ function thisMonth(){
      <span id="show">{countwords}</span>
      {/* <Image src={Feedback} alt="Clear" width={40} height={40} className="hover:scale-110 z-1000"/> */}
      </div>
-     {name}we
+     
     <div  className=" sm:block md:flex md:flex-row z-1000 relative w-full top-0  pt-3 lg:h-screen h-auto md:h-screen " > 
     
                 <div className="w-[100%] lg:w-[31.25%] relative flex flex-col  content-center items-center lg:p-2  lg:ml-4 mr-7 
