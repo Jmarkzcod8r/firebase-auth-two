@@ -542,24 +542,24 @@ import math
 
 # maxMin(k, arr)
 
-dict = {}
-# for index in range(n):
-#     dict
-arr = [1,2,1,2,1,3,2]
-for a1 in arr:
-    dict[a1]=0   #initial value
-    for a2 in arr:
-        if a1 == a2:
-            dict[a1] +=1
+# dict = {}
+# # for index in range(n):
+# #     dict
+# arr = [1,2,1,2,1,3,2]
+# for a1 in arr:
+#     dict[a1]=0   #initial value
+#     for a2 in arr:
+#         if a1 == a2:
+#             dict[a1] +=1
 
-print(len(dict))
-for key in dict:
-    dict[key]=dict[key]//2
-pairs = 0
-for key in dict:
-    pairs = pairs + dict[key]
+# print(len(dict))
+# for key in dict:
+#     dict[key]=dict[key]//2
+# pairs = 0
+# for key in dict:
+#     pairs = pairs + dict[key]
     
-print(pairs)
-print(dict)
-z=[1,21,1,1,8].count(1)
-print('z ',z)
+# print(pairs)
+# print(dict)
+# z=[1,21,1,1,8].count(1)
+# print('z ',z)
