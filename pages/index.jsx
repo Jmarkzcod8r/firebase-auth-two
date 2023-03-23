@@ -315,8 +315,8 @@ export default function Index() {
     alert("Blank Entry Created");
   }
 
-  const handleUpdateClient = async () => {
-    // e.preventDefault();
+  const handleUpdateClient = async (e) => {
+    e.preventDefault();
     try {
       await api
         .put(`clients/${_id}`, { log, desc, comments, name, highlight })
@@ -328,7 +328,7 @@ export default function Index() {
   };
 
   const Delete = async (e) => {
-    // e.preventDefault();
+    e.preventDefault();
     try {
       await api.delete(`/clients/${_id}`);
     } catch (err) {
@@ -433,8 +433,8 @@ export default function Index() {
     getData();
   };
 
-  const RemovedFromArchive = async () => {
-    // e.preventDefault()
+  const RemovedFromArchive = async (e) => {
+    e.preventDefault();
     try {
       await api
         .put(`clients/${_id}`, { log, desc, comments, name: "", highlight })
