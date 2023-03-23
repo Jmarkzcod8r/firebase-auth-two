@@ -76,7 +76,8 @@ export default function Index() {
 
   var thisbasez = thisbase();
   const api = axios.create({
-    baseURL: thisbasez,
+    baseURL: "https://firebase-auth-two-new-jmarkzcod8r.vercel.app/api",
+    // baseURL: thisbasez,
   });
 
   async function getData() {
