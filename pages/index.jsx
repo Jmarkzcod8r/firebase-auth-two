@@ -292,7 +292,7 @@ export default function Index() {
 
   async function NewPage() {
     try {
-      const response = await axios.post(
+      await axios.post(
         thisbasez + "/clients",
         {
           log: "",
