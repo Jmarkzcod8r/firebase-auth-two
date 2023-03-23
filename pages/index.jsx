@@ -310,7 +310,7 @@ export default function Index() {
     } catch (error) {
       console.error(error.response.data);
     }
-    console.log(response);
+    // console.log(response);
     getData();
     alert("Blank Entry Created");
   }
