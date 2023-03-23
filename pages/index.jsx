@@ -22,7 +22,7 @@ import Blank from "./Icons/Blank.png";
 import Feedback from "./Icons/feedback.png";
 import changes from "./Icons/changes.png";
 import { ForphotoURL } from "./Components/Usernav";
-// import { thisbase } from "../functions global/thisbase";
+import { thisbase } from "../functions global/thisbase";
 import { list } from "postcss";
 
 export default function Index() {
@@ -74,10 +74,10 @@ export default function Index() {
 
   // }
 
-  // var thisbasez = thisbase();
+  var thisbasez = thisbase();
   const api = axios.create({
-    baseURL: "https://firebase-auth-two-new-jmarkzcod8r.vercel.app/api",
-    // baseURL: thisbasez,
+    // baseURL: "https://firebase-auth-two-new-jmarkzcod8r.vercel.app/api",
+    baseURL: thisbasez,
   });
 
   async function getData() {
