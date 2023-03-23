@@ -292,7 +292,7 @@ export default function Index() {
 
   async function NewPage() {
     try {
-      await axios.post(
+      const response = await axios.post(
         thisbasez + "/clients",
         {
           log: "",
@@ -310,6 +310,7 @@ export default function Index() {
     } catch (error) {
       console.error(error.response.data);
     }
+    console.log(response);
     getData();
     alert("Blank Entry Created");
   }
