@@ -523,7 +523,7 @@ export default function Index() {
 
       <div className=" sm:block md:flex md:flex-row z-1000 relative w-full top-0  pt-3 lg:h-screen h-auto md:h-screen ">
         <div
-          className="w-[30em] relative flex flex-col  content-center items-center lg:p-2  lg:ml-4 mr-7
+          className="smm:w-full md:w-[30em] relative flex flex-col  content-center items-center lg:p-2 sm:mr-7 lg:ml-4
                        bg-white bg-opacity-80 backdrop-blue-lg rounded-xl drop-shadow-lg space-y-2"
           // class="space-y-2"
         >
