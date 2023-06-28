@@ -97,7 +97,7 @@ export default function Index() {
 
   let Junedays = []
   if (mainlist) {
-    console.log('mainlist true', mainlist);
+    // console.log('mainlist true', mainlist);
     const arrayOfDates = mainlist.map(obj => new Date(obj.date));
     Junedays = arrayOfDates.filter(date => date.getMonth() === 5).map(date => date.getDate());
   } ;
