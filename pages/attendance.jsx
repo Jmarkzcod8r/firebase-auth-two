@@ -5,8 +5,8 @@ const Login = ({ Junedays }) => {
   const January = [3, 5, 7, 9, 12, 14, 17, 22, 24, 27];
   const February = [1, 4, 6, 8, 9, 22];
   const March = [3, 6, 7, 9, 16, 18, 22, 27];
-  const Jun = [Junedays]
-  const def = [];
+  const Jun = Junedays
+  const def = [0];
 
   const months = [
     'January',
@@ -26,13 +26,35 @@ const Login = ({ Junedays }) => {
   const [currentMonth, setCurrentMonth] = useState(new Date().getMonth() + 1);
   const [hoveredDay, setHoveredDay] = useState(null);
 
+
   const getNumberOfDays = (month, year) => {
     const numberOfDays = new Date(year, month, 0).getDate();
-    const colorArray = month === 1 ? January : month === 2 ? February : month === 3 ? March  : month === 6 ? Jun : def || [];
+    // let colorArr = []
+    const colorArray = month === 1 ? January : month === 2 ? February : month === 3 ? March  : month === 6 ? Jun : def  ;
+    // const colorArr = Object.values(colorArray);
+    console.log(Array.isArray(colorArray));
+    // console.log('colorArr', colorArr)
+    // console.log(`Typeof colorArr`, typeof colorArr);
+
+    function checkNumberInArray(number, array) {
+
+      return array.includes(number);
+    }
 
     return Array.from({ length: numberOfDays }, (_, dayIndex) => {
       const day = dayIndex + 1;
-      const isColored = colorArray.indexOf(day) !== -1;
+      // console.log('day',day)
+      let isColored = false ;
+      try {
+        isColored = checkNumberInArray(day, colorArray);
+      } catch (error) {
+        console.log("There's an error:", error);
+        // Handle the error or perform any necessary actions
+        // You can also assign a default value to isColored if needed
+        isColored = false; // Default value when an error occurs
+      }
+
+      // console.log('isColored', isColored)
 
       const handleMouseEnter = () => {
         setHoveredDay(day);
@@ -45,7 +67,7 @@ const Login = ({ Junedays }) => {
       return (
         <div
           key={dayIndex}
-          className={`h-1 w-1 m-0.5 md:h-3 md:w-3 md:m-1 inline-block`}
+          className={`h-1 w-1 m-0.5 md:h-3 md:w-3 md:m-1 inline-block bg-violet-500`}
           style={{
             backgroundColor: isColored ? 'green' : 'white',
             color: isColored ? 'white' : 'black',
@@ -78,6 +100,7 @@ const Login = ({ Junedays }) => {
   // useEffect (() => {
   //   console.log('this June,', Jun)
   // } )
+  console.log('Junedays', [Junedays])
 
   return (
     <div className="w-screen justify-center">

@@ -100,6 +100,7 @@ export default function Index() {
     // console.log('mainlist true', mainlist);
     const arrayOfDates = mainlist.map(obj => new Date(obj.date));
     Junedays = arrayOfDates.filter(date => date.getMonth() === 5).map(date => date.getDate());
+    console.log(Junedays)
   } ;
 
 
@@ -542,7 +543,7 @@ export default function Index() {
   // const Junedays = 'hi'
   return (
     <div className="block relative">
-    {/* <div>{Junedays}</div> */}
+    <div>{Junedays}</div>
       <div className='absolute '>
       <Attendance Junedays={Junedays} />
       </div>
