@@ -543,7 +543,7 @@ export default function Index() {
   // const Junedays = 'hi'
   return (
     <div className="block relative">
-    <div>{Junedays}</div>
+    {/* <div>{Junedays}</div> */}
       <div className='absolute '>
       <Attendance Junedays={Junedays} />
       </div>

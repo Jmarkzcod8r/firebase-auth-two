@@ -32,7 +32,7 @@ const Login = ({ Junedays }) => {
     // let colorArr = []
     const colorArray = month === 1 ? January : month === 2 ? February : month === 3 ? March  : month === 6 ? Jun : def  ;
     // const colorArr = Object.values(colorArray);
-    console.log(Array.isArray(colorArray));
+    // console.log(Array.isArray(colorArray));
     // console.log('colorArr', colorArr)
     // console.log(`Typeof colorArr`, typeof colorArr);
 
@@ -100,7 +100,7 @@ const Login = ({ Junedays }) => {
   // useEffect (() => {
   //   console.log('this June,', Jun)
   // } )
-  console.log('Junedays', [Junedays])
+  // console.log('Junedays', [Junedays])
 
   return (
     <div className="w-screen justify-center">
