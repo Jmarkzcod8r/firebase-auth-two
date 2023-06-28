@@ -691,7 +691,7 @@ export default function Index() {
                 alt="Clear"
                 width={40}
                 height={40}
-                className="hover:scale-110 ; focus: "
+                className="hover:scale-110 rounded-sm; focus: "
                 style={buttonStyles}
               />
             </button>
