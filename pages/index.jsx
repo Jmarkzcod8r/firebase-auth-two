@@ -544,7 +544,7 @@ export default function Index() {
     <div className="block relative">
     {/* <div>{Junedays}</div> */}
       <div className='absolute '>
-      <Attendance Junedays={Junedays} />
+      {/* <Attendance Junedays={Junedays} /> */}
       </div>
       <button
         className=" right-0 p-2 mr-8 bg-blue-300 bg-opacity-40 rounded-full mt-2 mb-0 hover:scale-110 hover:bg-blue-400 drop-shadow-lg flex absolute "

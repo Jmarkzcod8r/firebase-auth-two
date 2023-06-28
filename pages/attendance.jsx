@@ -5,8 +5,8 @@ const Login = ({ Junedays }) => {
   const January = [3, 5, 7, 9, 12, 14, 17, 22, 24, 27];
   const February = [1, 4, 6, 8, 9, 22];
   const March = [3, 6, 7, 9, 16, 18, 22, 27];
-  const Jun = Junedays
-  const def = [0];
+  const Jun = [Junedays]
+  const def = [];
 
   const months = [
     'January',
@@ -28,12 +28,11 @@ const Login = ({ Junedays }) => {
 
   const getNumberOfDays = (month, year) => {
     const numberOfDays = new Date(year, month, 0).getDate();
-    const colorArray =
-      month === 1 ? January : month === 2 ? February : month === 3 ? March  :   month === 6 ? Jun  : def;
+    const colorArray = month === 1 ? January : month === 2 ? February : month === 3 ? March  : month === 6 ? Jun : def || [];
 
     return Array.from({ length: numberOfDays }, (_, dayIndex) => {
       const day = dayIndex + 1;
-      const isColored = colorArray.includes(day);
+      const isColored = colorArray.indexOf(day) !== -1;
 
       const handleMouseEnter = () => {
         setHoveredDay(day);
