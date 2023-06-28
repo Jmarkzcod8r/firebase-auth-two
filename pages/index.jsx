@@ -25,6 +25,8 @@ import { ForphotoURL } from "./Components/Usernav";
 import { thisbase } from "../functions global/thisbase";
 import { list } from "postcss";
 
+import Attendance from './attendance.jsx'
+
 export default function Index() {
   //------------ Declaring Varibles ----------------
 
@@ -50,29 +52,13 @@ export default function Index() {
   const [archive, setArchive] = useState(false);
   const [showList, setShowList] = useState(true);
 
+  const [isHighlighted, setIsHighlighted] = useState(false);
+  const [clientDates, setClientDates] = useState([]);
+
+  const [June, setJune] = useState([]);
+
   const router = useRouter();
 
-  // const Sweetshow =()=> {
-
-  //   var temp='';
-  //   const swaldata = Swal.fire({
-  //     title: 'Login Form',
-  //     html: `<input type="text" id="login" class="swal2-input" placeholder="Username">
-  //     <input type="password" id="password" class="swal2-input" placeholder="Password">`,
-  //     confirmButtonText: 'Sign in',
-  //     focusConfirm: false,
-  //     preConfirm: () => {
-  //       const login = Swal.getPopup().querySelector('#login').value
-  //       const password = Swal.getPopup().querySelector('#password').value
-  //       if (!login || !password) {
-  //         Swal.showValidationMessage(`Please enter login and password`)
-  //       }
-  //       return { login: login, password: password }
-  //     }
-  //   }).then((result) => {setFeedback(result);
-  //     },['']);
-
-  // }
 
   var thisbasez = thisbase();
   const api = axios.create({
@@ -81,14 +67,45 @@ export default function Index() {
   });
 
   async function getData() {
-    const data = await api.get(`/clients` + `/` + credemail);
-    let clientslist = data.data.clients;
-    setMainlist(data.data.clients.reverse());
-  }
+    console.log('getting data')
+    const data = await api.get(`/clients/${credemail}`)
+    // .then(data => {
+    console.log('data, ', data)
+    const clientslist = data.data.clients;
 
+    // const datesJune = data.data.clients.map((client) => client.date).map((date) => date.getDate)
+    // console.log('datesJune' , datesJune)
+    // console.log('clientslist', clientslist)
+
+    // const juneDates = data.data.clients
+    //   .map((client) => client.date)
+    //   .filter((date) => date.includes('Jun-'))
+    //   .map((date) => parseInt(date.substring(0, 2)))
+    //   // .reverse();
+
+    // console.log('junedates', juneDates);
+    // // setJune(juneDates);
+    // // const parsedJuneDates = JSON.parse(storedJuneDates);
+    // //   console.log('JuneDates:', parsedJuneDates);
+    // //   setJune(parsedJuneDates); }
+    // localStorage.setItem('JuneDates', JSON.stringify(juneDates));
+
+    setMainlist(clientslist.reverse());
+
+  }
   let emaillist = [];
 
+  let Junedays = []
+  if (mainlist) {
+    console.log('mainlist true', mainlist);
+    const arrayOfDates = mainlist.map(obj => new Date(obj.date));
+    Junedays = arrayOfDates.filter(date => date.getMonth() === 5).map(date => date.getDate());
+  } ;
+
+
   useEffect(() => {
+
+
     const ForphotoURL = async () => {
       const [userInfo] = await Getuserinfo();
       setPhotoURL(userInfo.photoURL);
@@ -119,8 +136,19 @@ export default function Index() {
     }
     Dbadd();
     Datenow();
+    // const storedJuneDates = localStorage.getItem('JuneDates');
+    // if (storedJuneDates) {
+    //   const parsedJuneDates = JSON.parse(storedJuneDates);
+    //   console.log('JuneDates:', parsedJuneDates);
+    //   setJune(parsedJuneDates); }
+    // } else {
     getData();
+
+    // }
   }, []); //------------> End of Use Effect
+
+
+
   const signOut = () => {
     localStorage.clear();
     router.push("/login");
@@ -487,10 +515,39 @@ export default function Index() {
     });
   };
 
+  // const handleHighlightClick = () => {
+  //   setIsHighlighted(!isHighlighted);
+  // };
+
+  const textareaClasses = `w-full p-2 rounded-lg ${
+    isHighlighted ? "bg-yellow-200 outline-none" : ""
+  }`;
+
+  const [textareaValue, setTextareaValue] = useState("");
+
+  const handleHighlightClick = () => {
+    const textarea = document.getElementById("tarea2");
+    const selectionStart = textarea.selectionStart;
+    const selectionEnd = textarea.selectionEnd;
+    const selectedText = log.substring(selectionStart, selectionEnd);
+    const highlightedText = `<span class="text-blue-500">${selectedText}</span>`;
+    const newLogValue =
+      log.substring(0, selectionStart) +
+      highlightedText +
+      log.substring(selectionEnd);
+    setLog(newLogValue);
+  };
+
+  const [attendanceState, setAttendanceState] = useState('Hello');
+  // const Junedays = 'hi'
   return (
-    <div className="block">
+    <div className="block relative">
+    {/* <div>{Junedays}</div> */}
+      <div className='absolute '>
+      <Attendance Junedays={Junedays} />
+      </div>
       <button
-        className=" right-0 p-2 mr-8 bg-blue-300 bg-opacity-40 rounded-full mt-2 mb-0 hover:scale-110 hover:bg-blue-400 drop-shadow-lg flex absolute m-2 bg-blue-300"
+        className=" right-0 p-2 mr-8 bg-blue-300 bg-opacity-40 rounded-full mt-2 mb-0 hover:scale-110 hover:bg-blue-400 drop-shadow-lg flex absolute "
         onClick={Swalfeed}
       >
         <p>&nbsp; Send Feedback &nbsp;</p>
@@ -515,9 +572,16 @@ export default function Index() {
         <Usernav />
       </div>
 
-      <div className="absolute top-16 flex left-[55%] bg-blue-4000 ">
+      <div className="absolute top-14 flex left-[65%] bg-blue-4000 ">
         Word Count:
-        <span id="show">{countwords}</span>
+        <span id="show">{countwords}</span>{" "}
+        <button
+          onClick={handleHighlightClick}
+          className="bg-blue-500 text-white ml-2 rounded-lg "
+        >
+
+        </button>
+        {/* <button onClick={handleHighlightClick} className="bg-blue-500 text-white p-2 rounded-lg mt-2">Highlight</button> */}
         {/* <Image src={Feedback} alt="Clear" width={40} height={40} className="hover:scale-110 z-1000"/> */}
       </div>
 
@@ -713,7 +777,7 @@ export default function Index() {
           onChange={Inchangelog}
           className={`${
             showList ? "lg:w-[85%]" : "lg:w-full"
-          } mt-2 md:mt-0 w-[100%]  h-[20em] md:h-full lg:h-full relative flex bg-white bg-opacity-80 backdrop-blur-lg drop-shadow-lg p-4 justify-center  md:mr-9`}
+          } mt-2 md:mt-0 w-[100%]  h-[20em] md:h-full lg:h-full relative flex bg-white bg-opacity-80 backdrop-blur-lg drop-shadow-lg p-4 justify-center  md:mr-9 ${textareaClasses}`}
           // className="lg:w-[37.5%] mt-2 md:mt-0 w-[100%]  h-[20em] md:h-full lg:h-full relative flex bg-white bg-opacity-80 backdrop-blur-lg drop-shadow-lg p-4 justify-center  md:mr-9"
         />
         {showList ? (
@@ -747,6 +811,7 @@ export default function Index() {
           <div></div>
         )}
       </div>
+
     </div>
   );
 }
