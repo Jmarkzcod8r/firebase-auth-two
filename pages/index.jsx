@@ -769,6 +769,7 @@ export default function Index() {
               ))}
           </div>
         </div>
+
         <textarea
           id="tarea2"
           type="text"
