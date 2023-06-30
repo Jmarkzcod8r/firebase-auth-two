@@ -21,6 +21,7 @@ import Info from "./Icons/info.png";
 import Blank from "./Icons/Blank.png";
 import Feedback from "./Icons/feedback.png";
 import changes from "./Icons/changes.png";
+import Bgpic from "./Icons/Bgpic.jpg";
 import { ForphotoURL } from "./Components/Usernav";
 import { thisbase } from "../functions global/thisbase";
 import { list } from "postcss";
@@ -95,12 +96,45 @@ export default function Index() {
   }
   let emaillist = [];
 
+
+  let Jandays = []
+  let Febdays = []
+  let Mardays = []
+  let Aprdays = []
+  let Maydays = []
+
   let Junedays = []
+
+  let Juldays = []
+  let Augdays = []
+  let Sepdays = []
+  let Octdays = []
+  let Novdays = []
+  let Decdays = []
+
   if (mainlist) {
-    // console.log('mainlist true', mainlist);
-    const arrayOfDates = mainlist.map(obj => new Date(obj.date));
+    const arrayOfDates = mainlist
+      .map(obj => new Date(obj.date))
+      .filter(date => date.getFullYear() === 2023);
+
+
+    Jandays = arrayOfDates.filter(date => date.getMonth() === 0).map(date => date.getDate());
+    Febdays = arrayOfDates.filter(date => date.getMonth() === 1).map(date => date.getDate());
+    Mardays = arrayOfDates.filter(date => date.getMonth() === 2).map(date => date.getDate());
+    Aprdays = arrayOfDates.filter(date => date.getMonth() === 3).map(date => date.getDate());
+    Maydays = arrayOfDates.filter(date => date.getMonth() === 4).map(date => date.getDate());
+
     Junedays = arrayOfDates.filter(date => date.getMonth() === 5).map(date => date.getDate());
-    console.log(Junedays)
+
+    Juldays = arrayOfDates.filter(date => date.getMonth() === 6).map(date => date.getDate());
+    Augdays = arrayOfDates.filter(date => date.getMonth() === 7).map(date => date.getDate());
+    Sepdays = arrayOfDates.filter(date => date.getMonth() === 8).map(date => date.getDate());
+    Octdays = arrayOfDates.filter(date => date.getMonth() === 9).map(date => date.getDate());
+    Novdays = arrayOfDates.filter(date => date.getMonth() === 10).map(date => date.getDate());
+    Decdays = arrayOfDates.filter(date => date.getMonth() === 11).map(date => date.getDate());
+
+    console.log(`Junedays`,Junedays)
+    console.log(`Jandays`, Jandays)
   } ;
 
 
@@ -545,7 +579,11 @@ export default function Index() {
     <div className="block relative">
     {/* <div>{Junedays}</div> */}
       <div className='absolute '>
-      <Attendance Junedays={Junedays} />
+      <Attendance Jandays={Jandays} Febdays={Febdays} Mardays={Mardays} Aprdays={Aprdays} Maydays={Maydays}
+                  Junedays={Junedays} Juldays={Juldays} Augdays={Augdays} Sepdays={Sepdays} Octdays={Octdays}
+                  Novdays={Novdays} Decdays={Decdays}
+
+      />
       </div>
       <button
         className=" right-0 p-2 mr-8 bg-blue-300 bg-opacity-40 rounded-full mt-2 mb-0 hover:scale-110 hover:bg-blue-400 drop-shadow-lg flex absolute "

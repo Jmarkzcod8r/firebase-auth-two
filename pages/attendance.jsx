@@ -1,11 +1,22 @@
+import { defaults } from 'autoprefixer';
 import React, { useEffect, useState } from 'react';
 
 
-const Login = ({ Junedays }) => {
-  const January = [3, 5, 7, 9, 12, 14, 17, 22, 24, 27];
-  const February = [1, 4, 6, 8, 9, 22];
-  const March = [3, 6, 7, 9, 16, 18, 22, 27];
+const Login = ({ Jandays, Febdays, Mardays, Aprdays, Maydays, Junedays ,Juldays, Augdays,
+                  Sepdays, Octdays, Novdays, Decdays}) => {
+  // const January = [3, 5, 7, 9, 12, 14, 17, 22, 24, 27];
+  const January = Jandays
+  const February = Febdays
+  const March =  Mardays
+  const April = Aprdays
+  const May = Maydays
   const Jun = Junedays
+  const July = Juldays
+  const August = Augdays
+  const September = Sepdays
+  const October = Octdays
+  const November = Novdays
+  const December = Decdays
   const def = [0];
 
   const months = [
@@ -30,7 +41,9 @@ const Login = ({ Junedays }) => {
   const getNumberOfDays = (month, year) => {
     const numberOfDays = new Date(year, month, 0).getDate();
     // let colorArr = []
-    const colorArray = month === 1 ? January : month === 2 ? February : month === 3 ? March  : month === 6 ? Jun : def  ;
+    const colorArray = month === 1 ? January : month === 2 ? February : month === 3 ? March : month === 4 ? April
+                     : month === 5 ? May : month === 6 ? Junedays : month === 7 ? July : month === 8 ? August
+                     : month === 9 ? September : month === 10 ? October : month === 11 ? November : month === 12 ? December : def ;
     // const colorArr = Object.values(colorArray);
     // console.log(Array.isArray(colorArray));
     // console.log('colorArr', colorArr)
