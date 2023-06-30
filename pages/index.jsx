@@ -26,7 +26,7 @@ import { ForphotoURL } from "./Components/Usernav";
 import { thisbase } from "../functions global/thisbase";
 import { list } from "postcss";
 
-import Attendance from './attendance.jsx'
+import Attendance from "./attendance.jsx";
 
 export default function Index() {
   //------------ Declaring Varibles ----------------
@@ -60,7 +60,6 @@ export default function Index() {
 
   const router = useRouter();
 
-
   var thisbasez = thisbase();
   const api = axios.create({
     // baseURL: "https://firebase-auth-two-new-jmarkzcod8r.vercel.app/api",
@@ -68,10 +67,10 @@ export default function Index() {
   });
 
   async function getData() {
-    console.log('getting data')
-    const data = await api.get(`/clients/${credemail}`)
+    console.log("getting data");
+    const data = await api.get(`/clients/${credemail}`);
     // .then(data => {
-    console.log('data, ', data)
+    console.log("data, ", data);
     const clientslist = data.data.clients;
 
     // const datesJune = data.data.clients.map((client) => client.date).map((date) => date.getDate)
@@ -92,55 +91,73 @@ export default function Index() {
     // localStorage.setItem('JuneDates', JSON.stringify(juneDates));
 
     setMainlist(clientslist.reverse());
-
   }
   let emaillist = [];
 
+  let Jandays = [];
+  let Febdays = [];
+  let Mardays = [];
+  let Aprdays = [];
+  let Maydays = [];
 
-  let Jandays = []
-  let Febdays = []
-  let Mardays = []
-  let Aprdays = []
-  let Maydays = []
+  let Junedays = [];
 
-  let Junedays = []
-
-  let Juldays = []
-  let Augdays = []
-  let Sepdays = []
-  let Octdays = []
-  let Novdays = []
-  let Decdays = []
+  let Juldays = [];
+  let Augdays = [];
+  let Sepdays = [];
+  let Octdays = [];
+  let Novdays = [];
+  let Decdays = [];
 
   if (mainlist) {
     const arrayOfDates = mainlist
-      .map(obj => new Date(obj.date))
-      .filter(date => date.getFullYear() === 2023);
+      .map((obj) => new Date(obj.date))
+      .filter((date) => date.getFullYear() === 2023);
 
+    Jandays = arrayOfDates
+      .filter((date) => date.getMonth() === 0)
+      .map((date) => date.getDate());
+    Febdays = arrayOfDates
+      .filter((date) => date.getMonth() === 1)
+      .map((date) => date.getDate());
+    Mardays = arrayOfDates
+      .filter((date) => date.getMonth() === 2)
+      .map((date) => date.getDate());
+    Aprdays = arrayOfDates
+      .filter((date) => date.getMonth() === 3)
+      .map((date) => date.getDate());
+    Maydays = arrayOfDates
+      .filter((date) => date.getMonth() === 4)
+      .map((date) => date.getDate());
 
-    Jandays = arrayOfDates.filter(date => date.getMonth() === 0).map(date => date.getDate());
-    Febdays = arrayOfDates.filter(date => date.getMonth() === 1).map(date => date.getDate());
-    Mardays = arrayOfDates.filter(date => date.getMonth() === 2).map(date => date.getDate());
-    Aprdays = arrayOfDates.filter(date => date.getMonth() === 3).map(date => date.getDate());
-    Maydays = arrayOfDates.filter(date => date.getMonth() === 4).map(date => date.getDate());
+    Junedays = arrayOfDates
+      .filter((date) => date.getMonth() === 5)
+      .map((date) => date.getDate());
 
-    Junedays = arrayOfDates.filter(date => date.getMonth() === 5).map(date => date.getDate());
+    Juldays = arrayOfDates
+      .filter((date) => date.getMonth() === 6)
+      .map((date) => date.getDate());
+    Augdays = arrayOfDates
+      .filter((date) => date.getMonth() === 7)
+      .map((date) => date.getDate());
+    Sepdays = arrayOfDates
+      .filter((date) => date.getMonth() === 8)
+      .map((date) => date.getDate());
+    Octdays = arrayOfDates
+      .filter((date) => date.getMonth() === 9)
+      .map((date) => date.getDate());
+    Novdays = arrayOfDates
+      .filter((date) => date.getMonth() === 10)
+      .map((date) => date.getDate());
+    Decdays = arrayOfDates
+      .filter((date) => date.getMonth() === 11)
+      .map((date) => date.getDate());
 
-    Juldays = arrayOfDates.filter(date => date.getMonth() === 6).map(date => date.getDate());
-    Augdays = arrayOfDates.filter(date => date.getMonth() === 7).map(date => date.getDate());
-    Sepdays = arrayOfDates.filter(date => date.getMonth() === 8).map(date => date.getDate());
-    Octdays = arrayOfDates.filter(date => date.getMonth() === 9).map(date => date.getDate());
-    Novdays = arrayOfDates.filter(date => date.getMonth() === 10).map(date => date.getDate());
-    Decdays = arrayOfDates.filter(date => date.getMonth() === 11).map(date => date.getDate());
-
-    console.log(`Junedays`,Junedays)
-    console.log(`Jandays`, Jandays)
-  } ;
-
+    console.log(`Junedays`, Junedays);
+    console.log(`Jandays`, Jandays);
+  }
 
   useEffect(() => {
-
-
     const ForphotoURL = async () => {
       const [userInfo] = await Getuserinfo();
       setPhotoURL(userInfo.photoURL);
@@ -181,8 +198,6 @@ export default function Index() {
 
     // }
   }, []); //------------> End of Use Effect
-
-
 
   const signOut = () => {
     localStorage.clear();
@@ -392,13 +407,37 @@ export default function Index() {
 
   const Delete = async (e) => {
     e.preventDefault();
-    try {
-      await api.delete(`/clients/${_id}`);
-    } catch (err) {
-      console.log("err:", err);
-    }
-    Clear();
-    getData();
+
+    // Display a confirmation popup
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You won\'t be able to revert this!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, cancel!',
+      reverseButtons: true,
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          await api.delete(`/clients/${_id}`);
+          // Handle successful deletion, e.g., show a success message
+          Clear();
+          getData();
+          Swal.fire('Deleted!', 'The entry has been deleted.', 'success');
+        } catch (err) {
+          console.log('err:', err);
+          // Handle error, e.g., show an error message
+          Swal.fire('Error', 'An error occurred while deleting the client.', 'error');
+        }
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        // Handle cancellation, e.g., show a message
+        Swal.fire('Cancelled', 'The deletion has been cancelled.', 'info');
+      }
+    });
+
+
+
   };
 
   const Testfunction = async (e, resv) => {
@@ -573,17 +612,26 @@ export default function Index() {
     setLog(newLogValue);
   };
 
-  const [attendanceState, setAttendanceState] = useState('Hello');
+  const [attendanceState, setAttendanceState] = useState("Hello");
   // const Junedays = 'hi'
   return (
     <div className="block relative">
-    {/* <div>{Junedays}</div> */}
-      <div className='absolute '>
-      <Attendance Jandays={Jandays} Febdays={Febdays} Mardays={Mardays} Aprdays={Aprdays} Maydays={Maydays}
-                  Junedays={Junedays} Juldays={Juldays} Augdays={Augdays} Sepdays={Sepdays} Octdays={Octdays}
-                  Novdays={Novdays} Decdays={Decdays}
-
-      />
+      {/* <div>{Junedays}</div> */}
+      <div className="absolute ">
+        <Attendance
+          Jandays={Jandays}
+          Febdays={Febdays}
+          Mardays={Mardays}
+          Aprdays={Aprdays}
+          Maydays={Maydays}
+          Junedays={Junedays}
+          Juldays={Juldays}
+          Augdays={Augdays}
+          Sepdays={Sepdays}
+          Octdays={Octdays}
+          Novdays={Novdays}
+          Decdays={Decdays}
+        />
       </div>
       <button
         className=" right-0 p-2 mr-8 bg-blue-300 bg-opacity-40 rounded-full mt-2 mb-0 hover:scale-110 hover:bg-blue-400 drop-shadow-lg flex absolute "
@@ -617,9 +665,7 @@ export default function Index() {
         <button
           onClick={handleHighlightClick}
           className="bg-blue-500 text-white ml-2 rounded-lg "
-        >
-
-        </button>
+        ></button>
         {/* <button onClick={handleHighlightClick} className="bg-blue-500 text-white p-2 rounded-lg mt-2">Highlight</button> */}
         {/* <Image src={Feedback} alt="Clear" width={40} height={40} className="hover:scale-110 z-1000"/> */}
       </div>
@@ -851,7 +897,6 @@ export default function Index() {
           <div></div>
         )}
       </div>
-
     </div>
   );
 }
