@@ -16,6 +16,7 @@ import { thisbase } from "../functions global/thisbase";
 import axios from "axios";
 
 import Bgpic from "./Icons/Bgpic.jpg";
+import DevJourn from "./Icons/DevJourn2nobg2.png";
 
 export default function Login () {
 
@@ -163,15 +164,26 @@ export default function Login () {
     // }
   return (
     <div className='w-screen h-screen flex flex-col justify-center items-center bg-white relative'>
-
+      <div className='absolute top-[400px] left-10  z-10'>
       <Image
-        className='absolute top-0 left-0 w-screen h-screen object-cover'
+          className='w-[100px] '
+          src={DevJourn}
+          alt = ''
+
+          width='500'
+          height='100'
+        />
+        </div>
+      <Image
+        className='relative top-0 left-0 w-screen h-screen object-cover'
         src={Bgpic}
+        // src={Bgpic}
 
         // src={"https://cdn.pixabay.com/photo/2018/05/12/19/20/freiberg-3394376_1280.jpg"}
         // width="300" height="300"
         alt='  '  />
-        <div className='absolute top-0 left-0 right-0 bottom-0 bg-black bg-opacity-50'></div>
+
+        <div className='absolute top-0 left-0 right-0 bottom-0 bg-black bg-opacity-10 z-15'></div>
 
       <div className='absolute z-10 flex justify-center intems-center border border-gray-300 rounded-full
         w-60  m-2  p-2 bg-white bg-opacity-60 cursor-pointer hover:shadow-md hover:bg-opacity-100     '
