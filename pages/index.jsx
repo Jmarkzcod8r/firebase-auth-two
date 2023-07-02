@@ -615,7 +615,7 @@ export default function Index() {
   const [attendanceState, setAttendanceState] = useState("Hello");
   // const Junedays = 'hi'
   return (
-    <div className="block relative  overflow-hidden">
+    <div className="block relative  overflow-x-hidden">
       {/* <div>{Junedays}</div> */}
       <div className="relative sm:absolute  w-screen ">
         <Attendance
