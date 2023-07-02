@@ -116,18 +116,22 @@ const Login = ({ Jandays, Febdays, Mardays, Aprdays, Maydays, Junedays ,Juldays,
   // console.log('Junedays', [Junedays])
 
   return (
-    <div className="w-screen justify-center">
-      <div className="flex overflow-x-scroll md:overflow-x-auto justify-center">
-        <div className="w-[70em] h-auto m-2 justify-center text-center">
+    <div className="flex relative w-screen ">
+
+      <div className="flex w-screen absolute justify-center ">
+        <div className="w-full h-auto relative  justify-center text-center">
           <div>{months[currentMonth - 1]} </div>
           <div className="justify-around block">{getNumberOfDays(currentMonth, 2023)}</div>
-          <button className="mr-2 bg-gray-200 p-1 rounded-md hover:scale-110" onClick={handlePreviousMonth}>
+
+          <button className=" bg-gray-200 p-1 mx-7 rounded-md hover:scale-110" onClick={handlePreviousMonth}>
             Previous
           </button>
-          <button className="mr-2 bg-gray-300 pt-1 pb-1 px-2 rounded-md hover:scale-110" onClick={handleNextMonth}>Next</button>
+          <button className=" bg-gray-300 pt-1 pb-1 mx-7 px-2 rounded-md hover:scale-110" onClick={handleNextMonth}>Next</button>
+
         </div>
       </div>
-      <div className="flex justify-center mt-4"></div>
+      {/* <div className="flex justify-center mt-4"></div> */}
+
     </div>
   );
 };

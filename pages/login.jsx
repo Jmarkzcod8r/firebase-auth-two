@@ -165,11 +165,14 @@ export default function Login () {
   return (
     <div className='h-auto w-auto flex flex-col justify-center items-center bg-blue-300 relative'>
 
-      <div className='absolute  z-10 hidden sm:block
-                sm:left-[-30px] md:left-[50px]
-      scale-[50%] sm:scale-[70%] md:scale-90    lg:scale-100
-      top-[200px]     sm:top-[300px] md:top-[400px] lg:top-[500px] xl:top-[600px] 2xl:top-[700px]
-      '>
+      <div
+      //       className='absolute  z-10 sm:block
+      //             sm:left-[-30px] md:left-[50px]
+      // scale-[50%] sm:scale-[70%] md:scale-90    lg:scale-100
+      // top-[150px] sm:top-[300px] md:top-[400px] lg:top-[500px] xl:top-[600px] 2xl:top-[700px]'
+            className='absolute  z-10 sm:block m-6
+                  sm:justify-center  top-[150px]'
+      >
   <Image
     className='  '
     src={DevJourn}
@@ -182,14 +185,14 @@ export default function Login () {
   />
         </div>
 
-      <Image
+      {/* <Image
         className='relative top-0 left-0 h-screen'
         src={Bgpic}
         fill={true}
-
-        // src={Bgpic}
-
-        // src={"https://cdn.pixabay.com/photo/2018/05/12/19/20/freiberg-3394376_1280.jpg"}
+        alt='  '  /> */}
+      <img
+        className='relative top-0 left-0 h-screen w-screen'
+        src={"https://cdn.pixabay.com/photo/2018/05/12/19/20/freiberg-3394376_1280.jpg"}
         // width="300" height="300"
         alt='  '  />
 

@@ -70,7 +70,7 @@ export default function Index() {
     console.log("getting data");
     const data = await api.get(`/clients/${credemail}`);
     // .then(data => {
-    // console.log("data, ", data);
+    console.log("data, ", data);
     const clientslist = data.data.clients;
 
     // const datesJune = data.data.clients.map((client) => client.date).map((date) => date.getDate)
@@ -615,9 +615,9 @@ export default function Index() {
   const [attendanceState, setAttendanceState] = useState("Hello");
   // const Junedays = 'hi'
   return (
-    <div className="block relative">
+    <div className="block relative  overflow-hidden">
       {/* <div>{Junedays}</div> */}
-      <div className="absolute ">
+      <div className="relative sm:absolute  w-screen ">
         <Attendance
           Jandays={Jandays}
           Febdays={Febdays}
@@ -633,8 +633,9 @@ export default function Index() {
           Decdays={Decdays}
         />
       </div>
+
       <button
-        className=" right-0 p-2 mr-8 bg-blue-300 bg-opacity-40 rounded-full mt-2 mb-0 hover:scale-110 hover:bg-blue-400 drop-shadow-lg flex absolute "
+        className=" right-0 p-2 mr-8 top-[6em] sm:top-0 bg-blue-300 bg-opacity-40 rounded-full mt-2 mb-0 hover:scale-110 hover:bg-blue-400 drop-shadow-lg flex relative sm:absolute "
         onClick={Swalfeed}
       >
         <p>&nbsp; Send Feedback &nbsp;</p>
@@ -655,11 +656,7 @@ export default function Index() {
         alt=" "
       />
 
-      <div id="Unav" className="h-20">
-        <Usernav />
-      </div>
-
-      <div className="absolute top-14 flex left-[65%] bg-blue-4000 ">
+      <div className="relative sm:absolute top-[3em] sm:top-14 flex left-[65%] bg-blue-4000 ">
         Word Count:
         <span id="show">{countwords}</span>{" "}
         <button
@@ -670,11 +667,17 @@ export default function Index() {
         {/* <Image src={Feedback} alt="Clear" width={40} height={40} className="hover:scale-110 z-1000"/> */}
       </div>
 
+
+      <div id="Unav" className="h-20">
+        <Usernav />
+      </div>
+
+
       <div className=" sm:block md:flex md:flex-row z-1000 relative w-full top-0  pt-3 lg:h-screen h-auto md:h-screen ">
         <div
           className="smm:w-full md:w-[30em] relative flex flex-col  content-center items-center lg:p-2 sm:mr-7 lg:ml-4
                        bg-white bg-opacity-80 backdrop-blue-lg rounded-xl drop-shadow-lg space-y-2"
-          // class="space-y-2"
+
         >
           <div className="relative  grid w-[100%] grid-cols-5 justify-self-auto items-end p-1 mr-0 pb-4">
             <div className="col-span-2  top-0 relative mb-16 ml-3">
@@ -706,8 +709,7 @@ export default function Index() {
                 className="hover:scale-110"
               />
             </button>
-            {/* <button onClick={Swalfeed} className="mx-2"><Image src={Info} alt="Clear" width={40} height={40} className="hover:scale-110"/></button> */}
-            <button onClick={Clear} title="Clear" className="mx-2">
+           <button onClick={Clear} title="Clear" className="mx-2">
               <Image
                 src={Clr}
                 alt="Clear"
@@ -753,8 +755,7 @@ export default function Index() {
           </div>
 
           <div className=" p-2">
-            {/* {name} */}
-            {/* {credemail} */}
+
             <button onClick={toggleList} title="Hide/Show" className="mr-2">
               <Image
                 src={Hide}
