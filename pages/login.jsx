@@ -163,20 +163,30 @@ export default function Login () {
     //   localStorage.setItem('email',email)
     // }
   return (
-    <div className='w-screen h-screen flex flex-col justify-center items-center bg-white relative'>
-      <div className='absolute top-[400px] left-10  z-10'>
-      <Image
-          className='w-[100px] '
-          src={DevJourn}
-          alt = ''
+    <div className='h-auto w-auto flex flex-col justify-center items-center bg-blue-300 relative'>
 
-          width='500'
-          height='100'
-        />
+      <div className='absolute  z-10 hidden sm:block
+                sm:left-[-30px] md:left-[50px]
+      scale-[50%] sm:scale-[70%] md:scale-90    lg:scale-100
+      top-[200px]     sm:top-[300px] md:top-[400px] lg:top-[500px] xl:top-[600px] 2xl:top-[700px]
+      '>
+  <Image
+    className='  '
+    src={DevJourn}
+    alt=''
+    // fill
+    // sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw'
+    // layout='responsive'
+    width={500}
+    height={100}
+  />
         </div>
+
       <Image
-        className='relative top-0 left-0 w-screen h-screen object-cover'
+        className='relative top-0 left-0 h-screen'
         src={Bgpic}
+        fill={true}
+
         // src={Bgpic}
 
         // src={"https://cdn.pixabay.com/photo/2018/05/12/19/20/freiberg-3394376_1280.jpg"}
