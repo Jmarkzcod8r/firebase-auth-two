@@ -70,7 +70,7 @@ export default function Index() {
     console.log("getting data");
     const data = await api.get(`/clients/${credemail}`);
     // .then(data => {
-    console.log("data, ", data);
+    // console.log("data, ", data);
     const clientslist = data.data.clients;
 
     // const datesJune = data.data.clients.map((client) => client.date).map((date) => date.getDate)
