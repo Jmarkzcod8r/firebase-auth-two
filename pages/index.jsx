@@ -782,7 +782,7 @@ export default function Index() {
             </button>
             <button
               onClick={AddtoArchive}
-              title="Add to Archive"
+              title={`${archive ? "Add to Archives" : "Save/Update Archive File" }`}
               className={`${archive ? "shine" : ""} mr-2`}
             >
               <Image
