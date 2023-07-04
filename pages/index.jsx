@@ -700,7 +700,7 @@ export default function Index() {
           </div>
 
           <div className="flex flex-row bg-blue-200 px-6 py-2 rounded-full">
-            <button onClick={Delete} title="Delete" className="mr-2">
+            <button onClick={Delete} title="Delete" className="mr-2 rounded-lg bg-blue-200">
               <Image
                 src={Del}
                 alt="Clear"
@@ -756,7 +756,7 @@ export default function Index() {
 
           <div className=" p-2">
 
-            <button onClick={toggleList} title="Hide/Show" className="mr-2">
+            <button onClick={toggleList} title="Hide/Show" className="mr-2 rounded-lg bg-blue-200">
               <Image
                 src={Hide}
                 alt="Clear"
@@ -766,10 +766,11 @@ export default function Index() {
               />
             </button>
 
+
             <button
               onClick={toggleArchive}
               title="Show Archive Files"
-              className={`${archive ? "shine" : ""} mr-2`}
+              className={`${archive ? "shine" : ""} mr-2 rounded-lg bg-blue-200`}
             >
               <Image
                 src={Archive}
@@ -783,7 +784,7 @@ export default function Index() {
             <button
               onClick={AddtoArchive}
               title={`${archive ? "Save/Update Archive File" : "Add to Archives" }`}
-              className={`${archive ? "shine" : ""} mr-2`}
+              className={`${archive ? "shine" : ""} mr-2 rounded-lg bg-blue-200 `}
             >
               <Image
                 src={Add}
@@ -796,7 +797,7 @@ export default function Index() {
             <button
               onClick={RemovedFromArchive}
               title="Remove from Archive"
-              className={`${archive ? "shine" : ""} mr-2`}
+              className={`${archive ? "shine" : ""} mr-2 rounded-lg bg-blue-200`}
             >
               <Image
                 src={shredder}
@@ -809,7 +810,7 @@ export default function Index() {
             <button
               onClick={Rename}
               title="Rename"
-              className={archive ? "shine mr-2" : "mr-2"}
+              className={archive ? "shine mr-2 rounded-lg bg-blue-200" : "mr-2 rounded-lg bg-blue-200"}
             >
               <Image
                 src={changes}
