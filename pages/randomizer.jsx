@@ -68,7 +68,7 @@ export default function Home() {
           value={inputValue}
           onChange={handleInputChange}
           placeholder="Add an item"
-          className="inline-block mr-2 p-2 w-[9em] border border-gray-300"
+          className="inline-block mr-2 p-2 w-[9em] sm:w-[20em] border border-gray-300"
         />
         <button type="submit" className="inline-block p-2 bg-blue-500 text-white">
           Add
