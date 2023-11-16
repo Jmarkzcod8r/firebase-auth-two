@@ -11,9 +11,10 @@ export default async function handler(req, res) {
   const { ClientID } = req.query;
   // I think I need to learn  more about these switch-cases.
   switch (method) {
+
     case "PUT":
       try {
-        
+
         // if (!name && !email) return "inavalid data";
         await Client.updateOne({ _id: ClientID }, { log, desc, comments, name, date, highlight});
         res.status(200).json({ success: true , desc: 'nice'});
@@ -36,33 +37,33 @@ export default async function handler(req, res) {
       // case "GET":
       //   try {
       //     if (ClientID === 'logdatas'){
-      //       const data = 
+      //       const data =
       //       await Client.find({})
       //      res.status(200).json({ success: true , data: data});
       //         };
       //         if (ClientID === 'credemails'){
-      //           const data = 
+      //           const data =
       //           await Credemail.find({})
       //          res.status(200).json({ success: true , data: data});
       //             };
       //     // if (!name && !email) return "inavalid data";
-         
+
       //   } catch (error) {
       //     console.log(error);
       //     res.status(500).json({ clientid: ClientID,success: false, error });
       //   }
       //   break;
 
-        case "GET": //---> when 'axios.get' is called in our frontend, the system 
+        case "GET": //---> when 'axios.get' is called in our frontend, the system
                 // goes to this .. GET & FIND
       try {
         const clients = await Client.find({ 'credemail':
           ClientID}); //---> clients is an objects
-  // Deleting below produces an error: API resolved without 
+  // Deleting below produces an error: API resolved without
   // sending a response for /api/clients, this may result in stalled requests.
         res.status(200) //---> The '.status' in 'res.status' ig ignorable.
         // as res in integrated with data received. res & data go in twined.
-                      .json({clients });
+                      .json({success: true,clients });
         // res.json(')
       } catch (error) {
         console.log(error);
@@ -72,21 +73,21 @@ export default async function handler(req, res) {
       break;
 
 
-  
-        case "POST": //---> when 'axios.post' is called in our frontend, the system 
+
+        case "POST": //---> when 'axios.post' is called in our frontend, the system
         // goes to this .. POST & CREATE ... IF-THROW
-    
+
           try {
             const { log, desc, comments, name, date, highlight, credemail} = req.body;
-    
-            // const Clientnew = 
+
+            // const Clientnew =
             //       mongoose.models.log
             //     || mongoose.model(log, ClientSchema);
             // new Clientnew({log}).save()
-            // await 
+            // await
             // // new Credemail ({credemail}).save();
-    
-    
+
+
             // // if (!name && !email) throw "invalid data";
             // // const client = await Client.create({ name, _id});
             // // const client = await Client.create({log, desc, comments, name});
@@ -99,8 +100,8 @@ export default async function handler(req, res) {
             //   var thiz = 'that'
             // }
             const CredemailSchema = new mongoose.Schema({
-              // _id: mongoose.Schema.Types.ObjectId, //---> This is considerable 
-              firts:''   , 
+              // _id: mongoose.Schema.Types.ObjectId, //---> This is considerable
+              firts:''   ,
               credemail: String,
               // log: String,
               // desc: String,
@@ -108,24 +109,24 @@ export default async function handler(req, res) {
               // name: String,
               // date: String,
               // highlight: String,
-             
+
             });
-            
-            
-            const Model = 
+
+
+            const Model =
                       mongoose.models[ClientID]
                       ||
-                       mongoose.model({ClientID}, CredemailSchema);      
-            
+                       mongoose.model({ClientID}, CredemailSchema);
+
             await new Model ({credemail}).save()
 
 
 
 
 
-            
-    
-    
+
+
+
             res.status(200).json({success:true, body:req.body , })
           } catch (error) {
             console.log(error);
@@ -133,16 +134,16 @@ export default async function handler(req, res) {
           };
           // await Client.create({ 'name':'bbbbbccctestname' });
           break;
-      
-        
+
+
 
 
                   }
 
-  
 
 
 
 
-  
+
+
 }

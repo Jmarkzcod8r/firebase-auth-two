@@ -8,12 +8,12 @@ import { Getuserinfo } from "../../../functions global/Getuserinfo";
 import { useEffect } from "react";
 import mongoose from "mongoose";
 import Credemail from "../mongodb/Credemail";
-// const express = require ('express') 
+// const express = require ('express')
 // const app = express()
 // app.use(express.json())
 
 
-// const express = require ('express') 
+// const express = require ('express')
 // const app = express()
 // app.use(express.json())
 
@@ -75,7 +75,7 @@ export default async function handler(req, res) {
 
 
 // const ClientSchema = new mongoose.Schema({
-//   // _id: mongoose.Schema.Types.ObjectId, //---> This is considerable 
+//   // _id: mongoose.Schema.Types.ObjectId, //---> This is considerable
 //   log: String,
 //   desc: String,
 //   comments:String,
@@ -108,35 +108,35 @@ export default async function handler(req, res) {
   const {feedback, date, credemail} = req.body;
   switch (method) {
 
-  //   case "GET": //---> when 'axios.get' is called in our frontend, the system 
-  //               // goes to this .. GET & FIND
-  //     try {
-  //       const clients = await Client.find({ 
-  //         }); //---> clients is an objects
-  // // Deleting below produces an error: API resolved without 
-  // // sending a response for /api/clients, this may result in stalled requests.
-  //       res.status(200) //---> The '.status' in 'res.status' ig ignorable.
-  //       // as res in integrated with data received. res & data go in twined.
-  //                     .json({clients });
-  //       // res.json(')
-  //     } catch (error) {
-  //       console.log(error);
-  //       res.status(500).json({ success: false, error });
-  //       // console.log('sorry');
-  //     }
-  //     break;
+    case "GET": //---> when 'axios.get' is called in our frontend, the system
+                // goes to this .. GET & FIND
+      try {
+        const clients = await ModelFeed.find({
+          }); //---> clients is an objects
+  // Deleting below produces an error: API resolved without
+  // sending a response for /api/clients, this may result in stalled requests.
+        res.status(200) //---> The '.status' in 'res.status' ig ignorable.
+        // as res in integrated with data received. res & data go in twined.
+                      .json({clients });
+        // res.json(')
+      } catch (error) {
+        console.log(error);
+        res.status(500).json({ success: false, error });
+        // console.log('sorry');
+      }
+      break;
 
-    case "POST": //---> when 'axios.post' is called in our frontend, the system 
+    case "POST": //---> when 'axios.post' is called in our frontend, the system
     // goes to this .. POST & CREATE ... IF-THROW
 
       try {
         const { feedback,date, credemail } = req.body;
 
-        // const Clientnew = 
+        // const Clientnew =
         //       mongoose.models.log
         //     || mongoose.model(log, ClientSchema);
         // new Clientnew({log}).save()
-        await 
+        await
         new ModelFeed({feedback,date, credemail }).save();
         // calling res gives a response to the screen.
         // await Client.save()
@@ -145,8 +145,8 @@ export default async function handler(req, res) {
         } else {
           var status = 'Uh-Oh. Something seems to be wrong. Try again later.'
         }
-        
-        
+
+
 
 
         res.status(200).json({success:true, body:req.body , status})
@@ -157,6 +157,6 @@ export default async function handler(req, res) {
       // await Client.create({ 'name':'bbbbbccctestname' });
       break;
   };
-  
- 
+
+
 }
