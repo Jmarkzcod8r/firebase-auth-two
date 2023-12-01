@@ -1,3 +1,5 @@
+# Try
+
 # # import re
 
 # # s = "Black, blue and browne ands"
@@ -35,7 +37,7 @@
 # #     def earliestFullBloom(self, plantTime, growTime):
 # #         self.planttime = plantTime
 # #         self.growTime = growTime
-        
+
 # #     def sum_planttime(plantTime):
 # #         sum = 0
 # #         for x in plantTime:
@@ -160,7 +162,7 @@
 #             # lonely = a
 #             i=i+1
 #     outlist.append(i)
-# print('outlist ', outlist) 
+# print('outlist ', outlist)
 # lonely = 0
 
 # index = outlist.index(1)
@@ -215,7 +217,7 @@
 
 #     max_key = max(dict,key = dict.get)
 #     min_key = min(dict,key = dict.get)
-    
+
 
 #     print(dict)
 #     print(max_key)
@@ -247,29 +249,29 @@
 #         #     continue
 #         if el.isalpha():
 #             if el != el.lower():
-#                 value = rdict[el.lower()]+k        
+#                 value = rdict[el.lower()]+k
 #                 if value >= 26:
 #                     value = value % 26
 
 #                 outlist.append(alfa[value].upper())
 #                 continue
-        
+
 #             if el == el.lower():
-#                 value = rdict[el]+k        
+#                 value = rdict[el]+k
 #                 if value >= 26:
 #                     value = value % 26
 
 #                 outlist.append(alfa[value])
 #                 continue
 #         outlist.append(el)
-    
-        
-    
-        
+
+
+
+
 
 #     print(outlist)
 #     return ''.join(outlist)
-        
+
 #     # thisdict[el]=value
 
 #     #     # newdict[rdict[el]]
@@ -298,7 +300,7 @@
 #     # #         # encrypstring.append(alfa[val])
 #     # #         # continue
 #     # #     encrypstring.append(val)
-        
+
 #     # # print('encrypstring:' , encrypstring)Hel
 #     # # output = ''.join(encrypstring)
 #     # # print('output: ',output)
@@ -350,7 +352,7 @@ iterable = [1,2,3,4,5,6,7,8]
 #     if index % 3: #If there is a remainder or can be converted to xx.xx in decimal form
 #         print(index)
 #         values.append(value)
-# print(values) 
+# print(values)
 
 # for index, value in enumerate(alphabet, start=1):
 #     if not index % 2: #if divisible by 2
@@ -378,7 +380,7 @@ s= 'abcA-xByz'
 k=3
 def caesarCipher(s, k):
     alphabet = 'abcdefghijklmnopqrstuvwxyz'
-    
+
     upperlist = []
     indexlist = []
     for count, el in enumerate(s,start=0):
@@ -393,7 +395,7 @@ def caesarCipher(s, k):
             if el == value:
                 indexlist.append(count)
                 continue
-            
+
             else:
                 continue
     # print(upperlist)
@@ -419,7 +421,7 @@ def caesarCipher(s, k):
 #         else:
 #             indexlist3.append(alphabet[el-1])
 #     # print('type:',type(indexlist3) , ' indexlist3: ',indexlist3)
-    
+
 #     indexlist4=[]
 #     # print(type(upperlist), upperlist)
 #     for count, value in enumerate(indexlist3):
@@ -466,7 +468,7 @@ import math
 
 # Step 1: sort array
 # Step 2: make a list to store the difference of max and min in a given index
-# Step 3: 
+# Step 3:
 
 # arr = [10,40,70,20,9]
 # k = 3
@@ -481,7 +483,7 @@ import math
 #     next = k -1
 
 #     # print(arr[-1])
-    
+
 #     i = len(arr)-1
 #     next = k -1
 #     while len(arr)-1 != 0 and i-next>=0:
@@ -504,12 +506,12 @@ import math
 #     #     print('diff ',diff)
 #     # print(xmin)
 #     # return xmin
-        
+
 
 #     # for count1, value1 in enumerate(arr, start = 0 ):
-#     #     difference = value1 - 
+#     #     difference = value1 -
 
-        # difference = 0 
+        # difference = 0
     #     maxz = 0
     #     minz = 0
     #     next = k -1
@@ -558,7 +560,7 @@ import math
 # pairs = 0
 # for key in dict:
 #     pairs = pairs + dict[key]
-    
+
 # print(pairs)
 # print(dict)
 # z=[1,21,1,1,8].count(1)
