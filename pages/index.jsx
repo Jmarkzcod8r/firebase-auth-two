@@ -631,7 +631,7 @@ export default function Index() {
     <div className="block relative  overflow-x-hidden">
 
       {/* <div>{Junedays}</div> */}
-      <div className="relative sm:absolute  w-screen bg-blue-300 flex flex-col justify-center items-center">
+      <div className="relative sm:absolute  w-screen flex flex-col justify-center items-center">
         <div>
         <Ask setMainlist = {setMainlist}/>
         {/* <input
