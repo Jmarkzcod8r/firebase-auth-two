@@ -26,6 +26,8 @@ import { ForphotoURL } from "./Components/Usernav";
 import { thisbase } from "../functions global/thisbase";
 import { list } from "postcss";
 
+import Ask from "./ask.js";
+
 import Attendance from "./attendance.jsx";
 
 export default function Index() {
@@ -57,6 +59,8 @@ export default function Index() {
   const [clientDates, setClientDates] = useState([]);
 
   const [June, setJune] = useState([]);
+
+  const [searchon, setSearchon] = useState ('')
 
   const router = useRouter();
 
@@ -169,7 +173,10 @@ export default function Index() {
       onAuthStateChanged(auth, async (user) => {
         if (user) {
           const data = await api.get(`/clients` + `/` + user.email);
-          setMainlist(data.data.clients.reverse());
+          // if (!searchon) {
+            setMainlist(data.data.clients.reverse());
+          // }
+
           setCredemail(user.email);
           emaillist.push(user.email);
 
@@ -194,7 +201,10 @@ export default function Index() {
     //   console.log('JuneDates:', parsedJuneDates);
     //   setJune(parsedJuneDates); }
     // } else {
-    getData();
+      // if (searchon) {
+        getData();
+      // }
+//
 
     // }
   }, []); //------------> End of Use Effect
@@ -614,10 +624,23 @@ export default function Index() {
 
   const [attendanceState, setAttendanceState] = useState("Hello");
   // const Junedays = 'hi'
+
+
+
   return (
     <div className="block relative  overflow-x-hidden">
+
       {/* <div>{Junedays}</div> */}
-      <div className="relative sm:absolute  w-screen ">
+      <div className="relative sm:absolute  w-screen bg-blue-300 flex flex-col justify-center items-center">
+        <div>
+        <Ask setMainlist = {setMainlist}/>
+        {/* <input
+        type="text"
+        value={searchon}
+        onChange={(e) => setSearchon(e.target.value)}
+        placeholder="Enter search term"
+      /> <button>Search</button> */}
+      </div>
         <Attendance
           Jandays={Jandays}
           Febdays={Febdays}

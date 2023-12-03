@@ -1,5 +1,5 @@
 //Only db.js and Client.js are required here...
-import dbConnect from "../mongodb/db";
+import dbConnect from "../mongodb/db"; //importing an external function to connect to database.
 import Client from "../mongodb/ModelClient";
 // import axios from "axios";
 import { MongoClient} from "mongodb"
@@ -39,11 +39,11 @@ export default async function handler(req, res) {
     //       obj.desc = 'desc';
     //       obj.comments = 'this comments'
     //       obj.save()
-    
+
     // new Client({log:'goy', desc:'nice', comments:'complicated', name:"Me", date:'today'}).save()
-    
-    
-    
+
+
+
     // await Client.create ('/clients', {'name': 'asda'})
     // app.get('/', async (req, res) => {
     //   const food = new Client({name:'JM' })
@@ -61,10 +61,10 @@ export default async function handler(req, res) {
     //   const user = Getuserinfo();
       // res.json('ji')
     // })
-    
-    
+
+
     // const ClientSchema = new mongoose.Schema({
-    //   // _id: mongoose.Schema.Types.ObjectId, //---> This is considerable 
+    //   // _id: mongoose.Schema.Types.ObjectId, //---> This is considerable
     //   log: String,
     //   desc: String,
     //   comments:String,
@@ -80,29 +80,29 @@ export default async function handler(req, res) {
     // });
     // // Is this how it should be done?
     // // If you want to make a new Schema, modify below.
-    
-    
+
+
         // res.json('noce')
-    
-    
-    
-    
-        
-    
-    
-    
-    
-    
+
+
+
+
+
+
+
+
+
+
       const { method } = req;
       // const { credemail } = req.body;
       switch (method) {
-        
 
-         case "GET": //---> when 'axios.get' is called in our frontend, the system 
+
+         case "GET": //---> when 'axios.get' is called in our frontend, the system
                 // goes to this .. GET & FIND
       try {
         const clients = await Client.find({}); //---> clients is an objects
-  // Deleting below produces an error: API resolved without 
+  // Deleting below produces an error: API resolved without
   // sending a response for /api/clients, this may result in stalled requests.
         res.status(200) //---> The '.status' in 'res.status' ig ignorable.
         // as res in integrated with data received. res & data go in twined.
@@ -115,17 +115,17 @@ export default async function handler(req, res) {
       }
       break;
 
-    case "POST": //---> when 'axios.post' is called in our frontend, the system 
+    case "POST": //---> when 'axios.post' is called in our frontend, the system
     // goes to this .. POST & CREATE ... IF-THROW
 
       try {
         const { log, desc, comments, name, date, highlight, credemail} = req.body;
 
-        // const Clientnew = 
+        // const Clientnew =
         //       mongoose.models.log
         //     || mongoose.model(log, ClientSchema);
         // new Clientnew({log}).save()
-        await 
+        await
         // new Credemail ({credemail}).save();
 
 
@@ -140,8 +140,8 @@ export default async function handler(req, res) {
         } else {
           var thiz = 'that'
         }
-        
-        
+
+
 
 
         res.status(200).json({success:true, body:req.body , })
@@ -152,6 +152,6 @@ export default async function handler(req, res) {
       // await Client.create({ 'name':'bbbbbccctestname' });
       break;
   };
-  
- 
+
+
 }

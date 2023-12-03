@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import { Getuserinfo } from "../../../functions global/Getuserinfo";
 // This defines the schema seetings for our database.
-// Services --> Models --> 
+// Services --> Models -->
 // const ClientSchema = new mongoose.Schema({
 //   name: String,
 //   email: String,
@@ -18,7 +18,7 @@ import { Getuserinfo } from "../../../functions global/Getuserinfo";
 //-----------------Below is a copy from above----------------------
 if (typeof window !== 'undefined') {
   const user = Getuserinfo()
-var useremail = user.email 
+var useremail = user.email
   //   const user = Getuserinfo();
   //   res.json(user.email)
   // }
@@ -31,23 +31,23 @@ useremaillist.append(user.email) }
 
 
 const CredemailSchema = new mongoose.Schema({
-  // _id: mongoose.Schema.Types.ObjectId, //---> This is considerable 
+  // _id: mongoose.Schema.Types.ObjectId, //---> This is considerable
   log: String,
   desc: String,
   comments:String,
   name: String,
   date: String,
   highlight: String,
- 
+
 });
 
 
-const Model = 
+const Model =
           // mongoose.models.logdata
-          // || 
+          // ||
           mongoose.model({ClientID}, CredemailSchema);
 
-// const Client = 
+// const Client =
 //             mongoose.models.useremail
 //           || mongoose.model(useremail, ClientSchema);
 

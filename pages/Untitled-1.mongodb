@@ -13,8 +13,8 @@ use('Firedata');
 // Insert a few documents into the sales collection.
 db.entrylogs.insertMany([
   {'_id':'azsxdcf', 'log':'1st log', 'desc':'1st desc', 'comments':'some1 comments'},
-  {'_id':'awsedrft', 'log':'2nd log', 'desc':'2nd desc', 'comments':'some2 comments'},
-  {'_id':'asddsf', 'log':'3rd log', 'desc':'3rd desc', 'comments':'some3 comments'},
+  // {'_id':'awsedrft', 'log':'2nd log', 'desc':'2nd desc', 'comments':'some2 comments'},
+  // {'_id':'asddsf', 'log':'3rd log', 'desc':'3rd desc', 'comments':'some3 comments'},
  ]);
 
 // Run a find command to view items sold on April 4th, 2014.
