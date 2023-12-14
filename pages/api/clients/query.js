@@ -18,7 +18,7 @@ export default async function QueryPage(req, res) {
         res.status(200).json({ success: true, data: clients }); // Return the data as JSON
       } catch (error) {
         console.error(error);
-        res.status(500).json({ success: false, error: "Internal Server Error" });
+        res.status(500).json({ success: false, error: error });
       }
       break;
 
