@@ -18,7 +18,7 @@ export default async function QueryPage(req, res) {
         // });
 
         // await redis.set('Users-mongo',JSON.stringify(clients))
-        // const redisget = await redis.get('Userss')
+        const redisget = await redis.get('Userss')
         // console.log(redisget)
 
         const searchForValue = (array, searchValue) => {
