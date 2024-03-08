@@ -64,18 +64,22 @@ export default async function handler(req, res) {
 
 
 
-        const clients = await Client.find({ 'credemail':
-          ClientID}); //---> clients is an objects
-  // Deleting below produces an error: API resolved without
-  // sending a response for /api/clients, this may result in stalled requests.
-  console.log('clients',clients)
-  res.status(200) //---> The '.status' in 'res.status' ig ignorable.
-        // as res in integrated with data received. res & data go in twined.
-                      .json({success: true,clients });
+  //       const clients = await Client.find({ 'credemail':
+  //         ClientID}); //---> clients is an objects
+  // // Deleting below produces an error: API resolved without
+  // // sending a response for /api/clients, this may result in stalled requests.
+  // console.log('clients',typeof(clients))
+
         // res.json(')
 
-  // const user = await redis.set('Userss', JSON.stringify(clients)) //We need to stringify `clients` or error
-
+  const user = await redis.get('Userss') //We need to stringify `clients` or error
+  const clients = JSON.parse(user)
+  // res.status(200) //---> The '.status' in 'res.status' ig ignorable.
+  // // as res in integrated with data received. res & data go in twined.
+  //               .json({success: true,clients });
+  res.status(200) //---> The '.status' in 'res.status' ig ignorable.
+  // as res in integrated with data received. res & data go in twined.
+                .json({success: true,clients });
 
       } catch (error) {
         console.log(error);
