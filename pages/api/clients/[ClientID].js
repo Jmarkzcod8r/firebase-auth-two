@@ -65,13 +65,14 @@ export default async function handler(req, res) {
           ClientID}); //---> clients is an objects
   // Deleting below produces an error: API resolved without
   // sending a response for /api/clients, this may result in stalled requests.
-
-  const user = await redis.set('Userss', JSON.stringify(clients)) //We need to stringify `clients` or error
-
-        res.status(200) //---> The '.status' in 'res.status' ig ignorable.
+  res.status(200) //---> The '.status' in 'res.status' ig ignorable.
         // as res in integrated with data received. res & data go in twined.
                       .json({success: true,clients });
         // res.json(')
+
+  const user = await redis.set('Userss', JSON.stringify(clients)) //We need to stringify `clients` or error
+
+
       } catch (error) {
         console.log(error);
         res.status(500).json({ success: false, error });
