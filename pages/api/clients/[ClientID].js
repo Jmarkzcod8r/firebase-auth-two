@@ -61,6 +61,9 @@ export default async function handler(req, res) {
         case "GET": //---> when 'axios.get' is called in our frontend, the system
                 // goes to this .. GET & FIND
       try {
+
+
+
         const clients = await Client.find({ 'credemail':
           ClientID}); //---> clients is an objects
   // Deleting below produces an error: API resolved without
@@ -70,7 +73,7 @@ export default async function handler(req, res) {
                       .json({success: true,clients });
         // res.json(')
 
-  const user = await redis.set('Userss', JSON.stringify(clients)) //We need to stringify `clients` or error
+  // const user = await redis.set('Userss', JSON.stringify(clients)) //We need to stringify `clients` or error
 
 
       } catch (error) {
