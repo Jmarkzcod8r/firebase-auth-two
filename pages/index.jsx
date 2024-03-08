@@ -30,6 +30,13 @@ import Ask from "./ask.js";
 
 import Attendance from "./attendance.jsx";
 
+
+
+// const currentUrl = window.location.href;
+// console.log(currentUrl);
+
+
+
 export default function Index() {
   //------------ Declaring Varibles ----------------
 
@@ -62,9 +69,12 @@ export default function Index() {
 
   const [searchon, setSearchon] = useState ('')
 
-  const router = useRouter();
+  const {asPath  , pathname} = useRouter();
+
+  console.log(asPath)
 
   var thisbasez = thisbase();
+
   const api = axios.create({
     // baseURL: "https://firebase-auth-two-new-jmarkzcod8r.vercel.app/api",
     baseURL: thisbasez,
@@ -632,7 +642,7 @@ export default function Index() {
 
       {/* <div>{Junedays}</div> */}
       <div className="relative sm:absolute  w-screen flex flex-col justify-center items-center">
-        <div>
+        {/* <div className="bg-blue-400"> */}
         <Ask setMainlist = {setMainlist}/>
         {/* <input
         type="text"
@@ -640,7 +650,7 @@ export default function Index() {
         onChange={(e) => setSearchon(e.target.value)}
         placeholder="Enter search term"
       /> <button>Search</button> */}
-      </div>
+      {/* </div> */}
         <Attendance
           Jandays={Jandays}
           Febdays={Febdays}
@@ -657,7 +667,7 @@ export default function Index() {
         />
       </div>
 
-      <button
+      {/* <button
         className=" right-0 p-2 mr-8 top-[6em] sm:top-0 bg-blue-300 bg-opacity-40 rounded-full mt-2 mb-0 hover:scale-110 hover:bg-blue-400 drop-shadow-lg flex relative sm:absolute "
         onClick={Swalfeed}
       >
@@ -669,7 +679,7 @@ export default function Index() {
           height={40}
           className="hover:scale-110 z-1000"
         />
-      </button>
+      </button> */}
 
       <img
         className="top-0 left-0 w-screen h-screen object-cover fixed -z-10"
@@ -679,7 +689,7 @@ export default function Index() {
         alt=" "
       />
 
-      <div className="relative sm:absolute top-[3em] sm:top-14 flex left-[65%] bg-blue-4000 ">
+      <div className="relative sm:absolute top-[1em] sm:top-[4.3em] flex left-[65%] bg-blue-4000 ">
         Word Count:
         <span id="show">{countwords}</span>{" "}
         <button
@@ -691,7 +701,7 @@ export default function Index() {
       </div>
 
 
-      <div id="Unav" className="h-20">
+      <div id="Unav" className="h-[1em]  sm:h-[6em]">
         <Usernav />
       </div>
 

@@ -116,9 +116,9 @@ const Login = ({ Jandays, Febdays, Mardays, Aprdays, Maydays, Junedays ,Juldays,
   // console.log('Junedays', [Junedays])
 
   return (
-    <div className="flex relative w-screen ">
+    // <div className="flex relative w-screen bg-pink-400">
 
-      <div className="flex w-screen absolute justify-center ">
+      <div className="flex w-screen justify-center  relative ">
         <div className="w-full h-auto relative  justify-center text-center">
           <div>{months[currentMonth - 1]} </div>
           <div className="justify-around block">{getNumberOfDays(currentMonth, 2023)}</div>
@@ -130,9 +130,9 @@ const Login = ({ Jandays, Febdays, Mardays, Aprdays, Maydays, Junedays ,Juldays,
 
         </div>
       </div>
-      {/* <div className="flex justify-center mt-4"></div> */}
 
-    </div>
+
+    // </div>
   );
 };
 

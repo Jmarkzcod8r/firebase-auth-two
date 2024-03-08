@@ -2,12 +2,19 @@ import Client from "../mongodb/ModelClient";
 import Credemail from "../mongodb/Credemail"
 import dbConnect from "../mongodb/db";
 import { redis } from "../../../functions global/lib/redis";
+// import { useRouter } from "next/router";
 
 // This is a dynamic page
 
 dbConnect();
 // async , req (request) , res (response) --> is a standard
 export default async function handler(req, res) {
+
+  // console.log(window.location.origin)
+
+  // const {asPath  , pathname} = useRouter();
+
+  // console.log(pathname)
 
   const { method } = req;
   const { log, desc, comments, name, date, highlight, credemail } = req.body;

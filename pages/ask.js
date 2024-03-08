@@ -23,7 +23,7 @@ const Ask = ({ setMainlist }) => {
   };
 
   return (
-  <div>
+  <div className="bg-red-300">
     <input
       type="text"
       value={searchTerm}
