@@ -1,6 +1,9 @@
 import Client from "../mongodb/ModelClient";
 import Credemail from "../mongodb/Credemail"
 import dbConnect from "../mongodb/db";
+import { redis } from "../../../functions global/lib/redis";
+
+// This is a dynamic page
 
 dbConnect();
 // async , req (request) , res (response) --> is a standard
@@ -54,6 +57,7 @@ export default async function handler(req, res) {
       //   }
       //   break;
 
+    //I think this is where I put my redis functionality.
         case "GET": //---> when 'axios.get' is called in our frontend, the system
                 // goes to this .. GET & FIND
       try {
@@ -61,6 +65,9 @@ export default async function handler(req, res) {
           ClientID}); //---> clients is an objects
   // Deleting below produces an error: API resolved without
   // sending a response for /api/clients, this may result in stalled requests.
+
+  const user = await redis.set('Userss', JSON.stringify(clients)) //We need to stringify `clients` or error
+
         res.status(200) //---> The '.status' in 'res.status' ig ignorable.
         // as res in integrated with data received. res & data go in twined.
                       .json({success: true,clients });

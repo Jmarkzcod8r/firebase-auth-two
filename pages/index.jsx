@@ -116,7 +116,7 @@ export default function Index() {
   if (mainlist) {
     const arrayOfDates = mainlist
       .map((obj) => new Date(obj.date))
-      .filter((date) => date.getFullYear() === 2023);
+      .filter((date) => date.getFullYear() === 2024);
 
     Jandays = arrayOfDates
       .filter((date) => date.getMonth() === 0)
