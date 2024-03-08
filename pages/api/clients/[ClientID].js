@@ -1,7 +1,7 @@
 import Client from "../mongodb/ModelClient";
 import Credemail from "../mongodb/Credemail"
 import dbConnect from "../mongodb/db";
-import { redis } from "../../lib/redis";
+import { redis } from "../../../functions global/lib/redis";
 
 // This is a dynamic page
 

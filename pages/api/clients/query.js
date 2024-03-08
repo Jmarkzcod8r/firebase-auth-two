@@ -1,7 +1,7 @@
 import dbConnect from "../mongodb/db";
 import ModelFeed from "../mongodb/feedback";
 import mongoose from "mongoose";
-import { redis } from "../../lib/redis";
+import { redis } from "../../../functions global/lib/redis";
 
 export default async function QueryPage(req, res) {
   const { method } = req;
