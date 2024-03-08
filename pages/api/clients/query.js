@@ -1,7 +1,7 @@
 import dbConnect from "../mongodb/db";
 import ModelFeed from "../mongodb/feedback";
 import mongoose from "mongoose";
-import { redis } from "../../../functions global/lib/redis";
+// import { redis } from "../../../functions global/lib/redis";
 
 export default async function QueryPage(req, res) {
   const { method } = req;
@@ -13,12 +13,12 @@ export default async function QueryPage(req, res) {
         console.log('searchTerm:', searchTerm)
         // const clients = await ModelFeed.find({
 
-        //   const clients = await mongoose.models.logdata.find({
-        //   'log': { $regex: searchTerm },
-        // });
+          const clients = await mongoose.models.logdata.find({
+          'log': { $regex: searchTerm },
+        });
 
         // await redis.set('Users-mongo',JSON.stringify(clients))
-        const redisget = await redis.get('Userss')
+        // const redisget = await redis.get('Userss')
         // console.log(redisget)
 
         const searchForValue = (array, searchValue) => {
@@ -38,14 +38,14 @@ export default async function QueryPage(req, res) {
           return matchingObjects;
       };
 
-      const searchresult = (searchForValue(JSON.parse(redisget), searchTerm))
+      // const searchresult = (searchForValue(JSON.parse(redisget), searchTerm))
 
 
 
         // console.log(redisget.type)
         // console.log(redisget)
 
-        res.status(200).json({ success: true, data: searchresult }); // Return the data as JSON
+        res.status(200).json({ success: true, data: clients }); // Return the data as JSON
       } catch (error) {
         console.error(error);
         res.status(500).json({ success: false, error: error });
