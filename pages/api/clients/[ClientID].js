@@ -1,7 +1,7 @@
 import Client from "../mongodb/ModelClient";
 import Credemail from "../mongodb/Credemail"
 import dbConnect from "../mongodb/db";
-import { redis } from "../../../functions global/lib/redis";
+import { redis } from "../../lib/redis";
 
 // This is a dynamic page
 
@@ -68,6 +68,7 @@ export default async function handler(req, res) {
           ClientID}); //---> clients is an objects
   // Deleting below produces an error: API resolved without
   // sending a response for /api/clients, this may result in stalled requests.
+  console.log('clients',clients)
   res.status(200) //---> The '.status' in 'res.status' ig ignorable.
         // as res in integrated with data received. res & data go in twined.
                       .json({success: true,clients });
