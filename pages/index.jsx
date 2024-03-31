@@ -237,18 +237,19 @@ export default function Index() {
     Datenow();
     try {
       setName("@archive");
-      await axios.post(
+     const response = await axios.post(
         thisbasez + "/clients",
         { log, desc, comments, date, name, highlight, credemail },
         {
           headers: { "Content-Type": "application/json" },
         }
       );
+      console.log('this is response, :', response)
     } catch (error) {
       console.error(error.response.data);
     }
-    getData();
-    alert("New Entry Created");
+    // getData();
+    // alert("New Entry Created");
   };
 
   function Datenow() {
@@ -390,7 +391,7 @@ export default function Index() {
 
   async function NewPage() {
     try {
-      await axios.post(
+      const response = await axios.post(
         thisbasez + "/clients",
         {
           log: "",
@@ -405,12 +406,13 @@ export default function Index() {
           headers: { "Content-Type": "application/json" },
         }
       );
+      console.log('response', response)
     } catch (error) {
       console.error(error.response.data);
     }
     // console.log(response);
-    getData();
-    alert("Blank Entry Created");
+    // getData();
+    // alert("Blank Entry Created");
   }
 
   const handleUpdateClient = async (e) => {
