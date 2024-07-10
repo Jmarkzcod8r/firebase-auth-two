@@ -640,7 +640,7 @@ export default function Index() {
 
 
   return (
-    <div className="block relative  overflow-x-hidden">
+    <div className="block relative  overflow-x-hidden pt-5">
 
       {/* <div>{Junedays}</div> */}
       <div className="relative sm:absolute  w-screen flex flex-col justify-center items-center">
@@ -691,7 +691,7 @@ export default function Index() {
         alt=" "
       />
 
-      <div className="relative sm:absolute top-[1em] sm:top-[4.3em] flex left-[65%] bg-blue-4000 ">
+      <div className="relative sm:absolute top-[1em] sm:top-[6em] flex left-[65%] bg-blue-4000 ">
         Word Count:
         <span id="show">{countwords}</span>{" "}
         <button
