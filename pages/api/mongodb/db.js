@@ -8,7 +8,7 @@ async function dbConnection() {
 
     return;
   }
-  // Setting up our database package..
+  // Setting up our database package...
   // The folder 'services' most likely set up as a foundation for this app for the database.
   const db = await mongoose.connect(process.env.MONGODB_URI,  {
     // const db = await mongoose.connect("mongodb+srv://newuser:Wisdoms3@crud.eg4wqwm.mongodb.net/Firedata", {
