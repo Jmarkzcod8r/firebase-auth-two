@@ -7,6 +7,6 @@ export const thisbase = () => {
   // 'https://www.jmwebgo.com/api'
   // var url = "http://localhost:3001/api"
 
-  var url = "http://jmdevjourn.netlify.app/api"
+  var url = "https://jmdevjourn.netlify.app/api"
   return url;
 };
