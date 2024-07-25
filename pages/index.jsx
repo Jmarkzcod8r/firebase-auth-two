@@ -407,6 +407,7 @@ export default function Index() {
         }
       );
       console.log('response', response)
+      alert('new log created')
     } catch (error) {
       console.error(error.response.data);
     }
