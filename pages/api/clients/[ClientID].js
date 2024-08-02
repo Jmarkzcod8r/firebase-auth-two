@@ -81,7 +81,8 @@ export default async function handler(req, res) {
 
         const clients = await Client.find({ 'credemail':
           ClientID}); //---> clients is an objects
-        const updates = await Updates.find()
+        const updates = await Updates.find({ 'updates':
+        ClientID})
   // // // Deleting below produces an error: API resolved without
   // // // sending a response for /api/clients, this may result in stalled requests.
   // console.log('clients',clients)
