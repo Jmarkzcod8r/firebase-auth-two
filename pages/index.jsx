@@ -71,6 +71,8 @@ export default function Index() {
 
   const {asPath  , pathname} = useRouter();
 
+  const [updateslist, setUpdateslist] = useState( [])
+
   console.log(asPath)
 
   var thisbasez = thisbase();
@@ -86,6 +88,7 @@ export default function Index() {
     // .then(data => {
     console.log("data, ", data);
     const clientslist = data.data.clients;
+    const updateslist = data.data.updates;
 
     // const datesJune = data.data.clients.map((client) => client.date).map((date) => date.getDate)
     // console.log('datesJune' , datesJune)
@@ -105,6 +108,7 @@ export default function Index() {
     // localStorage.setItem('JuneDates', JSON.stringify(juneDates));
 
     setMainlist(clientslist.reverse());
+    setUpdateslist(updateslist.reverse())
   }
   let emaillist = [];
 
@@ -123,53 +127,54 @@ export default function Index() {
   let Novdays = [];
   let Decdays = [];
 
-  if (mainlist) {
+  if (mainlist && updateslist) {
     const arrayOfDates = mainlist
       .map((obj) => new Date(obj.date))
       .filter((date) => date.getFullYear() === 2024);
 
-    Jandays = arrayOfDates
-      .filter((date) => date.getMonth() === 0)
-      .map((date) => date.getDate());
-    Febdays = arrayOfDates
-      .filter((date) => date.getMonth() === 1)
-      .map((date) => date.getDate());
-    Mardays = arrayOfDates
-      .filter((date) => date.getMonth() === 2)
-      .map((date) => date.getDate());
-    Aprdays = arrayOfDates
-      .filter((date) => date.getMonth() === 3)
-      .map((date) => date.getDate());
-    Maydays = arrayOfDates
-      .filter((date) => date.getMonth() === 4)
-      .map((date) => date.getDate());
+      const arrayOfUpdates = updateslist.map((update) => new Date(update.date));
 
-    Junedays = arrayOfDates
-      .filter((date) => date.getMonth() === 5)
-      .map((date) => date.getDate());
+      const mergedDates = [...arrayOfDates, ...arrayOfUpdates];
 
-    Juldays = arrayOfDates
-      .filter((date) => date.getMonth() === 6)
-      .map((date) => date.getDate());
-    Augdays = arrayOfDates
-      .filter((date) => date.getMonth() === 7)
-      .map((date) => date.getDate());
-    Sepdays = arrayOfDates
-      .filter((date) => date.getMonth() === 8)
-      .map((date) => date.getDate());
-    Octdays = arrayOfDates
-      .filter((date) => date.getMonth() === 9)
-      .map((date) => date.getDate());
-    Novdays = arrayOfDates
-      .filter((date) => date.getMonth() === 10)
-      .map((date) => date.getDate());
-    Decdays = arrayOfDates
-      .filter((date) => date.getMonth() === 11)
-      .map((date) => date.getDate());
-
-    console.log(`Junedays`, Junedays);
-    console.log(`Jandays`, Jandays);
+      Jandays = mergedDates
+        .filter((date) => date.getMonth() === 0)
+        .map((date) => date.getDate());
+      Febdays = mergedDates
+        .filter((date) => date.getMonth() === 1)
+        .map((date) => date.getDate());
+      Mardays = mergedDates
+        .filter((date) => date.getMonth() === 2)
+        .map((date) => date.getDate());
+      Aprdays = mergedDates
+        .filter((date) => date.getMonth() === 3)
+        .map((date) => date.getDate());
+      Maydays = mergedDates
+        .filter((date) => date.getMonth() === 4)
+        .map((date) => date.getDate());
+      Junedays = mergedDates
+        .filter((date) => date.getMonth() === 5)
+        .map((date) => date.getDate());
+      Juldays = mergedDates
+        .filter((date) => date.getMonth() === 6)
+        .map((date) => date.getDate());
+      Augdays = mergedDates
+        .filter((date) => date.getMonth() === 7)
+        .map((date) => date.getDate());
+      Sepdays = mergedDates
+        .filter((date) => date.getMonth() === 8)
+        .map((date) => date.getDate());
+      Octdays = mergedDates
+        .filter((date) => date.getMonth() === 9)
+        .map((date) => date.getDate());
+      Novdays = mergedDates
+        .filter((date) => date.getMonth() === 10)
+        .map((date) => date.getDate());
+      Decdays = mergedDates
+        .filter((date) => date.getMonth() === 11)
+        .map((date) => date.getDate());
   }
+
+
 
   useEffect(() => {
     const ForphotoURL = async () => {
