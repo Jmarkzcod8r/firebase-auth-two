@@ -206,7 +206,7 @@ export default function Index() {
     //   setJune(parsedJuneDates); }
     // } else {
       // if (searchon) {
-        getData();
+        // getData();
       // }
 //
 
