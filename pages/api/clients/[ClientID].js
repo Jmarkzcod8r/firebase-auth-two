@@ -81,7 +81,7 @@ export default async function handler(req, res) {
 
         const clients = await Client.find({ 'credemail':
           ClientID}); //---> clients is an objects
-        const updates = await Updates.find({ 'updates':
+        const updates = await Updates.find({ 'update':
         ClientID})
   // // // Deleting below produces an error: API resolved without
   // // // sending a response for /api/clients, this may result in stalled requests.
@@ -96,7 +96,7 @@ export default async function handler(req, res) {
   //               .json({success: true,clients });
   res.status(200) //---> The '.status' in 'res.status' ig ignorable.
   // as res in integrated with data received. res & data go in twined.
-                .json({success: true,clients, updates });
+                .json({success: true,updates, clients });
 
       } catch (error) {
         console.log(error);
