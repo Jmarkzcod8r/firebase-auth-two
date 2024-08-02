@@ -86,32 +86,11 @@ export default function Index() {
     console.log("getting data");
     console.log(".......")
     const data = await api.get(`/clients/${credemail}`);
-    // .then(data => {
-      // if (data) {
 
-        console.log("data, ", data);
-        const updateslist = data.data.updates;
-        console.log('this is data.data.updates:,', data.data.updates)
-        const clientslist = data.data.updates;
-      // }
-
-
-    // const datesJune = data.data.clients.map((client) => client.date).map((date) => date.getDate)
-    // console.log('datesJune' , datesJune)
-    // console.log('clientslist', clientslist)
-
-    // const juneDates = data.data.clients
-    //   .map((client) => client.date)
-    //   .filter((date) => date.includes('Jun-'))
-    //   .map((date) => parseInt(date.substring(0, 2)))
-    //   // .reverse();
-
-    // console.log('junedates', juneDates);
-    // // setJune(juneDates);
-    // // const parsedJuneDates = JSON.parse(storedJuneDates);
-    // //   console.log('JuneDates:', parsedJuneDates);
-    // //   setJune(parsedJuneDates); }
-    // localStorage.setItem('JuneDates', JSON.stringify(juneDates));
+    console.log("data, ", data);
+    const updateslist = data.data.updates;
+    console.log('this is data.data.updates:,', data.data.updates)
+    const clientslist = data.data.clients;
 
     setMainlist(clientslist.reverse());
     setUpdateslist(updateslist.reverse())
