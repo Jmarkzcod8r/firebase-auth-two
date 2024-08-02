@@ -131,7 +131,7 @@ export default function Index() {
     const arrayOfDates = mainlist
       .map((obj) => new Date(obj.date))
       .filter((date) => date.getFullYear() === 2024);
-
+      console.log('updateslist:,' , updateslist)
       const arrayOfUpdates = updateslist
       .map((update) => new Date(update.date))
       .filter((date) => date.getFullYear() === 2024);
