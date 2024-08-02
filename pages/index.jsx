@@ -178,6 +178,7 @@ export default function Index() {
           const data = await api.get(`/clients` + `/` + user.email);
           // if (!searchon) {
             setMainlist(data.data.clients.reverse());
+            setUpdateslist(data.data.updates.reverse())
           // }
 
           setCredemail(user.email);
@@ -210,7 +211,7 @@ export default function Index() {
 //
 
     // }
-  }, []); //------------> End of Use Effect
+  }, [credemail]); //------------> End of Use Effect
 
   const signOut = () => {
     localStorage.clear();
