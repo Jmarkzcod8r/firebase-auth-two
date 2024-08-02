@@ -1,6 +1,7 @@
 //Only db.js and Client.js are required here...
 import dbConnect from "../mongodb/db"; //importing an external function to connect to database.
 import Client from "../mongodb/ModelClient";
+import Updates from "../mongodb/Updates";
 // import axios from "axios";
 import { MongoClient} from "mongodb"
 import { Getuserinfo } from "../../../functions global/Getuserinfo";
@@ -11,87 +12,6 @@ import Credemail from "../mongodb/Credemail";
 dbConnect(); //---> This setups the database for this page.
 
 export default async function handler(req, res) {
-    // These two lines are like a template
-    // try{
-      // const {_id,name} = req.body
-      // const client = await Client.create({ _id:'Janeawszcasdzedr',name:'jasasdhd' });
-      //       // calling res gives a response to the screen.
-      //       res.json({success:true, data:client});
-    // } catch (error) {
-    //   res.json('something')
-    // }
-    // Client.init()
-    // const newdata = await Client.post({ 'name':'nice' });
-    // newdata.save()
-    // await Client.create({'_id': 'awassdfe', "name":"JMG"  } );
-    // await Client.updateOne({ 'field':'corn'});
-    // app.get('/', async (req, res) => {
-    //   const food = new Client({_id:"Kiwi", name: '7' })
-    //   try{
-    //       await food.save();
-    //   } catch(err){
-    //       console.log(err);
-    //   }
-    // })
-    // 'new' is a command that makes a new
-    // const obj = new Client();
-    //       obj.name = 'JMGutzzss';
-    //       obj.desc = 'desc';
-    //       obj.comments = 'this comments'
-    //       obj.save()
-
-    // new Client({log:'goy', desc:'nice', comments:'complicated', name:"Me", date:'today'}).save()
-
-
-
-    // await Client.create ('/clients', {'name': 'asda'})
-    // app.get('/', async (req, res) => {
-    //   const food = new Client({name:'JM' })
-    //   try{
-    //       await food.save();
-    //   } catch(err){
-    //       console.log(err);
-    //   }
-    // })
-    // if (typeof window !== 'undefined') {
-    //   const user = Getuserinfo();
-    //   res.json(user.email)
-    // }
-    // useEffect (()=> {
-    //   const user = Getuserinfo();
-      // res.json('ji')
-    // })
-
-
-    // const ClientSchema = new mongoose.Schema({
-    //   // _id: mongoose.Schema.Types.ObjectId, //---> This is considerable
-    //   log: String,
-    //   desc: String,
-    //   comments:String,
-    //   name: String,
-    //   date: String,
-    //   highlight: String,
-    //   // email: String,
-    //   // day: String,
-    //   // createdAt: {
-    //   //   type: Date,
-    //   //   default: new Date(),
-    //   // },
-    // });
-    // // Is this how it should be done?
-    // // If you want to make a new Schema, modify below.
-
-
-        // res.json('noce')
-
-
-
-
-
-
-
-
-
 
       const { method } = req;
       // const { credemail } = req.body;
@@ -133,6 +53,10 @@ export default async function handler(req, res) {
         // const client = await Client.create({ name, _id});
         // const client = await Client.create({log, desc, comments, name});
         new Client({credemail}).save();
+
+        const newUpdate = new Updates({ action: 'create' });
+        await newUpdate.save();
+
         // calling res gives a response to the screen.
         // await Client.save()
         if (log){

@@ -2,6 +2,7 @@ import Client from "../mongodb/ModelClient";
 import Credemail from "../mongodb/Credemail"
 import dbConnect from "../mongodb/db";
 import { redis } from "../../../functions global/lib/redis";
+import Updates from "../mongodb/Updates";
 // import { useRouter } from "next/router";
 
 // This is a dynamic page
@@ -27,6 +28,10 @@ export default async function handler(req, res) {
 
         // if (!name && !email) return "inavalid data";
         await Client.updateOne({ _id: ClientID }, { log, desc, comments, name, date, highlight});
+
+        const newUpdate = new Updates({ action: 'update' });
+        await newUpdate.save();
+
         res.status(200).json({ success: true , desc: 'nice'});
       } catch (error) {
         console.log(error);
@@ -37,6 +42,9 @@ export default async function handler(req, res) {
     case "DELETE":
       try {
         await Client.deleteOne({ _id: ClientID });
+
+        const newUpdate = new Updates({ action: 'delete' });
+        await newUpdate.save();
         res.status(200).json({ success: true });
       } catch (error) {
         console.log(error);
