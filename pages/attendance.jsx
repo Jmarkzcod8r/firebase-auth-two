@@ -82,7 +82,7 @@ const Login = ({ Jandays, Febdays, Mardays, Aprdays, Maydays, Junedays ,Juldays,
           key={dayIndex}
           className={`h-1 w-1 m-0.5 md:h-3 md:w-3 md:m-1 inline-block bg-violet-500`}
           style={{
-            backgroundColor: isColored ? 'green' : 'white',
+            backgroundColor: isColored ? 'blue' : 'white',
             color: isColored ? 'white' : 'black',
             position: 'relative',
           }}
