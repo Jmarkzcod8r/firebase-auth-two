@@ -132,8 +132,11 @@ export default function Index() {
       .map((obj) => new Date(obj.date))
       .filter((date) => date.getFullYear() === 2024);
 
-      const arrayOfUpdates = updateslist.map((update) => new Date(update.date));
+      const arrayOfUpdates = updateslist
+      .map((update) => new Date(update.date))
+      .filter((date) => date.getFullYear() === 2024);
 
+      console.log('array of updates:', arrayOfUpdates)
       const mergedDates = [...arrayOfDates, ...arrayOfUpdates];
 
       Jandays = mergedDates
