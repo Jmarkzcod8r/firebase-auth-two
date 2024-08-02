@@ -71,7 +71,7 @@ export default function Index() {
 
   const {asPath  , pathname} = useRouter();
 
-  const [updateslist, setUpdateslist] = useState( [])
+  const [updateslist, setUpdateslist] = useState([])
 
   console.log(asPath)
 
