@@ -69,11 +69,11 @@ export default function Index() {
 
   const [searchon, setSearchon] = useState ('')
 
-  const {asPath  , pathname} = useRouter();
+  const router = useRouter();
 
   const [updateslist, setUpdateslist] = useState([])
 
-  console.log(asPath)
+
 
   var thisbasez = thisbase();
 
@@ -166,8 +166,19 @@ export default function Index() {
 
   useEffect(() => {
     const ForphotoURL = async () => {
-      const [userInfo] = await Getuserinfo();
-      setPhotoURL(userInfo.photoURL);
+      const userInfo = await Getuserinfo();
+
+      if (userInfo && Array.isArray(userInfo)) {
+        const [user] = userInfo;
+        if(user){
+          setPhotoURL(user.photoURL);
+        }
+      } else {
+        // Handle the case where userInfo is null, undefined, or not an array
+        console.error("Invalid userInfo:", userInfo);
+      }
+
+
     };
 
     ForphotoURL();
