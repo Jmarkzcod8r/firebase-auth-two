@@ -92,8 +92,10 @@ export default function Index() {
     console.log('this is data.data.updates:,', data.data.updates)
     const clientslist = data.data.clients;
 
-    setMainlist(clientslist.reverse());
+    setMainlist(clientslist);
     setUpdateslist(updateslist.reverse())
+    console.log('updateslist:', updateslist)
+    console.log('mainlist:', clientslist.reverse())
   }
   let emaillist = [];
 
@@ -122,6 +124,7 @@ export default function Index() {
       .filter((date) => date.getFullYear() === 2024);
 
       console.log('array of updates:', arrayOfUpdates)
+      console.log('mainlist....:', mainlist)
       const mergedDates = [...arrayOfDates, ...arrayOfUpdates];
 
       Jandays = mergedDates
@@ -161,6 +164,27 @@ export default function Index() {
         .filter((date) => date.getMonth() === 11)
         .map((date) => date.getDate());
   }
+
+  const showRecent = () => {
+    if (!isSorted) {
+      // Store the original list before sorting
+      setOrigmainlist([...mainlist]); // Create a copy of mainlist to avoid direct mutation
+
+      // Sort the list by updatedAt and get the top 20 items
+      const sortedList = [...mainlist].sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt));
+      const top10Items = sortedList.slice(0, 10); // Top 10 items
+
+      setMainlist(top10Items); // Update the mainlist with top 10 items
+      console.log('Top 20 items:', top10Items);
+    } else {
+      // Restore the original list
+      setMainlist(origmainlist);
+      console.log('Original list restored:', origmainlist);
+    }
+
+    // Toggle the sorting state
+    setIsSorted(!isSorted);
+  };
 
 
 
@@ -210,19 +234,48 @@ export default function Index() {
     }
     Dbadd();
     Datenow();
-    // const storedJuneDates = localStorage.getItem('JuneDates');
-    // if (storedJuneDates) {
-    //   const parsedJuneDates = JSON.parse(storedJuneDates);
-    //   console.log('JuneDates:', parsedJuneDates);
-    //   setJune(parsedJuneDates); }
-    // } else {
-      // if (searchon) {
-        // getData();
-      // }
-//
 
-    // }
+    const clearFocusedTextarea = (e) => {
+      if (e.ctrlKey && e.code === 'Space') {
+        Clear();
+        e.preventDefault()
+        // Check if the currently focused element is a textarea
+        }} ;
+        window.addEventListener('keydown', clearFocusedTextarea);
+        return () => {
+          window.removeEventListener('keydown', clearFocusedTextarea);
+        };
+
+
+
+    // showRecent()
+
+
   }, [credemail]); //------------> End of Use Effect
+
+  const [origmainlist, setOrigmainlist] = useState([])
+  const [isSorted, setIsSorted] = useState(false); // Flag to track sorting state
+
+
+function updateTop10Items(mainlist, setMainlist) {
+  // Create a copy of mainlist to avoid direct mutation
+  const origMainlist = [...mainlist];
+
+  // Sort the list by updatedAt and get the top 10 items
+  const sortedList = [...origMainlist].sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt));
+  const top10Items = sortedList.slice(0, 10); // Top 10 items
+
+  // Update the mainlist with top 10 items
+  setMainlist(top10Items);
+  console.log('Top 10 items:', top10Items);
+
+
+}
+
+  // Call the function
+  // showRecent();
+
+
 
   const signOut = () => {
     localStorage.clear();
@@ -253,7 +306,7 @@ export default function Index() {
     } catch (error) {
       console.error(error.response.data);
     }
-    // getData();
+    getData();
     // alert("New Entry Created");
   };
 
@@ -417,7 +470,7 @@ export default function Index() {
       console.error(error.response.data);
     }
     // console.log(response);
-    // getData();
+    getData();
     // alert("Blank Entry Created");
   }
 
@@ -431,6 +484,7 @@ export default function Index() {
       console.log(error);
     }
     getData();
+
   };
 
   const Delete = async (e) => {
@@ -545,8 +599,8 @@ export default function Index() {
     setArchive(!archive);
   };
 
-  const AddtoArchive = async () => {
-    // e.preventDefault();
+  const AddtoArchive = async (e) => {
+    e.preventDefault();
     try {
       await api
         .put(`clients/${_id}`, {
@@ -572,7 +626,7 @@ export default function Index() {
     } catch (error) {
       console.log(error);
     }
-    getData();
+    // getData();
   };
 
   const buttonStyles = {
@@ -612,7 +666,7 @@ export default function Index() {
         } catch (error) {
           console.log(error);
         }
-        getData();
+        // getData();
       }
     });
   };
@@ -796,8 +850,7 @@ export default function Index() {
           </div>
 
           <div className=" p-2">
-
-            <button onClick={toggleList} title="Hide/Show" className="mr-2 rounded-lg bg-blue-200">
+          <button onClick={showRecent} title="Recent" className="mr-2 rounded-lg bg-blue-200">
               <Image
                 src={Hide}
                 alt="Clear"
@@ -806,6 +859,17 @@ export default function Index() {
                 className="hover:scale-110"
               />
             </button>
+
+
+            {/* <button onClick={toggleList} title="Hide/Show" className="mr-2 rounded-lg bg-blue-200">
+              <Image
+                src={Hide}
+                alt="Clear"
+                width={40}
+                height={40}
+                className="hover:scale-110"
+              />
+            </button> */}
 
 
             <button
