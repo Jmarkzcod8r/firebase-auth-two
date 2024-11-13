@@ -476,9 +476,10 @@ function updateTop10Items(mainlist, setMainlist) {
 
   const handleUpdateClient = async (e) => {
     e.preventDefault();
+    Datenow();
     try {
       await api
-        .put(`clients/${_id}`, { log, desc, comments, name, highlight })
+        .put(`clients/${_id}`, { log, desc, comments, date, name, highlight })
         .then(alert("Entry Updated"));
     } catch (error) {
       console.log(error);
@@ -601,6 +602,7 @@ function updateTop10Items(mainlist, setMainlist) {
 
   const AddtoArchive = async (e) => {
     e.preventDefault();
+    Datenow();
     try {
       await api
         .put(`clients/${_id}`, {
@@ -609,6 +611,7 @@ function updateTop10Items(mainlist, setMainlist) {
           comments,
           name: `${archive ? name : "@archive"}`,
           highlight,
+          date
         })
         .then(alert("Added to Archive"));
     } catch (error) {
