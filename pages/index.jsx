@@ -707,7 +707,7 @@ function updateTop10Items(mainlist, setMainlist) {
 
 
       {/* <div>{Junedays}</div> */}
-      <div className="relative sm:absolute  w-screen flex flex-col justify-center items-center">
+      <div className="relative sm:absolute  w-screen flex flex-col justify-center items-center ">
         {/* <div className="bg-blue-400"> */}
         <Ask setMainlist = {setMainlist}/>
         {/* <input
@@ -772,7 +772,7 @@ function updateTop10Items(mainlist, setMainlist) {
       </div>
 
 
-      <div className=" sm:block lg:flex lg:flex-row  z-1000 relative w-full top-0  p-3 lg:h-screen h-auto   ">
+      <div className=" sm:block md:h-[90em] lg:flex lg:flex-row  z-1000 relative w-full top-0  p-3 lg:h-screen  mt-2 ">
         <div
           className="sm:w-full lg:w-full relative flex flex-col  content-center items-center lg:p-2 sm:mr-7 lg:ml-4
                        bg-white bg-opacity-80 backdrop-blue-lg rounded-xl drop-shadow-lg space-y-2 "
@@ -973,19 +973,19 @@ function updateTop10Items(mainlist, setMainlist) {
           onInput={countWord}
           onChange={Inchangelog}
           className={`${
-            showList ? "lg:w-[85%]" : "lg:w-full"
-          } mt-5 mb-6 md:mt-0 w-[100%]  h-[20em] md:h-full lg:h-full relative flex bg-white bg-opacity-80 backdrop-blur-lg drop-shadow-lg p-4 justify-center  md:mr-9 ${textareaClasses}`}
+            showList ? "lg:w-full" : "lg:w-full"
+          } mt-5 mb-6 md:mt-6 lg:mt-0 w-[100%]  h-[20em] lg:h-full relative flex bg-white bg-opacity-80 backdrop-blur-lg drop-shadow-lg p-4 justify-center  md:mr-9 ${textareaClasses}`}
           // className="lg:w-[37.5%] mt-2 md:mt-0 w-[100%]  h-[20em] md:h-full lg:h-full relative flex bg-white bg-opacity-80 backdrop-blur-lg drop-shadow-lg p-4 justify-center  md:mr-9"
         />
         {showList ? (
-          <div className="mt-2 md:mt-0 w-[100%] lg:w-[31.25%] sm:block md:flex md:flex-col lg:pr-9 h-10 md:h-screen">
+          <div className="mt-2 md:mt-0 w-[100%] lg:w-[31.25%] sm:block md:flex md:flex-col lg:pr-9 h-10 md:h-auto">
             <textarea
               id="tarea2"
               type="text"
               placeholder="What Do You Want To Write Or Talk About?"
               value={highlight}
               /* defaultValue={desc} */ onChange={Inchangehighlight}
-              className="w-full h-[200%]  relative flex bg-white mb-6 bg-opacity-80 backdrop-blur-lg rounded-xl drop-shadow-lg p-4 justify-center"
+              className="w-full lg:h-[200%] md:h-[10em]  relative flex bg-white mb-6 bg-opacity-80 backdrop-blur-lg rounded-xl drop-shadow-lg p-4 justify-center"
             />
             <textarea
               id="tarea2"
@@ -993,7 +993,7 @@ function updateTop10Items(mainlist, setMainlist) {
               placeholder="What Insights Do You Want To Take Note Of?"
               value={desc}
               /* defaultValue={desc} */ onChange={Inchangedesc}
-              className="w-full h-[200%]  relative flex bg-white mb-4 bg-opacity-80 backdrop-blur-lg rounded-xl drop-shadow-lg p-4 justify-center"
+              className="w-full lg:h-[200%] md:h-[10em] relative flex bg-white mb-4 bg-opacity-80 backdrop-blur-lg rounded-xl drop-shadow-lg p-4 justify-center"
             />
             <textarea
               id="tarea2"
@@ -1001,7 +1001,7 @@ function updateTop10Items(mainlist, setMainlist) {
               placeholder="Is There Something You Want To Be Thankful For Today?"
               value={comments}
               /* defaultValue={comments} */ onChange={Inchangecomm}
-              className="w-full h-[200%] mt-6 relative flex bg-white bg-opacity-80 backdrop-blur-lg rounded-xl drop-shadow-lg p-4 justify-center"
+              className="w-full lg:h-[200%] md:h-[10em]  mt-6 relative flex bg-white bg-opacity-80 backdrop-blur-lg rounded-xl drop-shadow-lg p-4 justify-center"
             />
           </div>
         ) : (
