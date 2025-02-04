@@ -4,7 +4,7 @@ import rediscon from './api/redis'
 const redis = () => {
   return (
     <div>
-     <rediscon/>
+     {/* <rediscon/> */}
     </div>
   )
 }

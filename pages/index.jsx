@@ -25,6 +25,7 @@ import Bgpic from "./Icons/Bgpic.jpg";
 import { ForphotoURL } from "./Components/Usernav";
 import { thisbase } from "../functions global/thisbase";
 import { list } from "postcss";
+import ScrollButtons from "./Components/ScrollButtons.jsx";
 
 import Ask from "./ask.js";
 
@@ -703,7 +704,9 @@ function updateTop10Items(mainlist, setMainlist) {
 
 
   return (
-    <div className="block relative  overflow-x-hidden pt-5">
+    <div className="block relative  overflow-x-hidden pt-5 ">
+
+
 
       {/* <div>{Junedays}</div> */}
       <div className="relative sm:absolute  w-screen flex flex-col justify-center items-center">
@@ -771,13 +774,13 @@ function updateTop10Items(mainlist, setMainlist) {
       </div>
 
 
-      <div className=" sm:block md:flex md:flex-row z-1000 relative w-full top-0  pt-3 lg:h-screen h-auto md:h-screen ">
+      <div className=" sm:block h-screen lg:flex lg:flex-row  z-1000 relative w-full top-0  p-3 lg:h-screen overflow-auto  ">
         <div
-          className="smm:w-full md:w-[30em] relative flex flex-col  content-center items-center lg:p-2 sm:mr-7 lg:ml-4
-                       bg-white bg-opacity-80 backdrop-blue-lg rounded-xl drop-shadow-lg space-y-2"
+          className="sm:w-full lg:w-[30em] relative flex flex-col  content-center items-center lg:p-2 sm:mr-7 lg:ml-4
+                       bg-white bg-opacity-80 backdrop-blue-lg rounded-xl drop-shadow-lg space-y-2 "
 
         >
-          <div className="relative  grid w-[100%] grid-cols-5 justify-self-auto items-end p-1 mr-0 pb-4">
+          <div className="relative  grid w-[100%] grid-cols-5 justify-self-auto items-end p-1 mr-0 pb-4 ">
             <div className="col-span-2  top-0 relative mb-16 ml-3">
               <button onClick={signOut}>
                 <Image
@@ -931,7 +934,7 @@ function updateTop10Items(mainlist, setMainlist) {
             </button>
           </div>
 
-          <div className=" mt-5 w-[95%] block h-[200px] md:h-auto px-4 overflow-auto rounded-xl">
+          <div className=" mt-5 w-[95%] block h-[200px] lg:h-auto px-4 overflow-auto rounded-xl bg-pink-500">
             {/* {showList && */}
             {mainlist
               // .filter((el, index) => !archive || el.name === '@archive')
@@ -1007,6 +1010,7 @@ function updateTop10Items(mainlist, setMainlist) {
           <div></div>
         )}
       </div>
+      <ScrollButtons/>
     </div>
   );
 }
