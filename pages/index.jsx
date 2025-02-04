@@ -976,7 +976,7 @@ function updateTop10Items(mainlist, setMainlist) {
           onChange={Inchangelog}
           className={`${
             showList ? "lg:w-[85%]" : "lg:w-full"
-          } mt-2 md:mt-0 w-[100%]  h-[20em] md:h-full lg:h-full relative flex bg-white bg-opacity-80 backdrop-blur-lg drop-shadow-lg p-4 justify-center  md:mr-9 ${textareaClasses}`}
+          } mb-6 mt-5 md:mt-0 w-[100%]  h-[20em] md:h-full lg:h-full relative flex bg-white bg-opacity-80 backdrop-blur-lg drop-shadow-lg p-4 justify-center  md:mr-9 ${textareaClasses}`}
           // className="lg:w-[37.5%] mt-2 md:mt-0 w-[100%]  h-[20em] md:h-full lg:h-full relative flex bg-white bg-opacity-80 backdrop-blur-lg drop-shadow-lg p-4 justify-center  md:mr-9"
         />
         {showList ? (
@@ -987,7 +987,7 @@ function updateTop10Items(mainlist, setMainlist) {
               placeholder="What Do You Want To Write Or Talk About?"
               value={highlight}
               /* defaultValue={desc} */ onChange={Inchangehighlight}
-              className="w-full h-[200%]  relative flex bg-white mb-4 bg-opacity-80 backdrop-blur-lg rounded-xl drop-shadow-lg p-4 justify-center"
+              className="w-full h-[200%]  relative flex bg-white mb-5 bg-opacity-80 backdrop-blur-lg rounded-xl drop-shadow-lg p-4 justify-center"
             />
             <textarea
               id="tarea2"
@@ -995,7 +995,7 @@ function updateTop10Items(mainlist, setMainlist) {
               placeholder="What Insights Do You Want To Take Note Of?"
               value={desc}
               /* defaultValue={desc} */ onChange={Inchangedesc}
-              className="w-full h-[200%]  relative flex bg-white mb-4 bg-opacity-80 backdrop-blur-lg rounded-xl drop-shadow-lg p-4 justify-center"
+              className="w-full h-[200%]  relative flex bg-white mb-5 bg-opacity-80 backdrop-blur-lg rounded-xl drop-shadow-lg p-4 justify-center"
             />
             <textarea
               id="tarea2"
@@ -1003,14 +1003,14 @@ function updateTop10Items(mainlist, setMainlist) {
               placeholder="Is There Something You Want To Be Thankful For Today?"
               value={comments}
               /* defaultValue={comments} */ onChange={Inchangecomm}
-              className="w-full h-[200%]  relative flex bg-white bg-opacity-80 backdrop-blur-lg rounded-xl drop-shadow-lg p-4 justify-center"
+              className="w-full h-[200%]  relative flex bg-white bg-opacity-80 backdrop-blur-lg rounded-xl drop-shadow-lg pt-4 justify-center"
             />
           </div>
         ) : (
           <div></div>
         )}
       </div>
-      <ScrollButtons/>
+      {/* <ScrollButtons/> */}
     </div>
   );
 }
