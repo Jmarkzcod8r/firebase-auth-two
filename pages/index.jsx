@@ -703,11 +703,11 @@ function updateTop10Items(mainlist, setMainlist) {
 
 
   return (
-    <div className="block relative  overflow-x-hidden pt-5 ">
+    <main className="block relative  overflow-x-hidden pt-5 ">
 
 
       {/* <div>{Junedays}</div> */}
-      <div className="relative sm:absolute  w-screen flex flex-col justify-center items-center ">
+      <section className="attendance relative sm:absolute  w-screen flex flex-col justify-center items-center ">
         {/* <div className="bg-blue-400"> */}
         <Ask setMainlist = {setMainlist}/>
         {/* <input
@@ -731,7 +731,7 @@ function updateTop10Items(mainlist, setMainlist) {
           Novdays={Novdays}
           Decdays={Decdays}
         />
-      </div>
+      </section>
 
       {/* <button
         className=" right-0 p-2 mr-8 top-[6em] sm:top-0 bg-blue-300 bg-opacity-40 rounded-full mt-2 mb-0 hover:scale-110 hover:bg-blue-400 drop-shadow-lg flex relative sm:absolute "
@@ -748,14 +748,14 @@ function updateTop10Items(mainlist, setMainlist) {
       </button> */}
 
       <img
-        className="top-0 left-0 w-screen h-screen object-cover fixed -z-10"
+        className="background top-0 left-0 w-screen h-screen object-cover fixed -z-10"
         src={
           "https://cdn.pixabay.com/photo/2016/05/26/12/56/waterfalls-1417102_1280.jpg"
         }
         alt=" "
       />
 
-      <div className="relative sm:absolute top-[1em] sm:top-[6em] flex left-[65%] bg-blue-4000 ">
+      <section className="wordcount relative sm:absolute top-[1em] sm:top-[6em] flex left-[65%] bg-blue-4000 ">
         Word Count:
         <span id="show">{countwords}</span>{" "}
         <button
@@ -764,7 +764,7 @@ function updateTop10Items(mainlist, setMainlist) {
         ></button>
         {/* <button onClick={handleHighlightClick} className="bg-blue-500 text-white p-2 rounded-lg mt-2">Highlight</button> */}
         {/* <Image src={Feedback} alt="Clear" width={40} height={40} className="hover:scale-110 z-1000"/> */}
-      </div>
+      </section>
 
 
       <div id="Unav" className="h-[1em]  sm:h-[6em]">
@@ -772,9 +772,9 @@ function updateTop10Items(mainlist, setMainlist) {
       </div>
 
 
-      <div className=" sm:block md:h-[90em] lg:flex lg:flex-row  z-1000 relative w-full top-0  p-3 lg:h-screen  mt-2 ">
+      <section className="interfacece   sm:block md:h-[90em] lg:grid lg:grid-cols-3  z-1000 relative w-full top-0  p-3 lg:h-screen  mt-2 ">
         <div
-          className="sm:w-full lg:w-full relative flex flex-col  content-center items-center lg:p-2 sm:mr-7 lg:ml-4
+          className=" relative flex flex-col  content-center items-center lg:mr-4 md:mb-5
                        bg-white bg-opacity-80 backdrop-blue-lg rounded-xl drop-shadow-lg space-y-2 "
 
         >
@@ -974,11 +974,11 @@ function updateTop10Items(mainlist, setMainlist) {
           onChange={Inchangelog}
           className={`${
             showList ? "lg:w-full" : "lg:w-full"
-          } mt-5 mb-6 md:mt-6 lg:mt-0 w-[100%]  h-[20em] lg:h-full relative flex bg-white bg-opacity-80 backdrop-blur-lg drop-shadow-lg p-4 justify-center  md:mr-9 ${textareaClasses}`}
+          } mb-6 mt-6 lg:mt-0 lg:w-full w-[100%]  h-[20em] lg:h-full relative flex bg-white bg-opacity-80 backdrop-blur-lg drop-shadow-lg p-4 justify-center  md:mr-9 ${textareaClasses}`}
           // className="lg:w-[37.5%] mt-2 md:mt-0 w-[100%]  h-[20em] md:h-full lg:h-full relative flex bg-white bg-opacity-80 backdrop-blur-lg drop-shadow-lg p-4 justify-center  md:mr-9"
         />
         {showList ? (
-          <div className="mt-2 md:mt-0 w-[100%] lg:w-[31.25%] sm:block md:flex md:flex-col lg:pr-9 h-10 md:h-auto">
+          <div className=" mt-2 md:mt-0  lg:pl-4 sm:block md:flex md:flex-col h-10 md:h-auto">
             <textarea
               id="tarea2"
               type="text"
@@ -1001,13 +1001,13 @@ function updateTop10Items(mainlist, setMainlist) {
               placeholder="Is There Something You Want To Be Thankful For Today?"
               value={comments}
               /* defaultValue={comments} */ onChange={Inchangecomm}
-              className="w-full lg:h-[200%] md:h-[10em]  mt-6 relative flex bg-white bg-opacity-80 backdrop-blur-lg rounded-xl drop-shadow-lg p-4 justify-center"
+              className="w-full lg:h-[200%] md:h-[10em]   relative flex bg-white bg-opacity-80 backdrop-blur-lg rounded-xl drop-shadow-lg p-4 justify-center"
             />
           </div>
         ) : (
           <div></div>
         )}
-      </div>
-    </div>
+      </section>
+    </main>
   );
 }
