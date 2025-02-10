@@ -92,6 +92,7 @@ export default function Index() {
     console.log('this is data.data.updates:,', data.data.updates)
     const clientslist = data.data.clients;
 
+
     setMainlist(clientslist);
     setUpdateslist(updateslist.reverse())
     console.log('updateslist:', updateslist)

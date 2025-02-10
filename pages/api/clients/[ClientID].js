@@ -48,16 +48,35 @@ export default async function handler(req, res) {
 
     case "GET":
       try {
-        const clients = await Client.find({ credemail: ClientID });
-        // await redis.set("logs-entries", JSON.stringify(clients));
+        console.log("..api/[ClientID] initiating");
 
+        // Check Redis first
+        const cachedClients = await redis.get("logs-entries");
+
+        if (cachedClients) {
+          console.log("Data retrieved from Redis.");
+          return res.status(200).json({
+            success: true,
+            updates: [],
+            clients: JSON.parse(cachedClients),
+            message: "Data retrieved from Redis",
+          });
+        }
+
+        // If not in Redis, fetch from MongoDB
+        console.log("Fetching data from MongoDB...");
+        const clients = await Client.find({ credemail: ClientID });
         const updates = await Updates.find({ update: ClientID });
 
-        res.status(200).json({ success: true, updates, clients, message:'nice'});
+        // Store data in Redis for future requests
+        await redis.set("logs-entries", JSON.stringify(clients));
+
+        res.status(200).json({ success: true, updates, clients, message: "Data fetched from MongoDB and stored in Redis." });
       } catch (error) {
-        console.log(error);
-        res.status(500).json({ success: false, error });
+        console.error("Error:", error);
+        res.status(500).json({ success: false, error: error.message });
       }
+
       break;
 
     case "POST":

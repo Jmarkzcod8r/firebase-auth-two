@@ -74,16 +74,17 @@ export default async function QueryPage(req, res) {
         // console.log(JSON.stringify(mainlist))
         console.log("searchTerm:", searchTerm);
 
-        // Check if "logs-entries" exists in Redis
-        const existingLogs = await redis.get("logs-entries");
 
-        if (!existingLogs) {
-          // Store mainlist in Redis only if it does not exist
-          await redis.set("logs-entries", JSON.stringify(mainlist));
-          console.log("logs-entries added to Redis.");
-        } else {
-          console.log("logs-entries already exists in Redis. Skipping storage.");
-        }
+        // Check if "logs-entries" exists in Redis
+        // const existingLogs = await redis.get("logs-entries");
+
+        // if (!existingLogs) {
+        //   // Store mainlist in Redis only if it does not exist
+        //   await redis.set("logs-entries", JSON.stringify(mainlist));
+        //   console.log("logs-entries added to Redis.");
+        // } else {
+        //   console.log("logs-entries already exists in Redis. Skipping storage.");
+        // }
 
         // Retrieve cached data from Redis
         const redisget = await redis.get("logs-entries");
