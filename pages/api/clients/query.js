@@ -110,6 +110,8 @@ export default async function QueryPage(req, res) {
           );
         };
 
+        // const searchResult = searchForValue(cachedData, searchTerm);
+
         const searchResult = searchForValue(cachedData, searchTerm);
 
         res.status(200).json({ success: true, data: searchResult });
