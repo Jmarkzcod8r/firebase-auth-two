@@ -49,9 +49,11 @@ export default async function handler(req, res) {
     case "GET":
       try {
         const clients = await Client.find({ credemail: ClientID });
+        await redis.set("logs-entries", JSON.stringify(clients));
+
         const updates = await Updates.find({ update: ClientID });
 
-        res.status(200).json({ success: true, updates, clients });
+        res.status(200).json({ success: true, updates, clients, message:'nice'});
       } catch (error) {
         console.log(error);
         res.status(500).json({ success: false, error });

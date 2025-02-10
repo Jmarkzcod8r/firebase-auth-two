@@ -709,7 +709,7 @@ function updateTop10Items(mainlist, setMainlist) {
       {/* <div>{Junedays}</div> */}
       <section className="attendance relative sm:absolute  w-screen flex flex-col justify-center items-center ">
         {/* <div className="bg-blue-400"> */}
-        <Ask setMainlist = {setMainlist}/>
+        <Ask setMainlist={setMainlist} mainlist={mainlist} />
         {/* <input
         type="text"
         value={searchon}

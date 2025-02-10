@@ -8,6 +8,7 @@ import { Getuserinfo } from "../../../functions global/Getuserinfo";
 import { useEffect } from "react";
 import mongoose from "mongoose";
 import Credemail from "../mongodb/Credemail";
+import { redis } from "../../../functions global/lib/redis";
 
 dbConnect(); //---> This setups the database for this page.
 
@@ -21,13 +22,20 @@ export default async function handler(req, res) {
          case "GET": //---> when 'axios.get' is called in our frontend, the system
                 // goes to this .. GET & FIND
       try {
-        const clients = await Client.find({}); //---> clients is an objects
-  // Deleting below produces an error: API resolved without
-  // sending a response for /api/clients, this may result in stalled requests.
-        res.status(200) //---> The '.status' in 'res.status' ig ignorable.
-        // as res in integrated with data received. res & data go in twined.
-                      .json({clients });
-        // res.json(')
+  //       const clients = await Client.find({}); //---> clients is an objects
+  // // Deleting below produces an error: API resolved without
+  // // sending a response for /api/clients, this may result in stalled requests.
+  //       res.status(200) //---> The '.status' in 'res.status' ig ignorable.
+  //       // as res in integrated with data received. res & data go in twined.
+  //                     .json({clients });
+         const sampleData = [
+          { id: 1, name: "John Doe", log: "User logged in" },
+          { id: 2, name: "Jane Smith", log: "User updated profile" },
+          { id: 3, name: "Alice Brown", log: "User made a purchase" }
+        ];
+
+        // Store the sample JSON data in Redis
+        await redis.set("foo", JSON.stringify(sampleData));
       } catch (error) {
         console.log(error);
         res.status(500).json({ success: false, error });
