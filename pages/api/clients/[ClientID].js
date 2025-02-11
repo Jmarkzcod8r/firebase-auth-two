@@ -24,6 +24,8 @@ export default async function handler(req, res) {
         await newUpdate.save();
 
         res.status(200).json({ success: true, desc: 'Update successful' , update: newUpdate});
+
+        // await redis.set
       } catch (error) {
         console.log(error);
         res.status(500).json({ success: false, error });
@@ -51,17 +53,17 @@ export default async function handler(req, res) {
         console.log("..api/[ClientID] initiating");
 
         // Check Redis first
-        const cachedClients = await redis.get("logs-entries");
+        // const cachedClients = await redis.get("logs-entries");
 
-        if (cachedClients) {
-          console.log("Data retrieved from Redis.");
-          return res.status(200).json({
-            success: true,
-            updates: [],
-            clients: JSON.parse(cachedClients),
-            message: "Data retrieved from Redis",
-          });
-        }
+        // if (cachedClients) {
+        //   console.log("Data retrieved from Redis.");
+        //   return res.status(200).json({
+        //     success: true,
+        //     updates: [],
+        //     clients: JSON.parse(cachedClients),
+        //     message: "Data retrieved from Redis",
+        //   });
+        // }
 
         // If not in Redis, fetch from MongoDB
         console.log("Fetching data from MongoDB...");
