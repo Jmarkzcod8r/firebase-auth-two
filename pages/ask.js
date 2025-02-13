@@ -34,8 +34,9 @@ const Ask = ({ setMainlist, mainlist }) => {
   };
 
   return (
-  <div className="bg-red-300">
+  <div className="bg-slate-100 rounded-md">
     <input
+      className='rounded-sm ml-2'
       type="text"
       value={searchTerm}
       onChange={(e) => setSearchTerm(e.target.value)}
@@ -46,7 +47,7 @@ const Ask = ({ setMainlist, mainlist }) => {
       }}
       placeholder="Enter search term"
     />
-    <button className='ml-2' onClick={handleAsk}> Search</button>
+    <button className='ml-2 bg-blue-200 p-1 rounded-md hover:scale-110' onClick={handleAsk}> Search</button>
   </div>
 );
     }

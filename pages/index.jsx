@@ -73,6 +73,8 @@ export default function Index() {
 
   const [updateslist, setUpdateslist] = useState([])
 
+  const [sortedlist, setSortedlist] = useState([])
+
 
 
   var thisbasez = thisbase();
@@ -94,6 +96,7 @@ export default function Index() {
 
 
     setMainlist(clientslist);
+    setSortedlist([...clientslist].sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt)).slice(0, 10));
     setUpdateslist(updateslist.reverse())
     console.log('updateslist:', updateslist)
     console.log('mainlist:', clientslist.reverse())
@@ -118,11 +121,11 @@ export default function Index() {
   if (mainlist && updateslist) {
     const arrayOfDates = mainlist
       .map((obj) => new Date(obj.date))
-      .filter((date) => date.getFullYear() === 2024);
+      .filter((date) => date.getFullYear() === 2025);
       console.log('updateslist:,' , updateslist)
       const arrayOfUpdates = updateslist
       .map((update) => new Date(update.date))
-      .filter((date) => date.getFullYear() === 2024);
+      .filter((date) => date.getFullYear() === 2025);
 
       console.log('array of updates:', arrayOfUpdates)
       console.log('mainlist....:', mainlist)
@@ -187,7 +190,8 @@ export default function Index() {
     setIsSorted(!isSorted);
   };
 
-
+  const [origmainlist, setOrigmainlist] = useState([])
+  const [isSorted, setIsSorted] = useState(false); // Flag to track sorting state
 
   useEffect(() => {
     const ForphotoURL = async () => {
@@ -236,6 +240,7 @@ export default function Index() {
     Dbadd();
     Datenow();
 
+
     const clearFocusedTextarea = (e) => {
       if (e.ctrlKey && e.code === 'Space') {
         Clear();
@@ -249,34 +254,10 @@ export default function Index() {
 
 
 
-    // showRecent()
+
 
 
   }, [credemail]); //------------> End of Use Effect
-
-  const [origmainlist, setOrigmainlist] = useState([])
-  const [isSorted, setIsSorted] = useState(false); // Flag to track sorting state
-
-
-function updateTop10Items(mainlist, setMainlist) {
-  // Create a copy of mainlist to avoid direct mutation
-  const origMainlist = [...mainlist];
-
-  // Sort the list by updatedAt and get the top 10 items
-  const sortedList = [...origMainlist].sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt));
-  const top10Items = sortedList.slice(0, 10); // Top 10 items
-
-  // Update the mainlist with top 10 items
-  setMainlist(top10Items);
-  console.log('Top 10 items:', top10Items);
-
-
-}
-
-  // Call the function
-  // showRecent();
-
-
 
   const signOut = () => {
     localStorage.clear();
@@ -933,8 +914,9 @@ function updateTop10Items(mainlist, setMainlist) {
             </button>
           </div>
 
-          <div className=" mt-5 w-[95%] block h-[200px] lg:h-auto px-4 overflow-auto rounded-xl">
+          <div className=" mt-5 w-[95%] block h-[200px] lg:h-[50vh] px-4 overflow-auto rounded-xl">
             {/* {showList && */}
+
             {mainlist
               // .filter((el, index) => !archive || el.name === '@archive')
               .filter((el, index) => !archive || el.name.includes("@archive"))
