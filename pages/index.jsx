@@ -25,6 +25,7 @@ import Bgpic from "./Icons/Bgpic.jpg";
 import { ForphotoURL } from "./Components/Usernav";
 import { thisbase } from "../functions global/thisbase";
 import { list } from "postcss";
+import {Recent}from "./Icons/Recent.png";
 
 import Ask from "./ask.js";
 
@@ -838,7 +839,7 @@ export default function Index() {
           <div className=" p-2">
           <button onClick={showRecent} title="Recent" className="mr-2 rounded-lg bg-blue-200">
               <Image
-                src={Hide}
+                src={Recent}
                 alt="Clear"
                 width={40}
                 height={40}
