@@ -25,7 +25,7 @@ import Bgpic from "./Icons/Bgpic.jpg";
 import { ForphotoURL } from "./Components/Usernav";
 import { thisbase } from "../functions global/thisbase";
 import { list } from "postcss";
-import {Recent}from "./Icons/Recent.png";
+import Recent from "./Icons/Recent.png";
 
 import Ask from "./ask.js";
 
