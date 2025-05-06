@@ -26,6 +26,7 @@ import { ForphotoURL } from "./Components/Usernav";
 import { thisbase } from "../functions global/thisbase";
 import { list } from "postcss";
 import Recent from "./Icons/Recent.png";
+import Spreadsheet from "./Icons/spreadsheet.png"
 
 import Ask from "./ask.js";
 
@@ -913,6 +914,25 @@ export default function Index() {
                 className="hover:scale-110"
               />
             </button>
+            <button
+  onClick={() =>
+    window.open(
+      "https://docs.google.com/spreadsheets/d/10LwXEMnIDlUmTPHAbM7ZOsDLBV2PLcsMo7QR2zM67z0/edit?gid=0#gid=0",
+      "_blank"
+    )
+  }
+  title="Spreadsheet"
+  className="mr-2 rounded-lg bg-blue-200"
+>
+  <Image
+    src={Spreadsheet}
+    alt="Spreadsheet"
+    width={40}
+    height={40}
+    className="hover:scale-110"
+  />
+</button>
+
           </div>
 
           <div className=" mt-5 w-[95%] block h-[200px] lg:h-[50vh] px-4 overflow-auto rounded-xl">
